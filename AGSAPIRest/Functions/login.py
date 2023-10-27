@@ -1,0 +1,32 @@
+import bcrypt
+
+from flask import request, jsonify
+from sqlalchemy import text
+
+
+def login(engine):
+    username = request.json["username"]
+    password = request.json["password"]
+    password = password.encode('utf-8')
+
+    try:
+        conn = engine.connect()
+        result = conn.execute(text("EXEC sp_get_user @username = :username"), {'username': username}).fetchone()
+        conn.commit()
+        conn.close()
+
+        if result:
+            is_admin = result.isAdmin
+            hash_password = result.password
+            if bcrypt.checkpw(password, hash_password):
+                return jsonify({'is_admin': is_admin}), 200
+            else:
+                print("Contraseña no coincide")
+                return jsonify({'error': 'La contraseña no coincide.'}), 401
+        else:
+            print("Usuario no existe")
+            return jsonify({'error': 'El usuario no existe.'}), 401
+
+    except Exception as e:
+        print(e)
+        return jsonify({'error': str(e)}), 401
