@@ -1,5 +1,6 @@
 package views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -22,9 +23,14 @@ class LoginActivity : AppCompatActivity() {
         buttonLogin.setOnClickListener{
             val username = editTextUser.text.toString()
             val password =  editTextPassword.text.toString()
+            val Intent = Intent(this,MainMenuActivity::class.java)
 
             loginController.loginAttempt(username,password,this)
+
+            startActivity(Intent)
+            finish()
         }
+
     }
 
 }
