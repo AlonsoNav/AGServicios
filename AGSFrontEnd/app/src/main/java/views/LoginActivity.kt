@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
             val textViewPopup = dialog.findViewById<TextView>(R.id.textViewlogPU)
 
             //Para probar sin api, cambiar a -1
-            if(login.first == 200) {
+            if(login.first == -1) {
                 startActivity(Intent)
                 finish()
             } else if (login.first == -1){
