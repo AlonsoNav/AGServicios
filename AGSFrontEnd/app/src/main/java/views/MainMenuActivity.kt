@@ -13,12 +13,20 @@ class MainMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
 
-        val volver = findViewById<Button>(R.id.buttonVolver)
+        val volver = findViewById<Button>(R.id.buttonVolverMM)
+        val GM = findViewById<Button>(R.id.buttonGM)
+
       volver.setOnClickListener{
             val volver = Intent(this,LoginActivity::class.java)
 
           startActivity(volver)
           finish()
+      }
+        GM.setOnClickListener{
+            val GM = Intent(this,MenuMaquinariaActivity::class.java)
+            startActivity(GM)
+            finish()
         }
+
     }
 }
