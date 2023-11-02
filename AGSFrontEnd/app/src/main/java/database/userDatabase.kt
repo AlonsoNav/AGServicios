@@ -9,12 +9,13 @@ import kotlin.math.log
 
 class userDatabase {
 
-    fun postRequestToApi(username: String, password: String) {
+    private var responseCode: Int = -1
+    fun postRequestToApi(username: String, password: String){
         // Crea un cliente OkHttp
         val client = OkHttpClient()
 
         // Especifica la URL de tu API
-        val apiUrl = "http://192.168.1.53:5000/login"  // Reemplaza con la URL real de tu API
+        val apiUrl = "https://2b26-186-177-185-13.ngrok-free.app/login"  // Reemplaza con la URL real de tu API
 
         // Crea el cuerpo de la solicitud POST
         val json = """
@@ -39,7 +40,7 @@ class userDatabase {
                 e.printStackTrace()
             }
 
-            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response){
                 // Verifica si la solicitud fue exitosa (código de respuesta 200)
                 if (response.isSuccessful) {
                     val responseBody = response.body?.string()
@@ -51,10 +52,18 @@ class userDatabase {
                 } else {
                     // Manejo de errores en caso de una respuesta no exitosa
                     println("Error en la solicitud: ${response.code}")
+
                 }
-                Log.d("TAG",response.body.toString())
+                responseCode = response.code
             }
         })
 
+    }
+    fun getResponseCode(): Int {
+        return responseCode // Retorna el responseCode cuando sea necesario
+    }
+
+    fun getResponsebody(): String{
+        return responseCode.toString()
     }
 }
