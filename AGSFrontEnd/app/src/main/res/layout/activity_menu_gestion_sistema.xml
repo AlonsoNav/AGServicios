@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="views.MenuGestionSistemaActivity"
+    android:background="#2D2A2A">
+
+
+    <!--    Botón de regresar-->
+
+    <ImageView
+        android:id="@+id/ImageViewBotonGT"
+        android:layout_width="310dp"
+        android:layout_height="103dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/rectangulo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.866" />
+
+    <ImageView
+        android:id="@+id/ImageViewBotonGC"
+        android:layout_width="310dp"
+        android:layout_height="103dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/rectangulo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.702" />
+
+    <ImageButton
+        android:id="@+id/agregarClientes"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+        app:layout_constraintVertical_bias="0.517"
+        app:srcCompat="@drawable/agregar" />
+
+    <ImageButton
+        android:id="@+id/agregarTecnicos"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+        app:layout_constraintVertical_bias="0.517"
+        app:srcCompat="@drawable/agregar" />
+
+    <TextView
+        android:id="@+id/textViewclientes"
+        android:layout_width="92dp"
+        android:layout_height="33dp"
+        android:fontFamily="@font/lexend"
+        android:text="Clientes"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+        app:layout_constraintVertical_bias="0.514" />
+
+    <TextView
+        android:id="@+id/textViewTecnicos"
+        android:layout_width="92dp"
+        android:layout_height="33dp"
+        android:fontFamily="@font/lexend"
+        android:text="Técnicos"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+        app:layout_constraintVertical_bias="0.514" />
+
+    <ImageView
+        android:id="@+id/ImageViewBotonGM2"
+        android:layout_width="310dp"
+        android:layout_height="103dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/rectangulo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.374" />
+
+    <ImageView
+        android:id="@+id/ImageViewBotonGM3"
+        android:layout_width="310dp"
+        android:layout_height="103dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/rectangulo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538" />
+
+    <ImageButton
+        android:id="@+id/editarMarcas"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintVertical_bias="0.464"
+        app:srcCompat="@drawable/editar" />
+
+    <ImageView
+        android:id="@+id/ImageViewBotonGM1"
+        android:layout_width="310dp"
+        android:layout_height="103dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/rectangulo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21" />
+
+    <ImageButton
+        android:id="@+id/borrarMaquina"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        android:src="@drawable/borrar"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+
+    <ImageButton
+        android:id="@+id/borrarMaquinaria"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+        app:srcCompat="@drawable/borrar" />
+
+    <ImageButton
+        android:id="@+id/borrarClientes"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+        app:layout_constraintVertical_bias="0.517"
+        app:srcCompat="@drawable/borrar" />
+
+    <ImageButton
+        android:id="@+id/borrarTecnicos"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+        app:layout_constraintVertical_bias="0.517"
+        app:srcCompat="@drawable/borrar" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lexend"
+        android:text="Marcas"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintVertical_bias="0.46" />
+
+    <ImageButton
+        android:id="@+id/consultarMaquinaria"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+        app:srcCompat="@drawable/consulta" />
+
+    <ImageButton
+        android:id="@+id/consultarClientes"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+        app:layout_constraintVertical_bias="0.517"
+        app:srcCompat="@drawable/consulta" />
+
+    <ImageButton
+        android:id="@+id/consultarTecnicos"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+        app:layout_constraintVertical_bias="0.517"
+        app:srcCompat="@drawable/consulta" />
+
+    <ImageButton
+        android:id="@+id/editarMaquina"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        android:src="@drawable/editar"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+
+    <ImageButton
+        android:id="@+id/agregarMaquina"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        android:src="@drawable/agregar"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+
+    <ImageButton
+        android:id="@+id/editarMarcas2"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintVertical_bias="0.464"
+        app:srcCompat="@drawable/borrar" />
+
+    <ImageButton
+        android:id="@+id/editarMaquinaria"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+        app:srcCompat="@drawable/editar" />
+
+    <ImageButton
+        android:id="@+id/editarClientes"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+        app:layout_constraintVertical_bias="0.517"
+        app:srcCompat="@drawable/editar" />
+
+    <ImageButton
+        android:id="@+id/editarTecnicos"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+        app:layout_constraintVertical_bias="0.517"
+        app:srcCompat="@drawable/editar" />
+
+    <ImageButton
+        android:id="@+id/consultarMaquina"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        android:src="@drawable/consulta"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+
+    <ImageButton
+        android:id="@+id/agregarMarcas"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintVertical_bias="0.464"
+        app:srcCompat="@drawable/agregar" />
+
+    <ImageButton
+        android:id="@+id/agregarMaquinaria"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+        app:srcCompat="@drawable/agregar" />
+
+
+    <ImageButton
+        android:id="@+id/consultarMarca"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+        app:layout_constraintVertical_bias="0.464"
+        app:srcCompat="@drawable/consulta" />
+
+    <TextView
+        android:id="@+id/textmaquinas"
+        android:layout_width="89dp"
+        android:layout_height="52dp"
+        android:fontFamily="@font/lexend"
+        android:text="Tipo de máquina"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+        app:layout_constraintVertical_bias="0.549" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lexend"
+        android:text="Máquinas"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1"
+        app:layout_constraintVertical_bias="0.486" />
+
+    <!--BOTONES PARA MAQUINAS-->
+
+    <!--BOTONES PARA MARCAS-->
+
+    <!--BOTONES PARA MARCAS-->
+
+
+    <Button
+        android:id="@+id/buttonVolverGM"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        android:padding="10dp"
+        android:drawableLeft="@drawable/volver"
+        />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="306dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/lexend"
+        android:gravity="center"
+        android:text="Gestión de sistema"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
