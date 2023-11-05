@@ -9,6 +9,7 @@ CREATE PROCEDURE sp_add_machine
     @model VARCHAR(60)
 AS
 BEGIN
+    SET NOCOUNT ON
     DECLARE @idBrand INT, @idType INT, @machineId INT;
     DECLARE @output VARCHAR(200);
 

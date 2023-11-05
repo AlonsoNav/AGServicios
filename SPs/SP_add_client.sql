@@ -9,6 +9,7 @@ CREATE PROCEDURE sp_add_client
 	@email VARCHAR(50)
 AS
 BEGIN
+    SET NOCOUNT ON
     DECLARE @output VARCHAR(200);
 
     BEGIN TRY

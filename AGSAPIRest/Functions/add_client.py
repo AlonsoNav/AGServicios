@@ -1,24 +1,20 @@
-import bcrypt
 import json
 
 from flask import request, jsonify
 from sqlalchemy import text
 
-
-def add_user(engine):
+def add_client(engine):
     data = request.get_json()
-    username = data.get('username')
     name = data.get('name')
     number = data.get('number')
-    password = data.get('password')
-    password = password.encode('utf-8')
-    password = bcrypt.hashpw(password, bcrypt.gensalt())
+    address = data.get('address')
+    email = data.get('email')
 
     try:
         conn = engine.connect()
         result = conn.execute(
-            text("EXEC sp_add_user @username = :username, @name = :name, @number = :number, @password = :password"),
-            {'username': username, 'name': name, 'number': number, 'password': password}).scalar()
+            text("EXEC sp_add_client @name = :name, @number = :number, @address = :address, @email = :email"),
+            {'name': name, 'number': number, 'address': address, 'email': email}).scalar()
         conn.commit()
         conn.close()
 

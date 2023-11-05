@@ -23,12 +23,12 @@ BEGIN
             DECLARE @sql NVARCHAR(MAX);
             SET @sql = N'UPDATE brands SET ';
 
-            IF @newName IS NOT NULL
+            IF LEN(LTRIM(RTRIM(@newName))) > 0
                 SET @sql = @sql + N'[name] = @newName ';
 
-            IF @description IS NOT NULL
+            IF LEN(LTRIM(RTRIM(@description))) > 0
             BEGIN
-                IF @newName IS NOT NULL
+                IF LEN(LTRIM(RTRIM(@newName))) > 0
                     SET @sql = @sql + N', ';
 
                 SET @sql = @sql + N'[description] = @description ';
