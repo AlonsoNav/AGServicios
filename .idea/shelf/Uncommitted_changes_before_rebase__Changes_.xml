@@ -1,0 +1,199 @@
+<changelist name="Uncommitted_changes_before_rebase_[Changes]" date="1699213014756" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/test/java/com/hytan/agserviciosv1/ExampleUnitTest.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/MainActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/gradlew" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/MenuMaquinariaActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/database/userDatabase.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-mdpi/ic_launcher.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/androidTest/java/com/hytan/agserviciosv1/ExampleInstrumentedTest.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/controllers/LoginController.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/ui/theme/Color.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/AgregarMaquinaActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/build.gradle.kts" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/build.gradle.kts" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/EliminarClienteActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/EliminarMaquinaActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-hdpi/ic_launcher.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/EditarMaquinaActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/MainMenuActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/ConsultarClienteActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/gradle/wrapper/gradle-wrapper.jar" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/ui/theme/Type.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/ui/theme/Theme.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/font/lexend.ttf" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/gradlew.bat" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/drawable/logomini.png" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/drawable/logo.png" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/ConsultarMaquinaActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/LoginActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/settings.gradle.kts" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/proguard-rules.pro" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/app/src/main/java/views/MenuGestionSistemaActivity.kt" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="AGSFrontEnd/.idea/.name" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+</changelist>
