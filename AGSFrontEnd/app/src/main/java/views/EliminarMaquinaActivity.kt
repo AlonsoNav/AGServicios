@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import androidx.compose.ui.text.InternalTextApi
 import com.hytan.agserviciosv1.R
 
 class EliminarMaquinaActivity : AppCompatActivity() {
@@ -18,8 +17,7 @@ class EliminarMaquinaActivity : AppCompatActivity() {
         val editSerial = findViewById<EditText>(R.id.editSerialEliminarMaquina)
 
         volverEM.setOnClickListener{
-            val volverEm= Intent(this,MenuMaquinariaActivity::class.java)
-
+            val volverEm= Intent(this,MenuGestionSistemaActivity::class.java)
             startActivity(volverEm)
             finish()
         }
