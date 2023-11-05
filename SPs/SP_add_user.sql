@@ -9,6 +9,7 @@ CREATE PROCEDURE sp_add_user
     @password VARBINARY(64)  -- El hash de la contrase�a
 AS
 BEGIN
+    SET NOCOUNT ON
 	DECLARE @output VARCHAR(200);
 
     BEGIN TRANSACTION;
@@ -17,8 +18,8 @@ BEGIN
     BEGIN TRY
         IF NOT EXISTS (SELECT 1 FROM users WHERE LOWER(username) = LOWER(@username))
         BEGIN
-            INSERT INTO users(username, name, number, password, isAdmin)
-            VALUES (@username, @name, @number, @password, 1);
+            INSERT INTO users(username, name, number, password)
+            VALUES (@username, @name, @number, @password);
 
             INSERT INTO dbo.EventLog(description, postTime)
             VALUES ('User inserted <username ' + @username + ' - name ' + @name + ' - number ' + CAST(@number AS VARCHAR) + ' - password ' + CONVERT(VARCHAR(64), @password, 2) + '>', GETDATE());

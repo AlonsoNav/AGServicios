@@ -6,6 +6,7 @@ CREATE PROCEDURE sp_delete_type
 	@name VARCHAR(50)
 AS
 BEGIN
+    SET NOCOUNT ON
 	DECLARE @idType INT;
     DECLARE @output NVARCHAR(200);
 

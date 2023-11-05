@@ -7,6 +7,7 @@ CREATE PROCEDURE sp_add_type
 	@description VARCHAR(80)
 AS
 BEGIN
+    SET NOCOUNT ON
     DECLARE @idType INT;
     DECLARE @output VARCHAR(200);
 

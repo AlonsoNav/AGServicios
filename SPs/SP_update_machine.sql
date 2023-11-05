@@ -8,6 +8,7 @@ CREATE PROCEDURE sp_update_machine
     @inNewSerial VARCHAR(30) = NULL
 AS
 BEGIN
+    SET NOCOUNT ON
     DECLARE @output VARCHAR(200);
     DECLARE @idMachine INT;
 

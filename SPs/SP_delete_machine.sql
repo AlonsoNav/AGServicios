@@ -7,6 +7,7 @@ CREATE PROCEDURE sp_delete_machine
 
 AS
 BEGIN
+    SET NOCOUNT ON
 	DECLARE @idMachine INT;
     DECLARE @output VARCHAR(200);
 

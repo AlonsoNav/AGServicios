@@ -8,6 +8,7 @@ CREATE PROCEDURE sp_update_type
     @inDescription VARCHAR(100) = NULL
 AS
 BEGIN
+    SET NOCOUNT ON
     DECLARE @output AS VARCHAR(MAX);
     DECLARE @idType INT;
 

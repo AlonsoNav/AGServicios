@@ -6,6 +6,7 @@ CREATE PROCEDURE sp_delete_brand
 	@name VARCHAR(50)
 AS
 BEGIN
+    SET NOCOUNT ON
 	DECLARE @idBrand INT;
     DECLARE @output VARCHAR(200);
 

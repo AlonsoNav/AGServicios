@@ -7,6 +7,7 @@ CREATE PROCEDURE sp_add_brand
 	@description VARCHAR(100)
 AS
 BEGIN
+    SET NOCOUNT ON
     DECLARE @output VARCHAR(200);
 
     BEGIN TRY

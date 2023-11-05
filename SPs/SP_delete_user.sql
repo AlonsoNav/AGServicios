@@ -6,6 +6,7 @@ CREATE PROCEDURE sp_delete_user
 	@username VARCHAR(16)
 AS
 BEGIN
+    SET NOCOUNT ON
 	DECLARE @idUser INT;
     DECLARE @output VARCHAR(200);
 

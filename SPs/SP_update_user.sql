@@ -9,6 +9,7 @@ CREATE PROCEDURE sp_update_user
     @inNewPassword VARBINARY(MAX) = NULL
 AS
 BEGIN
+    SET NOCOUNT ON
     DECLARE @output AS NVARCHAR(MAX);
     DECLARE @idUser INT;
 
