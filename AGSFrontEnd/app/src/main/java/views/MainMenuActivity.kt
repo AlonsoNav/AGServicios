@@ -14,7 +14,7 @@ class MainMenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_menu)
 
         val volver = findViewById<Button>(R.id.buttonVolverMM)
-        val GM = findViewById<Button>(R.id.buttonGM)
+        val GS = findViewById<Button>(R.id.buttonGS)
 
       volver.setOnClickListener{
             val volver = Intent(this,LoginActivity::class.java)
@@ -22,9 +22,9 @@ class MainMenuActivity : AppCompatActivity() {
           startActivity(volver)
           finish()
       }
-        GM.setOnClickListener{
-            val GM = Intent(this,MenuMaquinariaActivity::class.java)
-            startActivity(GM)
+        GS.setOnClickListener{
+            val GS = Intent(this,MenuGestionSistemaActivity::class.java)
+            startActivity(GS)
             finish()
         }
 

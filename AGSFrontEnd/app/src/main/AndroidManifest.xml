@@ -16,13 +16,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name="views.ConsultarMaquinaActivity"
+            android:exported="false" />
+        <activity
             android:name="views.EliminarMaquinaActivity"
             android:exported="false" />
         <activity
             android:name="views.AgregarMaquinaActivity"
             android:exported="false" />
         <activity
-            android:name="views.MenuMaquinariaActivity"
+            android:name="views.MenuGestionSistemaActivity"
             android:exported="false" />
         <activity
             android:name="views.MainMenuActivity"

@@ -10,88 +10,20 @@
     <!--Vector clientes-->
     <!--    Boton para el menú de gestión de clientes-->
 
-    <ImageView
-        android:layout_width="91dp"
-        android:layout_height="84dp"
-        android:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268"
-        app:srcCompat="@drawable/people"></ImageView>
-
-    <Button
-        android:id="@+id/buttonGC"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="@font/lexend"
-        android:padding="21dp"
-        android:text="Gestión de\n clientes"
-        android:textAlignment="viewStart"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
-
 
     <!--Vector maquina-->
 
     <!--    Boton para el menú de gestión de máquinas-->
 
     <!--    Boton para el menú de registro reporte-->
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="91dp"
-        android:layout_height="84dp"
-        android:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108"
-        app:srcCompat="@drawable/maquina"></ImageView>
 
-    <Button
-        android:id="@+id/buttonGM"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="@font/lexend"
-        android:padding="20dp"
-        android:text="Gestión de\n máquinas"
-        android:textAlignment="viewStart"
-        android:textSize="21dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109" />
-<!--Botón de generar reporte-->
+    <!--Botón de generar reporte-->
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="91dp"
-        android:layout_height="84dp"
-        android:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.938"
-        app:srcCompat="@drawable/reporte"></ImageView>
+    <!--    vector mantenimiento-->
+    <!--    Boton para el menú de Programacion de mantenimientos-->
+
+    <!--    Boton para el menú de gestión de informes-->
+
 
     <Button
         android:id="@+id/buttonRR"
@@ -110,46 +42,33 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
-
-    <!--    vector mantenimiento-->
-    <!--    Boton para el menú de Programacion de mantenimientos-->
-
-    <!--    Boton para el menú de gestión de informes-->
-
-
+        app:layout_constraintVertical_bias="0.776" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageView2"
         android:layout_width="91dp"
         android:layout_height="84dp"
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.766"
-        app:srcCompat="@drawable/informe"></ImageView>
+        app:layout_constraintVertical_bias="0.259"
+        app:srcCompat="@drawable/sistemas"></ImageView>
 
-    <Button
-        android:id="@+id/buttonPM"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="@font/lexend"
-        android:padding="21dp"
-        android:text="Programación de\n mantenimientos"
-        android:textAlignment="viewStart"
-        android:textSize="20dp"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="91dp"
+        android:layout_height="84dp"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.594" />
+        app:layout_constraintVertical_bias="0.778"
+        app:srcCompat="@drawable/reporte"></ImageView>
 
     <ImageView
         android:layout_width="91dp"
@@ -157,10 +76,10 @@
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonPM"
-        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598"
+        app:layout_constraintVertical_bias="0.437"
         app:srcCompat="@drawable/mante"></ImageView>
 
     <Button
@@ -180,25 +99,42 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764" />
+        app:layout_constraintVertical_bias="0.603" />
 
-    <!--Vector tecnicos-->
-    <!--    Boton para el menú de gestión de tecnicos-->
+    <Button
+        android:id="@+id/buttonPM"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/lexend"
+        android:padding="21dp"
+        android:text="Programación de\n mantenimientos"
+        android:textAlignment="viewStart"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.433" />
 
     <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="91dp"
         android:layout_height="84dp"
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437"
-        app:srcCompat="@drawable/tecnico"></ImageView>
+        app:layout_constraintVertical_bias="0.605"
+        app:srcCompat="@drawable/informe"></ImageView>
 
     <Button
-        android:id="@+id/buttonGT"
+        android:id="@+id/buttonGS"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:layout_marginStart="32dp"
@@ -206,7 +142,7 @@
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/lexend"
         android:padding="20dp"
-        android:text="Gestión de\n técnicos"
+        android:text="Gestión de\n sistema"
         android:textAlignment="viewStart"
         android:textSize="21dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -214,9 +150,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432" />
+        app:layout_constraintVertical_bias="0.262" />
 
-<!--    Botón de regresar-->
+    <!--Vector tecnicos-->
+    <!--    Boton para el menú de gestión de tecnicos-->
+
+    <!--    Botón de regresar-->
 
     <Button
         android:id="@+id/buttonVolverMM"
