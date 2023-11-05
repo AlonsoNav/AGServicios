@@ -12,9 +12,21 @@ class MenuGestionSistemaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_gestion_sistema)
         val volverGM = findViewById<Button>(R.id.buttonVolverGM)
+
+        //Gestión de máquinas
         val eliminarGM = findViewById<ImageButton>(R.id.borrarMaquina)
         val registrarGM = findViewById<ImageButton>(R.id.agregarMaquina)
         val consultarGM = findViewById<ImageButton>(R.id.consultarMaquina)
+        val editarGM = findViewById<ImageButton>(R.id.editarMaquina)
+
+        // Gestión de maquinaria
+
+        // Gestión de clientes
+
+        val eliminarGC = findViewById<ImageButton>(R.id.borrarClientes)
+        val registarGC = findViewById<ImageButton>(R.id.agregarClientes)
+        val consultarGC = findViewById<ImageButton>(R.id.consultarClientes)
+        val editarGC = findViewById<ImageButton>(R.id.editarClientes)
 
         volverGM.setOnClickListener{
             val volverMM = Intent(this,MainMenuActivity::class.java)
@@ -22,6 +34,7 @@ class MenuGestionSistemaActivity : AppCompatActivity() {
             finish()
         }
 
+        //Gestión de máquinas
         eliminarGM.setOnClickListener{
             val eliminarGM = Intent(this, EliminarMaquinaActivity::class.java)
             startActivity(eliminarGM)
@@ -39,6 +52,32 @@ class MenuGestionSistemaActivity : AppCompatActivity() {
             startActivity(consultarGM)
             finish()
         }
+
+        editarGM.setOnClickListener {
+
+            val editarGM = Intent(this, EditarMaquinaActivity::class.java)
+            startActivity(editarGM)
+            finish()
+        }
+
+        //Gestión de clientes
+
+        eliminarGC.setOnClickListener {
+
+            val eliminarGC = Intent(this, EliminarClienteActivity::class.java)
+            startActivity(eliminarGC)
+            finish()
+
+        }
+
+        consultarGC.setOnClickListener{
+
+            val consultarGC = Intent(this, ConsultarClienteActivity::class.java)
+            startActivity(consultarGC)
+            finish()
+        }
+
+
     }
 
 }

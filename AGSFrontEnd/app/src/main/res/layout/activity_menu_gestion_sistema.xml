@@ -375,18 +375,18 @@
 
     <TextView
         android:id="@+id/textmaquinas"
-        android:layout_width="89dp"
-        android:layout_height="52dp"
+        android:layout_width="103dp"
+        android:layout_height="64dp"
         android:fontFamily="@font/lexend"
         android:text="Tipo de máquina"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
         app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
         app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
-        app:layout_constraintVertical_bias="0.549" />
+        app:layout_constraintVertical_bias="0.461" />
 
     <TextView
         android:id="@+id/textView5"
