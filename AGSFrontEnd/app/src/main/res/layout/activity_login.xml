@@ -10,22 +10,25 @@
     tools:context="views.LoginActivity">
 
     <!--Text view del indicador de inicio de sesión-->
+
+
+    <!--Text Field del espacio de nombre de usuario-->
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
         android:fontFamily="@font/lexend"
         android:text="@string/iniciar_sesi_n"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101" />
 
-
-    <!--Text Field del espacio de nombre de usuario-->
     <EditText
         android:id="@+id/editTextUser"
         android:layout_width="match_parent"
@@ -102,6 +105,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.693" />
 
+    <!--Boton de acceder -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="379dp"
@@ -110,10 +114,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347"
+        app:layout_constraintVertical_bias="0.325"
         app:srcCompat="@drawable/logomini" />
 
-    <!--Boton de acceder -->
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
