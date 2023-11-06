@@ -6,11 +6,16 @@ import database.userDatabase
 class LoginController {
 
     private val userDatabase=userDatabase()
-    fun loginAttempt(username: String, password: String, context:Context):Pair<Int,String>{
-        val loginSuccessful = userDatabase.postRequestToApi(username,password)
-        val code=userDatabase.getResponseCode()
-        val mensaje=userDatabase.getResponsebody()
-        return Pair(code,mensaje)
+    var code=0
+    var message:String? =""
+    fun loginAttempt(username: String, password: String, context:Context,callback: (Pair<Int, String?>) -> Unit){
+        val loginSuccessful = userDatabase.postRequestToApi(username,password){ response ->
+            code = response.code
+            message =response.body?.string()
+            callback(Pair(code,message))
+        }
+
+
     }
 
 }

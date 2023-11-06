@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="330dp"
     android:layout_height="130dp"
-    android:background="@drawable/roundedpopup">
+    android:background="@drawable/roundedpopup"
+    >
 
     <TextView
         android:id="@+id/textViewPUPConfirm"
@@ -24,8 +25,8 @@
 
     <Button
         android:id="@+id/buttonSiPU"
-        android:layout_width="107dp"
-        android:layout_height="34dp"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:background="@drawable/rounded_buttonpopup"
         android:fontFamily="@font/lexend"
         android:text="Si"
@@ -34,15 +35,15 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintHorizontal_bias="0.800"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="0.900" />
 
     <Button
         android:id="@+id/buttonNoPU"
-        android:layout_width="107dp"
-        android:layout_height="34dp"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:background="@drawable/rounded_buttonpopup"
         android:fontFamily="@font/lexend"
         android:text="No"
@@ -51,8 +52,8 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintHorizontal_bias="0.200"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="0.900" />
 </androidx.constraintlayout.widget.ConstraintLayout>

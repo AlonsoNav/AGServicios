@@ -22,6 +22,8 @@ class LoginActivity : AppCompatActivity() {
         val editTextPassword= findViewById<EditText>(R.id.editTextPassword)
         val buttonLogin = findViewById<Button>(R.id.buttonLogin)
         val dialog = Dialog(this)
+        dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.getWindow()?.getAttributes()?.windowAnimations = R.style.CustomDialogAnimation
         dialog.setContentView(R.layout.popupinformativo)
         dialog.setCancelable(true)
 
@@ -30,28 +32,15 @@ class LoginActivity : AppCompatActivity() {
             val username = editTextUser.text.toString()
             val password =  editTextPassword.text.toString()
             val Intent = Intent(this,MainMenuActivity::class.java)
-            val login = loginController.loginAttempt(username,password,this)
             val closeButton = dialog.findViewById<Button>(R.id.buttonListoPU)
             val textViewPopup = dialog.findViewById<TextView>(R.id.textViewPUP)
+            val login = loginController.loginAttempt(username,password,this){
 
-            //Para probar sin api, cambiar a -1
-            if(login.first == -1) {
-                startActivity(Intent)
-                finish()
-            } else if (login.first == -1){
-                textViewPopup.text = "El API no se encuentra en línea"
-                closeButton.setOnClickListener {
-                    dialog.dismiss()
-                }
-                dialog.show()
-            }else{
-                textViewPopup.text = login.second
-                closeButton.setOnClickListener {
-                    dialog.dismiss()
-                }
-                dialog.show()
             }
+
+
+
         }
     }
-
 }
+

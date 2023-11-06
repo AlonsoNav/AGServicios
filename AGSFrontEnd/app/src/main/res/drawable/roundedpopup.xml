@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item android:id="@android:id/background">
         <shape android:shape="rectangle">
-            <corners android:radius="20dp" />
+            <corners android:radius="15dp" />
 
         </shape>
     </item>
+
     <item android:id="@android:id/content">
         <shape android:shape="rectangle">
-            <corners android:radius="20dp" />
+            <corners android:radius="15dp" />
             <solid android:color="#AD0E2E" />
         </shape>
     </item>
+
+    <item android:drawable="@drawable/linea_popup" android:top="30.5dp" android:gravity="center_vertical"/>
 </layer-list>
