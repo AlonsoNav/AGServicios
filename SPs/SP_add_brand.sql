@@ -2,29 +2,27 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_add_brand
 GO
-CREATE PROCEDURE sp_add_brand
+CREATE PROCEDURE [dbo].[sp_add_brand]
     @name VARCHAR(50),
 	@description VARCHAR(100)
 AS
 BEGIN
-    SET NOCOUNT ON
+    SET NOCOUNT ON  
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
     DECLARE @output VARCHAR(200);
 
     BEGIN TRY
-        BEGIN TRANSACTION;
-        SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
-
         IF NOT EXISTS (SELECT 1 FROM brands WHERE LOWER([name]) = LOWER(@name))
         BEGIN
-            INSERT INTO brands (name, description)
-            VALUES (@name, @description);
+			BEGIN TRANSACTION;
+				INSERT INTO brands (name, description)
+				VALUES (@name, @description);
+			COMMIT TRANSACTION;
 
             INSERT INTO dbo.EventLog (description, postTime)
             VALUES ('New brand added <' + @name + '>', GETDATE());
 
             SET @output = '{"result": 1, "description": "Marca añadida exitosamente"}';
-
-            COMMIT TRANSACTION;
         END
         ELSE
         BEGIN
@@ -32,9 +30,14 @@ BEGIN
         END
     END TRY
     BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        SET @output = '{"result": 0, "description": "Error al añadir la marca: ' + ERROR_MESSAGE() + '"}';
+        IF @@TRANCOUNT>0  -- error sucedio dentro de la transaccion
+		BEGIN
+			ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
+		END;
+		SET @output = '{"result": 0, "description": "Error al añadir la marca: ' + ERROR_MESSAGE() + '"}';
     END CATCH
 
     SELECT @output;
+	SET NOCOUNT OFF;
 END
+GO

@@ -2,41 +2,72 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_add_client
 GO
-CREATE PROCEDURE sp_add_client
-    @name VARCHAR(50),
-	@number INT,
-	@address VARCHAR(50),
-	@email VARCHAR(50)
+CREATE PROCEDURE [dbo].[sp_add_client] @name    VARCHAR(30),
+                                      @number  INT,
+                                      @address VARCHAR(50),
+                                      @email   VARCHAR(50)
 AS
-BEGIN
-    SET NOCOUNT ON
-    DECLARE @output VARCHAR(200);
+  BEGIN
+      SET nocount ON
+      SET TRANSACTION isolation level READ uncommitted;
 
-    BEGIN TRY
-        BEGIN TRANSACTION;
-        SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+      DECLARE @output VARCHAR(200);
 
-        IF NOT EXISTS (SELECT 1 FROM clients WHERE LOWER([name]) = LOWER(@name))
-        BEGIN
-            INSERT INTO clients ([name], [contactNumber], [address], [email])
-            VALUES (@name, @number, @address, @email);
+      BEGIN try
+          IF NOT EXISTS (SELECT 1
+                         FROM   clients
+                         WHERE  Lower([name]) = Lower(@name))
+            BEGIN
+                BEGIN TRANSACTION;
 
-            INSERT INTO dbo.EventLog (description, postTime)
-            VALUES ('New client added <Name: ' + @name + ' - Number: ' + CAST(@number AS VARCHAR) + ' - Address: ' + @address + ' - Email: ' + @email + '>', GETDATE());
+                INSERT INTO clients
+                            ([name],
+                             [contactnumber],
+                             [address],
+                             [email],
+                             [available])
+                VALUES      (@name,
+                             @number,
+                             @address,
+                             @email,
+                             1);
 
-            SET @output = '{"result": 1, "description": "Cliente añadido exitosamente"}';
+                COMMIT TRANSACTION;
 
-            COMMIT TRANSACTION;
-        END
-        ELSE
-        BEGIN
-            SET @output = '{"result": 0, "description": "Inserción de cliente fallida: El cliente ya existe"}';
-        END
-    END TRY
-    BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        SET @output = '{"result": 0, "description": "Error al añadir al cliente: ' + ERROR_MESSAGE() + '"}';
-    END CATCH
+                INSERT INTO dbo.eventlog
+                            (description,
+                             posttime)
+                VALUES      ('New client added <Name: ' + @name
+                             + ' - Number: ' + Cast(@number AS VARCHAR)
+                             + ' - Address: ' + @address + ' - Email: ' + @email
+                             + '>',
+                             Getdate());
+
+                SET @output =
+                '{"result": 1, "description": "Cliente añadido exitosamente."}'
+                ;
+            END
+          ELSE
+            BEGIN
+                SET @output =
+'{"result": 0, "description": "Inserción de cliente fallida: El cliente ya existe."}'
+    ;
+END
+END try
+
+    BEGIN catch
+        IF @@TRANCOUNT > 0 -- error sucedio dentro de la transaccion
+          BEGIN
+              ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
+          END;
+
+        SET @output =
+        '{"result": 0, "description": "Error al añadir al cliente: '
+        + Error_message() + '"}';
+    END catch
 
     SELECT @output;
-END
+
+    SET nocount OFF;
+END 
+GO

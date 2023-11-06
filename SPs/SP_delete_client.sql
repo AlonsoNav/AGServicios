@@ -1,39 +1,39 @@
 USE SGR
 GO
-DROP PROCEDURE IF EXISTS sp_delete_brand
+DROP PROCEDURE IF EXISTS sp_delete_client
 GO
-CREATE PROCEDURE [dbo].[Sp_delete_brand] @name VARCHAR(50)
+CREATE PROCEDURE [dbo].[Sp_delete_client] @name VARCHAR(50)
 AS
   BEGIN
       BEGIN try
           SET nocount ON
 
-          DECLARE @idBrand INT;
+          DECLARE @idClient INT;
           DECLARE @output VARCHAR(200);
 
-          SET @idBrand = Isnull((SELECT TOP 1 idbrand
-                                 FROM   brands
-                                 WHERE  Lower([name]) = Lower(@name)
-                                        AND available = 1), 0)
+          SET @idClient = Isnull((SELECT TOP 1 idclient
+                                  FROM   clients
+                                  WHERE  Lower([name]) = Lower(@name)
+                                         AND available = 1), 0)
 
-          IF @idBrand <> 0
+          IF @idClient <> 0
             BEGIN
                 BEGIN TRANSACTION
 
-                UPDATE brands
+                UPDATE clients
                 SET    available = 0
-                WHERE  idbrand = @idBrand;
+                WHERE  idclient = @idClient;
 
                 COMMIT
 
                 INSERT INTO dbo.eventlog
                             (description,
                              posttime)
-                VALUES      ('Marca eliminada <' + @name + '>',
+                VALUES      ('Cliente eliminado <' + @name + '>',
                              Getdate());
 
                 SET @output =
-                '{"result": 1, "description": "Marca eliminada exitosamente."}';
+      '{"result": 1, "description": "Cliente eliminado exitosamente."}';
             END
           ELSE
             BEGIN
@@ -41,12 +41,12 @@ AS
                             (description,
                              posttime)
                 VALUES      (
-                'Fallo en la eliminación de la marca - La marca con nombre '
+                'Fallo en la eliminación del cliente - El cliente con nombre '
                 + @name + ' no existe.',
                 Getdate());
 
                 SET @output =
-'{"result": 0, "description": "Fallo en la eliminación de la marca: La marca no existe."}'
+'{"result": 0, "description": "Fallo en la eliminación del cliente: El cliente no existe."}'
     ;
 END
 

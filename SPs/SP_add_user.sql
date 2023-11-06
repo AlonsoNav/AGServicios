@@ -2,44 +2,80 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_add_user
 GO
-CREATE PROCEDURE sp_add_user
-	@username VARCHAR(16),
-    @name VARCHAR(80),
-    @number int,
-    @password VARBINARY(64)  -- El hash de la contrase�a
+CREATE PROCEDURE [dbo].[Sp_add_user] @username VARCHAR(16),
+                                     @name     VARCHAR(80),
+                                     @number   INT,
+                                     @password VARBINARY(64)
+-- El hash de la contrase�a
 AS
-BEGIN
-    SET NOCOUNT ON
-	DECLARE @output VARCHAR(200);
+  BEGIN
+      SET nocount ON
+      SET TRANSACTION isolation level READ uncommitted;
 
-    BEGIN TRANSACTION;
-    SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+      DECLARE @output VARCHAR(200);
 
-    BEGIN TRY
-        IF NOT EXISTS (SELECT 1 FROM users WHERE LOWER(username) = LOWER(@username))
-        BEGIN
-            INSERT INTO users(username, name, number, password)
-            VALUES (@username, @name, @number, @password);
+      BEGIN try
+          IF NOT EXISTS (SELECT 1
+                         FROM   users
+                         WHERE  Lower(username) = Lower(@username))
+            BEGIN
+                BEGIN TRANSACTION;
 
-            INSERT INTO dbo.EventLog(description, postTime)
-            VALUES ('User inserted <username ' + @username + ' - name ' + @name + ' - number ' + CAST(@number AS VARCHAR) + ' - password ' + CONVERT(VARCHAR(64), @password, 2) + '>', GETDATE());
+                INSERT INTO users
+                            (username,
+                             NAME,
+                             number,
+                             password)
+                VALUES      (@username,
+                             @name,
+                             @number,
+                             @password);
 
-            SET @output = '{"result": 1, "description": "Nuevo usuario agregado exitosamente."}';
+                COMMIT TRANSACTION;
 
-            COMMIT;
-        END
-        ELSE
-        BEGIN
-            INSERT INTO dbo.EventLog(description, postTime)
-            VALUES ('User insertion failed <username ' + @username + ' - name ' + @name + ' - number ' + CAST(@number AS VARCHAR) + ' - password ' + CONVERT(VARCHAR(64), @password, 2) + '>', GETDATE());
+                INSERT INTO dbo.eventlog
+                            (description,
+                             posttime)
+                VALUES      ('User inserted <username ' + @username
+                             + ' - name ' + @name + ' - number '
+                             + Cast(@number AS VARCHAR) + ' - password '
+                             + CONVERT(VARCHAR(64), @password, 2) + '>',
+                             Getdate());
 
-            SET @output = '{"result": 0, "description": "Fallo en la inserción del usuario: El nombre de usuario ya existe."}';
-        END
-    END TRY
-    BEGIN CATCH
-        ROLLBACK;
-        SET @output = '{"result": 0, "description": "Error durante la inserción del usuario."}';
-    END CATCH
+                SET @output =
+      '{"result": 1, "description": "Nuevo usuario agregado exitosamente."}'
+      ;
+            END
+          ELSE
+            BEGIN
+                INSERT INTO dbo.eventlog
+                            (description,
+                             posttime)
+                VALUES      ('User insertion failed <username '
+                             + @username + ' - name ' + @name + ' - number '
+                             + Cast(@number AS VARCHAR) + ' - password '
+                             + CONVERT(VARCHAR(64), @password, 2) + '>',
+                             Getdate());
+
+                SET @output =
+'{"result": 0, "description": "Fallo en la inserción del usuario: El nombre de usuario ya existe."}'
+    ;
+END
+END try
+
+    BEGIN catch
+        IF @@TRANCOUNT > 0 -- error sucedio dentro de la transaccion
+          BEGIN
+              ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
+          END;
+
+        SET @output =
+'{"result": 0, "description": "Error durante la inserción del usuario."}';
+END catch
 
     SELECT @output;
+
+    SET nocount OFF;
 END
+
+go 

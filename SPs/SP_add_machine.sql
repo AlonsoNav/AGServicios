@@ -2,7 +2,7 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_add_machine
 GO
-CREATE PROCEDURE sp_add_machine
+CREATE PROCEDURE [dbo].[sp_add_machine]
 	@brand VARCHAR(50),
     @type VARCHAR(50),
     @serial VARCHAR(30),
@@ -10,12 +10,11 @@ CREATE PROCEDURE sp_add_machine
 AS
 BEGIN
     SET NOCOUNT ON
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
     DECLARE @idBrand INT, @idType INT, @machineId INT;
     DECLARE @output VARCHAR(200);
 
 	BEGIN TRY
-		BEGIN TRANSACTION;
-		SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 
 		SELECT @idBrand = ISNULL((SELECT TOP 1 idBrand FROM brands WHERE LOWER([name]) = LOWER(@brand)), 0);
 		SELECT @idType = ISNULL((SELECT TOP 1 idTypeMachine FROM typesMachine WHERE LOWER([name]) = LOWER(@type)), 0);
@@ -38,22 +37,29 @@ BEGIN
 		END
 		ELSE
 		BEGIN
-			INSERT INTO [dbo].[Machine] ([idBrand], [idType], [serial], [model])
-			VALUES (@idBrand, @idType, @serial, @model);
+			BEGIN TRANSACTION;
+
+				INSERT INTO [dbo].[Machine] ([idBrand], [idType], [serial], [model])
+				VALUES (@idBrand, @idType, @serial, @model);
+			
+			COMMIT TRANSACTION;
 
 			INSERT INTO dbo.EventLog (description, postTime)
 			VALUES ('Nueva máquina agregada <'+'Marca: '+ @brand+' - Tipo de máquina: '+@type+' - Número de serie: '+@serial+' - Modelo: '+@model+'>'
 				, GETDATE());
 
 			SET @output = '{"result": 1, "description": "Nueva máquina agregada exitosamente."}';
-
-			COMMIT TRANSACTION;
 		END
 	END TRY
 	BEGIN CATCH
-		ROLLBACK TRANSACTION;
+		IF @@TRANCOUNT>0  -- error sucedio dentro de la transaccion
+		BEGIN
+			ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
+		END;
         SET @output = '{"result": 0, "description": "Error al añadir al cliente: ' + ERROR_MESSAGE() + '"}';
 	END CATCH
 
     SELECT @output;
+	SET NOCOUNT OFF;
 END
+GO

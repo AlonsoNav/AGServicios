@@ -2,70 +2,86 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_update_machine
 GO
-CREATE PROCEDURE sp_update_machine
- @inSerial VARCHAR(30),
-    @inNewModel VARCHAR(60) = NULL,
-    @inNewSerial VARCHAR(30) = NULL
+CREATE PROCEDURE [dbo].[sp_update_machine] @inSerial    VARCHAR(30),
+                                          @inNewModel  VARCHAR(60) = NULL,
+                                          @inNewSerial VARCHAR(30) = NULL
 AS
-BEGIN
-    SET NOCOUNT ON
-    DECLARE @output VARCHAR(200);
-    DECLARE @idMachine INT;
+  BEGIN
+      SET nocount ON;
+      SET TRANSACTION isolation level READ uncommitted;
 
-    BEGIN TRY
-        BEGIN TRANSACTION;
+      DECLARE @output VARCHAR(200);
 
-        SET @idMachine = ISNULL((SELECT TOP 1 idMachine FROM [dbo].[machines] WHERE [serial] = @inSerial AND [available] = 1), 0)
-        IF @idMachine <> 0
-        BEGIN
-            DECLARE @sql NVARCHAR(MAX) = 'UPDATE [dbo].[machines] SET';
-            DECLARE @Success INT = 0;
-
-            IF @inNewModel IS NOT NULL
+      BEGIN try
+          IF EXISTS (SELECT 1
+                     FROM   [dbo].[machine]
+                     WHERE  [serial] = @inSerial
+                            AND [available] = 1)
             BEGIN
-                SET @sql = @sql + ' [model] = @inNewModel';
-                SET @Success = 1;
-            END
+                IF @inNewModel IS NOT NULL
+                  BEGIN
+                      BEGIN TRANSACTION
 
-            IF @inNewSerial IS NOT NULL
+                      UPDATE [dbo].[machine]
+                      SET    [model] = @inNewModel
+                      WHERE  [serial] = @inSerial;
+
+                      COMMIT TRANSACTION
+                  END
+
+                IF @inNewSerial IS NOT NULL
+                  BEGIN
+                      BEGIN TRANSACTION
+
+                      UPDATE [dbo].[machine]
+                      SET    [serial] = @inNewSerial
+                      WHERE  [serial] = @inSerial;
+
+                      COMMIT TRANSACTION
+                  END
+
+                SET @output =
+      '{"result": 1, "description": "Cliente actualizado exitosamente."}';
+
+      INSERT INTO dbo.eventlog
+                  (description,
+                   posttime)
+      VALUES      ('Machine updated <Serial: ' + @inSerial
+                   + ' - Model: '
+                   + COALESCE(@inNewModel, 'Unchanged')
+                   + ' - New Serial: '
+                   + COALESCE(@inNewSerial, 'Unchanged') + '>',
+                   Getdate());
+            END
+          ELSE
             BEGIN
-                IF @Success = 1
-                BEGIN
-                    SET @sql = @sql + ',';
-                END
-                SET @sql = @sql + ' [serial] = @inNewSerial';
-                SET @Success = 1;
-            END
+                SET @output =
+'{"result": 0, "description": "El cliente ingresado no existe o no está disponible."}'
+    ;
 
-            SET @sql = @sql + ' WHERE [idMachine] = @idMachine';
+    INSERT INTO dbo.eventlog
+                (description,
+                 posttime)
+    VALUES      ('Machine update failed - Machine with serial number '
+                 + @inSerial
+                 + ' does not exist or is not available.',
+                 Getdate());
+END
+END try
 
-            EXEC sp_executesql @sql, N'@inNewModel VARCHAR(60), @inNewSerial VARCHAR(30), @inSerial VARCHAR(30)', @inNewModel, @inNewSerial, @inSerial;
+    BEGIN catch
+        IF @@TRANCOUNT > 0 -- error sucedio dentro de la transaccion
+          BEGIN
+              ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
+          END;
 
-            INSERT INTO dbo.EventLog (description, postTime)
-            VALUES ('Machine updated <Serial: ' + @inSerial + ' - Model: ' + COALESCE(@inNewModel, 'Unchanged') + ' - New Serial: ' + COALESCE(@inNewSerial, 'Unchanged') + '>', GETDATE());
-
-            COMMIT;
-
-            SET @output = '{"success": 1, "description": "Machine updated successfully."}';
-        END
-        ELSE
-        BEGIN
-            INSERT INTO dbo.EventLog (description, postTime)
-            VALUES ('Machine update failed - Machine with serial number ' + @inSerial + ' does not exist or is not available.', GETDATE());
-
-            ROLLBACK;
-            SET @output = '{"success": 0, "description": "Machine update failed - Machine with serial number ' + @inSerial + ' does not exist or is not available."}';
-        END
-    END TRY
-    BEGIN CATCH
-        IF @@TRANCOUNT > 0
-            ROLLBACK;
-
-        INSERT INTO dbo.EventLog (description, postTime)
-        VALUES ('An error occurred while updating the machine.', GETDATE());
-
-        SET @output = '{"success": 0, "description": "An error occurred while updating the machine."}';
-    END CATCH
+        SET @output =
+        '{"result": 0, "description": "Error al añadir al cliente: '
+        + Error_message() + '"}';
+    END catch
 
     SELECT @output;
-END
+
+    SET nocount OFF;
+END 
+GO
