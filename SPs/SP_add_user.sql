@@ -20,19 +20,19 @@ BEGIN
     BEGIN try
         IF Len(@username) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El nombre de usuario está vacío."}';
+            SET @output = '{"result": 0, "description": "Error: nombre de usuario vacío"}';
             SELECT @output;
             RETURN;
         END
         IF Len(@name) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El nombre del usuario está vacío."}';
+            SET @output = '{"result": 0, "description": "Error: nombre vacío"}';
             SELECT @output;
             RETURN;
         END
         IF @number = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El número está vacía."}';
+            SET @output = '{"result": 0, "description": "Error: número vacío"}';
             SELECT @output;
             RETURN;
         END
@@ -57,34 +57,13 @@ BEGIN
 
             COMMIT TRANSACTION;
 
-            INSERT INTO dbo.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('User inserted <username ' + @username + ' - name ' + @name + ' - number ' + Cast(@number AS VARCHAR)
-             +  ' - password ' + CONVERT(VARCHAR(64), @password, 2) + '>',
-             Getdate()
-            );
-
             SET @output = '{"result": 1, "description": "Nuevo usuario agregado exitosamente."}';
         END
         ELSE
         BEGIN
-            INSERT INTO dbo.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('User insertion failed <username ' + @username + ' - name ' + @name + ' - number '
-             +  Cast(@number AS VARCHAR) + ' - password ' + CONVERT(VARCHAR(64), @password, 2) + '>',
-             Getdate()
-            );
 
             SET @output
-                = '{"result": 0, "description": "Fallo en la inserción del usuario: El nombre de usuario ya existe."}';
+                = '{"result": 0, "description": "Error: nombre de usuario ya existe"}';
         END
     END try
     BEGIN catch
@@ -93,7 +72,7 @@ BEGIN
             ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
         END;
 
-        SET @output = '{"result": 0, "description": "Error durante la inserción del usuario."}';
+        SET @output = '{"result": 0, "description": "Error inesperado"}';
     END catch
 
     SELECT @output;

@@ -26,28 +26,15 @@ AS
 
                 COMMIT
 
-                INSERT INTO dbo.eventlog
-                            (description,
-                             posttime)
-                VALUES      ('Máquina eliminada <Serial ' + @serial + '>',
-                             Getdate());
-
                 SET @output =
       '{"result": 1, "description": "Máquina eliminada exitosamente."}'
       ;
             END
           ELSE
             BEGIN
-                INSERT INTO dbo.eventlog
-                            (description,
-                             posttime)
-                VALUES      (
-      'Fallo en la eliminación de la máquina - La máquina con serial '
-      + @serial + ' no existe.',
-      Getdate());
 
       SET @output =
-'{"result": 0, "description": "Fallo en la eliminación de la máquina: La máquina no existe."}'
+'{"result": 0, "description": "Error: máquina no existe"}'
     ;
 END
 

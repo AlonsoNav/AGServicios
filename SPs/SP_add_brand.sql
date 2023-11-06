@@ -18,7 +18,7 @@ BEGIN
     BEGIN TRY
         IF Len(@name) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El nombre de la marca está vacío"}';
+            SET @output = '{"result": 0, "description": "Error: marca vacía"}';
 
             SELECT @output;
 
@@ -27,7 +27,7 @@ BEGIN
 
         IF Len(@description) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: La descripción de la marca está vacía"}';
+            SET @output = '{"result": 0, "description": "Error: descripción vacía"}';
 
             SELECT @output;
 
@@ -60,7 +60,7 @@ BEGIN
         END
         ELSE
         BEGIN
-            SET @output = '{"result": 0, "description": "Inserción de marca fallida: la marca ya existe"}';
+            SET @output = '{"result": 0, "description": "Error: marca ya existe"}';
         END
     END TRY
     BEGIN CATCH
@@ -69,7 +69,7 @@ BEGIN
             ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
         END;
 
-        SET @output = '{"result": 0, "description": "Error al añadir la marca: ' + ERROR_MESSAGE() + '"}';
+        SET @output = '{"result": 0, "description": "Error inesperado"}';
     END CATCH
 
     SELECT @output;

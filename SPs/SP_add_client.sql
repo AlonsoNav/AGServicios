@@ -16,21 +16,21 @@ BEGIN
     SET @address = Ltrim(Rtrim(@address));
     SET @email = Ltrim(Rtrim(@email));
     BEGIN try
-        IF Len(@number) = 0
+        IF Len(@number) = 0 --no sé cómo se vaya a tomar en la app el manejo de números
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El número está vacío."}';
+            SET @output = '{"result": 0, "description": "Error: número vacío"}';
             SELECT @output;
             RETURN;
         END
         IF Len(@address) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: La dirección está vacía."}';
+            SET @output = '{"result": 0, "description": "Error: ubicación vacía"}';
             SELECT @output;
             RETURN;
         END
         IF Len(@email) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El correo electrónico está vacío."}';
+            SET @output = '{"result": 0, "description": "Error: email vacío"}';
             SELECT @output;
             RETURN;
         END
@@ -49,21 +49,12 @@ BEGIN
             VALUES
             (@name, @number, @address, @email, 1);
             COMMIT TRANSACTION;
-            INSERT INTO dbo.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('New client added <Name: ' + @name + ' - Number: ' + Cast(@number AS VARCHAR) + ' - Address: ' + @address
-             +  ' - Email: ' + @email + '>',
-             Getdate()
-            );
+
             SET @output = '{"result": 1, "description": "Cliente añadido exitosamente."}';
         END
         ELSE
         BEGIN
-            SET @output = '{"result": 0, "description": "Inserción de cliente fallida: El cliente ya existe."}';
+            SET @output = '{"result": 0, "description": "Error: cliente ya existe"}';
         END
     END try
     BEGIN catch
@@ -72,7 +63,7 @@ BEGIN
             ROLLBACK TRANSACTION;
         -- se deshacen los cambios realizados
         END;
-        SET @output = '{"result": 0, "description": "Error al añadir al cliente: ' + Error_message() + '"}';
+        SET @output = '{"result": 0, "description": "Error inesperado"}';
     END catch
     SELECT @output;
     SET nocount OFF;

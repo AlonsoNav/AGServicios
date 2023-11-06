@@ -22,25 +22,25 @@ BEGIN
     BEGIN TRY
         IF Len(@brand) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El nombre de la marca está vacío"}';
+            SET @output = '{"result": 0, "description": "Error: nombre vacío"}';
             SELECT @output;
             RETURN;
         END
         IF Len(@type) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El tipo de máquina está vacío"}';
+            SET @output = '{"result": 0, "description": "Error: tipo vacío"}';
             SELECT @output;
             RETURN;
         END
         IF Len(@serial) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El número de serie está vacío"}';
+            SET @output = '{"result": 0, "description": "Error: serial vacío"}';
             SELECT @output;
             RETURN;
         END
         IF Len(@model) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El modelo de la máquina está vacío"}';
+            SET @output = '{"result": 0, "description": "Error: modelo vacío"}';
             SELECT @output;
             RETURN;
         END
@@ -61,34 +61,14 @@ BEGIN
                                );
         IF EXISTS (SELECT 1 FROM machines WHERE [serial] = @serial)
         BEGIN
-            INSERT INTO DBO.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('Fallo en la inserción de la máquina - MISMO NÚMERO DE SERIE <' + 'Marca: ' + @brand
-             +  ' - Tipo de máquina: ' + @type + ' - Número de serie: ' + @serial + ' - Modelo: ' + @model + '>',
-             Getdate()
-            );
             SET @output
-                = '{"result": 0, "description": "Fallo en la inserción de la máquina: Ya existe una máquina con el mismo número de serie."}';
+                = '{"result": 0, "description": "Error: máquina ya existe"}';
         END
         ELSE IF @idBrand = 0
                 OR @idType = 0
         BEGIN
-            INSERT INTO DBO.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('Fallo en la inserción de la máquina - MARCA O TIPO NO ENCONTRADOS <' + 'Marca: ' + @brand
-             +  ' - Tipo de máquina: ' + @type + ' - Número de serie: ' + @serial + ' - Modelo: ' + @model + '>',
-             Getdate()
-            );
             SET @output
-                = '{"result": 0, "description": "Fallo en la inserción de la máquina: Marca o tipo de máquina no encontrados."}';
+                = '{"result": 0, "description": "Error: Marca o maquinaria no disponible"}';
         END
         ELSE
         BEGIN
@@ -103,23 +83,13 @@ BEGIN
             VALUES
             (@idBrand, @idType, @serial, @model);
             COMMIT TRANSACTION;
-            INSERT INTO DBO.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('Nueva máquina agregada <' + 'Marca: ' + @brand + ' - Tipo de máquina: ' + @type + ' - Número de serie: '
-             +  @serial + ' - Modelo: ' + @model + '>',
-             Getdate()
-            );
-            SET @output = '{"result": 1, "description": "Nueva máquina agregada exitosamente."}';
+            SET @output = '{"result": 1, "description": "Máquina añadida exitosamente"}';
         END
     END TRY
     BEGIN CATCH
         ROLLBACK TRANSACTION;
         SET @output
-            = '{"result": 0, "description": "Error durante la inserción de la máquina: ' + ERROR_MESSAGE() + '"}';
+            = '{"result": 0, "description": "Error inesperado"}';
     END CATCH
     SELECT @output;
     SET NOCOUNT OFF;

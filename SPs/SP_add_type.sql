@@ -18,7 +18,7 @@ BEGIN
     BEGIN try
         IF Len(@name) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: El nombre del tipo de maquinaria está vacío"}';
+            SET @output = '{"result": 0, "description": "Error: Nombre vacío"}';
 
             SELECT @output;
 
@@ -27,7 +27,7 @@ BEGIN
 
         IF Len(@description) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: La descripción del tipo de maquinaria está vacía"}';
+            SET @output = '{"result": 0, "description": "Error: Descripción vacía"}';
 
             SELECT @output;
 
@@ -46,6 +46,34 @@ BEGIN
 
         IF @idType = 0
         BEGIN
+
+            BEGIN TRANSACTION;
+
+            INSERT INTO typesmachine
+            (
+                [name],
+                [description]
+            )
+            VALUES
+            (@name, @description);
+
+            INSERT INTO dbo.eventlog
+            (
+                description,
+                posttime
+            )
+            VALUES
+            ('Nuevo tipo de máquina agregado <' + 'Nombre: ' + @name + ' - Descripción: ' + @description + '>',
+             Getdate()
+            );
+
+            SET @output = '{"result": 1, "description": "Maquinaria agregada con éxito"}';
+
+            COMMIT TRANSACTION;
+        
+        END
+        ELSE
+        BEGIN
             INSERT INTO dbo.eventlog
             (
                 description,
@@ -58,33 +86,7 @@ BEGIN
             );
 
             SET @output
-                = '{"result": 0, "description": "Fallo en la inserción del tipo de máquina: El nombre ya existe."}';
-        END
-        ELSE
-        BEGIN
-            BEGIN TRANSACTION;
-
-            INSERT INTO typesmachine
-            (
-                [name],
-                [description]
-            )
-            VALUES
-            (@name, @description);
-
-            COMMIT TRANSACTION;
-
-            INSERT INTO dbo.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('Nuevo tipo de máquina agregado <' + 'Nombre: ' + @name + ' - Descripción: ' + @description + '>',
-             Getdate()
-            );
-
-            SET @output = '{"result": 1, "description": "Nuevo tipo de máquina agregado exitosamente."}';
+                = '{"result": 0, "description": "Error: El nombre ya existe"}';
         END
     END try
     BEGIN catch
@@ -93,7 +95,7 @@ BEGIN
             ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
         END;
 
-        SET @output = '{"result": 0, "description": "Error during type machine insertion: ' + Error_message() + '"}';
+        SET @output = '{"result": 0, "description": "Error inesperado"}';
     END catch
 
     SELECT @output;

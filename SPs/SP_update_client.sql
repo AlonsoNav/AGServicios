@@ -12,131 +12,82 @@ AS
 BEGIN
     SET nocount ON;
     SET TRANSACTION isolation level READ uncommitted;
-
+    SET @inNewName = Ltrim(Rtrim(@inNewName));
     DECLARE @output AS NVARCHAR(200);
     DECLARE @idClient INT;
+    SET @inNewEmail = Ltrim(Rtrim(@inNewEmail));
 
     BEGIN try
         -- Begin a transaction
         SET @idClient = Isnull(
-                        (
-                            SELECT TOP 1
-                                idclient
-                            FROM [dbo].[clients]
-                            WHERE Lower([name]) = Lower(@inName)
-                                  AND available = 1
-                        ),
-                        0
-                              )
+        (
+            SELECT TOP 1
+                idclient
+            FROM [dbo].[clients]
+            WHERE Lower([name]) = Lower(@inName)
+                    AND available = 1
+        ),
+        0
+                )
 
         IF @idClient <> 0
         BEGIN
-            IF @inNewName IS NOT NULL
-            BEGIN
-                SET @inNewName = Ltrim(Rtrim(@inNewName));
-                IF Len(@inNewName) = 0
+            
+                IF NOT Len(@inNewName) = 0
                 BEGIN
-                    SET @output = '{"result": 0, "description": "Error: No puede ser vacío."}';
-
-                    SELECT @output;
-
-                    RETURN;
-                END
-                BEGIN TRANSACTION;
-
-                UPDATE [dbo].[clients]
-                SET [name] = @inNewName
-                WHERE Lower([idclient]) = Lower(@idClient);
-
-                COMMIT TRANSACTION
-            END
-
-            IF @inNewNumber IS NOT NULL
-            BEGIN
+                    BEGIN TRANSACTION;
+                    UPDATE [dbo].[clients]
+                    SET [name] = @inNewName
+                    WHERE Lower([idclient]) = Lower(@idClient);
+                    COMMIT TRANSACTION
+                END  
                  
-                 IF @inNewNumber = 0
+                 IF NOT @inNewNumber = 0
                 BEGIN
-                    SET @output = '{"result": 0, "description": "Error: El número del cliente no puede ser vacío."}';
+                    BEGIN TRANSACTION;
 
-                    SELECT @output;
+                    UPDATE [dbo].[clients]
+                    SET [contactnumber] = @inNewNumber
+                    WHERE Lower([idclient]) = Lower(@idClient);
 
-                    RETURN;
+                    COMMIT TRANSACTION
                 END
-                BEGIN TRANSACTION;
-
-                UPDATE [dbo].[clients]
-                SET [contactnumber] = @inNewNumber
-                WHERE Lower([idclient]) = Lower(@idClient);
-
-                COMMIT TRANSACTION
-            END
-
-            IF @inNewAddress IS NOT NULL
-            BEGIN
+            
                 SET @inNewAddress = Ltrim(Rtrim(@inNewAddress));
                 IF Len(@inNewAddress) = 0
                 BEGIN
-                    SET @output = '{"result": 0, "description": "Error: La dirección del cliente no puede ser vacía."}';
+                    BEGIN TRANSACTION;
 
-                    SELECT @output;
+                    UPDATE [dbo].[clients]
+                    SET [address] = @inNewAddress
+                    WHERE Lower([idclient]) = Lower(@idClient);
 
-                    RETURN;
+                    COMMIT TRANSACTION
                 END
-                BEGIN TRANSACTION;
-
-                UPDATE [dbo].[clients]
-                SET [address] = @inNewAddress
-                WHERE Lower([idclient]) = Lower(@idClient);
-
-                COMMIT TRANSACTION
-            END
-
-            IF @inNewEmail IS NOT NULL
-            BEGIN
-                SET @inNewEmail = Ltrim(Rtrim(@inNewEmail));
-                IF Len(@inNewEmail) = 0
+                       
+                IF NOT Len(@inNewEmail) = 0
                 BEGIN
-                    SET @output = '{"result": 0, "description": "Error: El correo electrónico del cliente no puede ser vacío."}';
-
-                    SELECT @output;
-
-                    RETURN;
+                     BEGIN TRANSACTION;
+                    UPDATE [dbo].[clients]
+                    SET [email] = @inNewEmail
+                    WHERE Lower([idclient]) = Lower(@idClient);
+                    COMMIT TRANSACTION
                 END
-                BEGIN TRANSACTION;
+            
 
-                UPDATE [dbo].[clients]
-                SET [email] = @inNewEmail
-                WHERE Lower([idclient]) = Lower(@idClient);
-
-                COMMIT TRANSACTION
-            END
-
-            SET @output = '{"result": 1, "description": "Cliente editado exitosamente."}';
-
-            INSERT INTO dbo.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('Brand updated <Name: ' + COALESCE(@inNewName, 'Unchanged') + ' - Description: '
-             +  COALESCE(@inNewName, 'Unchanged') + '>',
-             Getdate()
-            );
+            SET @output = '{"result": 1, "description": "Cliente editado exitosamente"}';
         END
         ELSE
         BEGIN
             SET @output
-                = '{"result": 0, "description": "Ocurrió un error al intentar editar al cliente: ' + @inName
-                  + ' No existe o no está disponible."}';
+                = '{"result": 0, "description": "Error: cliente no disponible"}';
         END
     END try
     BEGIN catch
-        -- If there's an error, roll back the transaction
         IF @@TRANCOUNT > 0
             ROLLBACK TRANSACTION;
 
-        SET @output = '{"result": 0, "description": "Ocurrió un error al editar al cliente: ' + Error_message() + '"}';
+        SET @output = '{"result": 0, "description": "Error inesperado"}';
     END catch
 
     SELECT @output;

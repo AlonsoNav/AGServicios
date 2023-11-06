@@ -4,10 +4,10 @@ DROP PROCEDURE IF EXISTS sp_update_user
 GO
 CREATE PROCEDURE [dbo].[sp_update_user]
     @inUsername VARCHAR(16),
-    @inNewUsername VARCHAR(16) = NULL,
-    @inNewName VARCHAR(80) = NULL,
-    @inNewNumber INT = NULL,
-    @inNewPassword VARBINARY(max) = NULL
+    @inNewUsername VARCHAR(16),
+    @inNewName VARCHAR(80),
+    @inNewNumber INT,
+    @inNewPassword VARBINARY(max)
 AS
 BEGIN
     SET nocount ON
@@ -15,6 +15,8 @@ BEGIN
 
     DECLARE @output AS NVARCHAR(200);
     DECLARE @idUser INT;
+    SET @inNewUsername = Ltrim(Rtrim(@inNewUsername));
+    SET @inNewName = Ltrim(Rtrim(@inNewName));
 
     BEGIN try
         SET @idUser = Isnull(
@@ -31,109 +33,60 @@ BEGIN
 
         IF @idUser <> 0
         BEGIN
-            IF @inNewUsername IS NOT NULL
-            BEGIN
-                SET @inNewUsername = Ltrim(Rtrim(@inNewUsername));
-                IF Len(@inNewUsername) = 0
+            
+                IF NOT Len(@inNewUsername) = 0
                 BEGIN
-                    SET @output = '{"result": 0, "description": "Error: El nombre de usuario no puede ser vacío."}';
+                    BEGIN TRANSACTION;
 
-                    SELECT @output;
+                    UPDATE [dbo].[users]
+                    SET [username] = @inNewUsername
+                    WHERE iduser = @idUser;
 
-                    RETURN;
+                    COMMIT TRANSACTION
                 END
-                BEGIN TRANSACTION;
+                
 
-                UPDATE [dbo].[users]
-                SET [username] = @inNewUsername
-                WHERE iduser = @idUser;
+                IF NOT Len(@inNewName) = 0
 
-                COMMIT TRANSACTION
-            END
-
-            IF @inNewName IS NOT NULL
-            BEGIN
-                SET @inNewName = Ltrim(Rtrim(@inNewName));
-                IF Len(@inNewName) = 0
                 BEGIN
-                    SET @output = '{"result": 0, "description": "Error: El nombre del usuario no puede ser vacío."}';
+                    BEGIN TRANSACTION;
 
-                    SELECT @output;
+                    UPDATE [dbo].[users]
+                    SET NAME = @inNewName
+                    WHERE iduser = @idUser;
 
-                    RETURN;
+                    COMMIT TRANSACTION    
                 END
-                BEGIN TRANSACTION;
-
-                UPDATE [dbo].[users]
-                SET NAME = @inNewName
-                WHERE iduser = @idUser;
-
-                COMMIT TRANSACTION
-            END
-
-            IF @inNewNumber IS NOT NULL
-            BEGIN
-                IF @inNewNumber = 0
+            
+                IF NOT @inNewNumber = 0 --ni idea de cómo se maneje en la app los números
                 BEGIN
-                    SET @output = '{"result": 0, "description": "Error: Ingrese un valor número adecuado."}';
-
-                    SELECT @output;
-
-                    RETURN;
+                    BEGIN TRANSACTION;
+                    UPDATE [dbo].[users]
+                    SET number = @inNewNumber
+                    WHERE iduser = @idUser;
+                    COMMIT TRANSACTION
                 END
+                
+
+            
                 BEGIN TRANSACTION;
-
-                UPDATE [dbo].[users]
-                SET number = @inNewNumber
-                WHERE iduser = @idUser;
-
+                    UPDATE [dbo].[users]
+                    SET password = @inNewPassword
+                    WHERE iduser = @idUser;
                 COMMIT TRANSACTION
-            END
 
-            IF @inNewPassword IS NOT NULL
-            BEGIN
-                BEGIN TRANSACTION;
-
-                UPDATE [dbo].[users]
-                SET password = @inNewPassword
-                WHERE iduser = @idUser;
-
-                COMMIT TRANSACTION
-            END
-
-            INSERT INTO dbo.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('User updated <name ' + COALESCE(@inNewName, 'Unchanged') + '- number '
-             +  COALESCE(Cast(@inNewNumber AS VARCHAR), 'Unchanged') + '>',
-             Getdate()
-            );
-
-            SET @output = '{"success": 1, "description": "User updated successfully."}';
+            SET @output = '{"success": 1, "description": "Usuario editado exitosamente"}';
         END
         ELSE
         BEGIN
             SET @output
-                = '{"success": 0, "description": "User update failed - User with username ' + @inUsername
-                  + ' does not exist or is an admin."}';
+                = '{"success": 0, "description": "Error: usuario no existe o no es admin"}';
         END
     END try
     BEGIN catch
         IF @@TRANCOUNT > 0
             ROLLBACK;
-
-        INSERT INTO dbo.eventlog
-        (
-            description,
-            posttime
-        )
-        VALUES
-        ('An error occurred while updating the user.', Getdate());
-
-        SET @output = '{"success": 0, "description": "An error occurred while updating the user."}';
+        SET @output = '{"success": 0, "description": "Error inesperado"}';
     END catch
 
     SELECT @output;

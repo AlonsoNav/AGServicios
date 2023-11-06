@@ -10,85 +10,71 @@ AS
 BEGIN
     SET nocount ON;
     SET TRANSACTION isolation level READ uncommitted;
-
+    DECLARE @idBrand INT;
+    SET @inNewName = Ltrim(Rtrim(@inNewName));
+    SET @inDescription = Ltrim(Rtrim(@inDescription));
     DECLARE @output VARCHAR(200);
 
     BEGIN try
-        -- Begin a transaction
-        IF EXISTS
-        (
-            SELECT 1
-            FROM [dbo].[brands]
-            WHERE Lower([name]) = Lower(@inName)
-                  AND [available] = 1
-        )
+        SET @idBrand = Isnull(
+                      (
+                          SELECT TOP 1
+                              idBrand
+                          FROM [dbo].[brands]
+                          WHERE Lower([name]) = Lower(@inName)
+                                AND available = 1
+                      ),
+                      0
+                            )
+
+        IF @idBrand <> 0
         BEGIN
-            IF @inDescription IS NOT NULL
-            BEGIN
-                SET @inDescription = Ltrim(Rtrim(@inDescription));
-                IF Len(@inDescription) = 0
-                BEGIN
-                    SET @output = '{"result": 0, "description": "Error: La descripción de la marca está vacía."}';
-
-                    SELECT @output;
-
-                    RETURN;
-                END
-                BEGIN TRANSACTION;
-
-                UPDATE [dbo].[brands]
-                SET [description] = @inDescription
-                WHERE Lower([name]) = Lower(@inName);
-
-                COMMIT TRANSACTION
-            END
-
-            IF @inNewName IS NOT NULL
-            BEGIN
-                SET @inNewName = Ltrim(Rtrim(@inNewName));
-                IF Len(@inNewName) = 0
-                BEGIN
-                    SET @output = '{"result": 0, "description": "Error: El nombre de la marca está vacío."}';
-
-                    SELECT @output;
-
-                    RETURN;
-                END
-                BEGIN TRANSACTION;
-
-                UPDATE [dbo].[brands]
-                SET [name] = @inNewName
-                WHERE Lower([name]) = Lower(@inName);
-
-                COMMIT TRANSACTION;
-            END
-
-            SET @output = '{"result": 1, "description": "Marca editada exitosamente."}';
-
-            INSERT INTO dbo.eventlog
+            IF EXISTS
             (
-                description,
-                posttime
+                SELECT 1
+                FROM [dbo].[brands]
+                WHERE Lower([name]) = Lower(@inName)
+                    AND [available] = 1
             )
-            VALUES
-            ('Brand updated <Name: ' + COALESCE(@inNewName, 'Unchanged') + ' - Description: '
-             +  COALESCE(@inDescription, 'Unchanged') + '>',
-             Getdate()
-            );
+            BEGIN
+                
+                    IF NOT Len(@inDescription) = 0
+                    BEGIN
+                        BEGIN TRANSACTION;
+
+                        UPDATE [dbo].[brands]
+                        SET [description] = @inDescription
+                        WHERE idBrand = Lower(@idBrand);
+
+                        COMMIT TRANSACTION
+                    END
+                
+                    IF NOT Len(@inNewName) = 0
+                    BEGIN
+                        BEGIN TRANSACTION;
+
+                        UPDATE [dbo].[brands]
+                        SET [name] = @inNewName
+                        WHERE idBrand = Lower(@idBrand);
+
+                        COMMIT TRANSACTION;
+                    END
+                
+
+                SET @output = '{"result": 1, "description": "Marca editada exitosamente."}';
+            END
         END
         ELSE
         BEGIN
             SET @output
-                = '{"result": 0, "description": "Ocurrió un error al intentar editar la marca: ' + @inName
-                  + ' No existe o no está disponible."}';
+                = '{"result": 0, "description": "Error: marca no disponible"}';
         END
     END try
     BEGIN catch
-        -- If there's an error, roll back the transaction
         IF @@TRANCOUNT > 0
             ROLLBACK TRANSACTION;
 
-        SET @output = '{"result": 0, "description": "Ocurrió un error al editar la marca: ' + Error_message() + '"}';
+        SET @output = '{"result": 0, "description": "Error inesperado"}';
     END catch
 
     SELECT @output;
