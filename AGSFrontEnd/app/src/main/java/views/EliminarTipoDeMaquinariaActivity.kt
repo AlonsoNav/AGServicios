@@ -5,43 +5,45 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import com.hytan.agserviciosv1.R
 
-class EliminarMaquinaActivity : AppCompatActivity() {
+class EliminarTipoDeMaquinariaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_eliminar_maquina)
+        setContentView(R.layout.activity_eliminar_tipo_de_maquinaria)
 
-        val volverEM = findViewById<Button>(R.id.buttonVolverEliminarMaquina)
-        val eliminar = findViewById<Button>(R.id.buttonEliminarMaquina)
-        val editSerial = findViewById<EditText>(R.id.editSerialEliminarMaquina)
+        //Volver
+        val volver = findViewById<Button>(R.id.buttonVolverEliminarTDM)
+        volver.setOnClickListener{
+            val volver = Intent(this,MenuGestionSistemaActivity::class.java)
+            startActivity(volver)
+            finish()
+        }
 
+        //Pop ups
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.popup_confirmacion)
         dialog.setCancelable(true)
+        dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.getWindow()?.getAttributes()?.windowAnimations = R.style.CustomDialogAnimation
 
         val dialogInfo = Dialog(this)
         dialogInfo.setContentView(R.layout.popupinformativo)
         dialogInfo.setCancelable(true)
+        dialogInfo.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialogInfo.getWindow()?.getAttributes()?.windowAnimations = R.style.CustomDialogAnimation
 
-        volverEM.setOnClickListener{
-            val volverEm= Intent(this,MenuGestionSistemaActivity::class.java)
-            startActivity(volverEm)
-            finish()
-        }
-
+        //Eliminar
+        val eliminar = findViewById<Button>(R.id.buttonEliminarTDM)
         eliminar.setOnClickListener{
-            val serial = editSerial.text.toString()
-
             val yesButton = dialog.findViewById<Button>(R.id.buttonSiPUP)
             val noButton = dialog.findViewById<Button>(R.id.buttonNoPUP)
             val textViewPopupConfi = dialog.findViewById<TextView>(R.id.textViewPUPConfirm)
             val textViewPopup = dialogInfo.findViewById<TextView>(R.id.textViewPUP)
 
-            textViewPopupConfi.text = "¿Realmente desea eliminar esa máquina?"
-            textViewPopup.text="Máquina eliminada con éxito"
+            textViewPopupConfi.text = "¿Realmente desea eliminar este tipo de maquinaria?"
+            textViewPopup.text="Tipo de maquinaria eliminada con éxito"
 
             yesButton.setOnClickListener {
                 val listo = dialogInfo.findViewById<Button>(R.id.buttonListoPUP)
@@ -50,13 +52,11 @@ class EliminarMaquinaActivity : AppCompatActivity() {
                     dialogInfo.dismiss()
                 }
                 dialogInfo.show()
-
             }
             noButton.setOnClickListener {
                 dialog.dismiss()
             }
             dialog.show()
-
+        }
     }
 }
-    }

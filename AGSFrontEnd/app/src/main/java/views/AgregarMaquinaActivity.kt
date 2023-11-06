@@ -38,7 +38,7 @@ class AgregarMaquinaActivity : AppCompatActivity() {
         }
 
         AgregMaq.setOnClickListener {
-            val closeButton = dialog.findViewById<Button>(R.id.buttonListoPU)
+            val closeButton = dialog.findViewById<Button>(R.id.buttonListoPUP)
             val textViewPopup = dialog.findViewById<TextView>(R.id.textViewPUP)
 
             textViewPopup.text = "Máquina registrada con éxito"

@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.112"></TextView>
 
     <Button
-        android:id="@+id/buttonSiPU"
+        android:id="@+id/buttonSiPUP"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:background="@drawable/rounded_buttonpopup"
@@ -38,10 +38,10 @@
         app:layout_constraintHorizontal_bias="0.800"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.900" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <Button
-        android:id="@+id/buttonNoPU"
+        android:id="@+id/buttonNoPUP"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:background="@drawable/rounded_buttonpopup"
@@ -55,5 +55,6 @@
         app:layout_constraintHorizontal_bias="0.200"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.900" />
+        app:layout_constraintVertical_bias="0.9" />
+  
 </androidx.constraintlayout.widget.ConstraintLayout>

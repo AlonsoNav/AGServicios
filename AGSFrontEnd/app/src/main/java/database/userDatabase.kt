@@ -4,10 +4,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
-import com.google.gson.Gson
-import android.util.Log
-import org.json.JSONObject
-import kotlin.math.log
 
 class userDatabase {
 
@@ -16,7 +12,7 @@ class userDatabase {
         val client = OkHttpClient()
 
         // Especifica la URL de tu API
-        val apiUrl = "https://8c26-186-177-184-229.ngrok-free.app/login"  // Reemplaza con la URL real de tu API
+        val apiUrl = "https://7d33-186-177-184-229.ngrok-free.app/login"  // Reemplaza con la URL real de tu API
 
         // Crea el cuerpo de la solicitud POST
         val json = """

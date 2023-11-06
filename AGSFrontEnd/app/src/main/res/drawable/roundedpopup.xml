@@ -4,7 +4,6 @@
     <item android:id="@android:id/background">
         <shape android:shape="rectangle">
             <corners android:radius="15dp" />
-
         </shape>
     </item>
 
