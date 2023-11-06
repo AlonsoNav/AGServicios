@@ -1,4 +1,5 @@
 import bcrypt
+import json
 
 from flask import request, jsonify
 from sqlalchemy import text
@@ -15,11 +16,18 @@ def add_user(engine):
 
     try:
         conn = engine.connect()
-        conn.execute(
+        result = conn.execute(
             text("EXEC sp_add_user @username = :username, @name = :name, @number = :number, @password = :password"),
-            {'username': username, 'name': name, 'number': number, 'password': password})
+            {'username': username, 'name': name, 'number': number, 'password': password}).scalar()
         conn.commit()
         conn.close()
-        return jsonify({'message': 'Usuario agregado correctamente'}), 200
+
+        data_json = json.loads(result)
+
+        if data_json.get("result") == 1:
+            return jsonify({'message': data_json.get("description")}), 200
+        else:
+            return jsonify({'message': data_json.get("description")}), 401
+
     except Exception as e:
-        return jsonify({'error': str(e)}), 401
+        return jsonify({'message': str(e)}), 401
