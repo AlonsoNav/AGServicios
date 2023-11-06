@@ -23,8 +23,6 @@ class LoginActivity : AppCompatActivity() {
         val editTextPassword= findViewById<EditText>(R.id.editTextPassword)
         val buttonLogin = findViewById<Button>(R.id.buttonLogin)
 
-
-
         buttonLogin.setOnClickListener{
             val username = editTextUser.text.toString()
             val password =  editTextPassword.text.toString()
@@ -55,6 +53,10 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
             }
+
+
+
         }
     }
+}
 

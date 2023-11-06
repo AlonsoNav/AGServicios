@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="330dp"
     android:layout_height="130dp"
-    android:background="@drawable/roundedpopup">
+    android:background="@drawable/roundedpopup"
+    >
 
     <TextView
         android:id="@+id/textViewPUPConfirm"
@@ -55,4 +56,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
+  
 </androidx.constraintlayout.widget.ConstraintLayout>

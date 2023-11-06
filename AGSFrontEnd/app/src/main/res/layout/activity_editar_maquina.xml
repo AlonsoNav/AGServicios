@@ -103,10 +103,10 @@
         android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintHorizontal_bias="0.020"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.363" />
+        app:layout_constraintVertical_bias="0.362" />
 
     <ImageView
         android:id="@+id/miImageView0"
@@ -120,6 +120,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.216" />
 
+
+    <!--  Botones y textos para marca -->
+
+
+    <!--  Botones y textos para tipo -->
     <TextView
         android:id="@+id/textViewSerialEditar"
         android:layout_width="wrap_content"
@@ -129,16 +134,11 @@
         android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.020"
+        app:layout_constraintStart_toEndOf="@+id/miImageView0"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.216" />
 
-
-    <!--  Botones y textos para marca -->
-
-
-    <!--  Botones y textos para tipo -->
     <Spinner
         android:id="@+id/spinnerMarcaEditar"
         android:layout_width="255dp"

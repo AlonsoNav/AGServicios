@@ -22,6 +22,8 @@ class AgregarMaquinaActivity : AppCompatActivity() {
 
         //pop up
         val dialog = Dialog(this)
+        dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.getWindow()?.getAttributes()?.windowAnimations = R.style.CustomDialogAnimation
         dialog.setContentView(R.layout.popupinformativo)
         dialog.setCancelable(true)
 
