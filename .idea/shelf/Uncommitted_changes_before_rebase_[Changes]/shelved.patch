@@ -1,0 +1,3191 @@
+Index: AGSFrontEnd/app/src/main/res/layout/activity_eliminar_cliente.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_cliente.xml b/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_cliente.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_cliente.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,105 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context="views.EliminarClienteActivity">
+-
+-    <Button
+-        android:id="@+id/buttonVolverEliminarCliente"
+-        android:layout_width="34dp"
+-        android:layout_height="37dp"
+-        android:layout_gravity="center"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.023"
+-        android:padding="10dp"
+-        android:drawableLeft="@drawable/volver"
+-        />
+-
+-    <TextView
+-        android:id="@+id/textViewElimClientes"
+-        android:layout_width="308dp"
+-        android:layout_height="118dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:fontFamily="@font/lexend"
+-        android:gravity="center"
+-        android:text="Eliminar cliente"
+-        android:textColor="@color/white"
+-        android:textSize="35dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.512"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.026" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView0"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-    <TextView
+-        android:id="@+id/textViewEmpresaEliminarCli"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Nombre de la empresa"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.21"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-    <EditText
+-        android:id="@+id/editNombreEmpresaEliminarCli"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:inputType="text"
+-        android:maxLength="16"
+-        android:textColor="#2d2a2a"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.278"
+-        tools:ignore="MissingConstraints" />
+-
+-    <Button
+-        android:id="@+id/buttonEliminarCliente"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:text="Eliminar cliente"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.38" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/baseline_maximize_24.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/baseline_maximize_24.xml b/AGSFrontEnd/app/src/main/res/drawable/baseline_maximize_24.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/baseline_maximize_24.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:height="24dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M3,3h18v2H3z"/>
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/drawable/ic_launcher_background.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/ic_launcher_background.xml b/AGSFrontEnd/app/src/main/res/drawable/ic_launcher_background.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/ic_launcher_background.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,170 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path
+-        android:fillColor="#3DDC84"
+-        android:pathData="M0,0h108v108h-108z" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M9,0L9,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,0L19,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,0L29,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,0L39,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,0L49,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,0L59,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,0L69,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,0L79,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M89,0L89,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M99,0L99,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,9L108,9"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,19L108,19"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,29L108,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,39L108,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,49L108,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,59L108,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,69L108,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,79L108,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,89L108,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,99L108,99"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,29L89,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,39L89,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,49L89,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,59L89,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,69L89,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,79L89,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,19L29,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,19L39,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,19L49,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,19L59,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,19L69,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,19L79,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/values/strings.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/values/strings.xml b/AGSFrontEnd/app/src/main/res/values/strings.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/values/strings.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,4 +0,0 @@
+-<resources>
+-    <string name="app_name">AGServiciosV1</string>
+-    <string name="iniciar_sesi_n">Iniciar sesión</string>
+-</resources>
+\ No newline at end of file
+Index: AGSFrontEnd/.idea/kotlinc.xml
+===================================================================
+diff --git a/AGSFrontEnd/.idea/kotlinc.xml b/AGSFrontEnd/.idea/kotlinc.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/.idea/kotlinc.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="KotlinJpsPluginSettings">
+-    <option name="version" value="1.8.10" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/borrar.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/borrar.xml b/AGSFrontEnd/app/src/main/res/drawable/borrar.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/borrar.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:height="44dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="44dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M6,19c0,1.1 0.9,2 2,2h8c1.1,0 2,-0.9 2,-2V7H6v12zM19,4h-3.5l-1,-1h-5l-1,1H5v2h14V4z"/>
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/drawable/reporte.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/reporte.xml b/AGSFrontEnd/app/src/main/res/drawable/reporte.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/reporte.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:height="24dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M14,2L4,2c-1.11,0 -2,0.9 -2,2v10h2L4,4h10L14,2zM18,6L8,6c-1.11,0 -2,0.9 -2,2v10h2L8,8h10L18,6zM20,10h-8c-1.11,0 -2,0.9 -2,2v8c0,1.1 0.89,2 2,2h8c1.1,0 2,-0.9 2,-2v-8c0,-1.1 -0.9,-2 -2,-2z"/>
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/drawable/editar.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/editar.xml b/AGSFrontEnd/app/src/main/res/drawable/editar.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/editar.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:height="44dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="44dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M3,17.25V21h3.75L17.81,9.94l-3.75,-3.75L3,17.25zM20.71,7.04c0.39,-0.39 0.39,-1.02 0,-1.41l-2.34,-2.34c-0.39,-0.39 -1.02,-0.39 -1.41,0l-1.83,1.83 3.75,3.75 1.83,-1.83z"/>
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/layout/popuplogin.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/popuplogin.xml b/AGSFrontEnd/app/src/main/res/layout/popuplogin.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/popuplogin.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,46 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="330dp"
+-    android:layout_height="130dp"
+-    android:background="@drawable/roundedpopup"
+-    android:padding="5dp"
+-    android:layout_gravity="center"
+-    >
+-
+-
+-    <TextView
+-        android:id="@+id/textViewlogPU"
+-        android:layout_width="299dp"
+-        android:layout_height="68dp"
+-        android:fontFamily="@font/lexend"
+-        android:textColor="@color/white"
+-        android:gravity="center_horizontal"
+-        android:text=""
+-        android:textSize="22sp"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.503"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"></TextView>
+-
+-    <Button
+-        android:id="@+id/buttonListoPU"
+-        android:layout_width="121dp"
+-        android:layout_height="32dp"
+-        android:background="@drawable/rounded_buttonpopup"
+-        android:fontFamily="@font/lexend"
+-        android:text="Listo"
+-        android:textAllCaps="false"
+-        android:textColor="#2D2A2A"
+-        android:textSize="20dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.502"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.948" />
+-
+-    
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/values/themes.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/values/themes.xml b/AGSFrontEnd/app/src/main/res/values/themes.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/values/themes.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<resources>
+-
+-    <style name="Theme.AGServiciosV1" parent="android:Theme.Material.Light.NoActionBar" />
+-</resources>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/people.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/people.xml b/AGSFrontEnd/app/src/main/res/drawable/people.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/people.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:height="24dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M16,11c1.66,0 2.99,-1.34 2.99,-3S17.66,5 16,5c-1.66,0 -3,1.34 -3,3s1.34,3 3,3zM8,11c1.66,0 2.99,-1.34 2.99,-3S9.66,5 8,5C6.34,5 5,6.34 5,8s1.34,3 3,3zM8,13c-2.33,0 -7,1.17 -7,3.5L1,19h14v-2.5c0,-2.33 -4.67,-3.5 -7,-3.5zM16,13c-0.29,0 -0.62,0.02 -0.97,0.05 1.16,0.84 1.97,1.97 1.97,3.45L17,19h6v-2.5c0,-2.33 -4.67,-3.5 -7,-3.5z"/>
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/layout/activity_eliminar_maquina.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_maquina.xml b/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_maquina.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_maquina.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,111 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context="views.EliminarMaquinaActivity"
+-    android:background="#2d2a2a">
+-
+-
+-
+-    <!--Linea en texto-->
+-
+-    <Button
+-        android:id="@+id/buttonEliminarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:text="Eliminar máquina"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="1.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.458" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.246" />
+-
+-    <!--Texto indicativo del espacio de serial-->
+-    <EditText
+-        android:id="@+id/editSerialEliminarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:inputType="text"
+-        android:maxLength="16"
+-        android:textColor="#2d2a2a"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.309"
+-        tools:ignore="MissingConstraints" />
+-
+-    <TextView
+-        android:id="@+id/textViewSerial"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Serial"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.111"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.246" />
+-
+-    <TextView
+-        android:id="@+id/textViewElimMaquina"
+-        android:layout_width="308dp"
+-        android:layout_height="118dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:fontFamily="@font/lexend"
+-        android:gravity="center"
+-        android:text="Eliminar máquinas"
+-        android:textColor="@color/white"
+-        android:textSize="35dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.512"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.026" />
+-
+-    <Button
+-        android:id="@+id/buttonVolverEliminarMaquina"
+-        android:layout_width="34dp"
+-        android:layout_height="37dp"
+-        android:layout_gravity="center"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.023"
+-        android:padding="10dp"
+-        android:drawableLeft="@drawable/volver"
+-        />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/rounded_txf.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/rounded_txf.xml b/AGSFrontEnd/app/src/main/res/drawable/rounded_txf.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/rounded_txf.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <corners android:radius="16dp" />
+-    <solid android:color="#FFFFFF"/>
+-</shape>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable-v24/ic_launcher_foreground.xml b/AGSFrontEnd/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable-v24/ic_launcher_foreground.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,30 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:aapt="http://schemas.android.com/aapt"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
+-        <aapt:attr name="android:fillColor">
+-            <gradient
+-                android:endX="85.84757"
+-                android:endY="92.4963"
+-                android:startX="42.9492"
+-                android:startY="49.59793"
+-                android:type="linear">
+-                <item
+-                    android:color="#44000000"
+-                    android:offset="0.0" />
+-                <item
+-                    android:color="#00000000"
+-                    android:offset="1.0" />
+-            </gradient>
+-        </aapt:attr>
+-    </path>
+-    <path
+-        android:fillColor="#FFFFFF"
+-        android:fillType="nonZero"
+-        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+-        android:strokeWidth="1"
+-        android:strokeColor="#00000000" />
+-</vector>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/roundedpopup.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/roundedpopup.xml b/AGSFrontEnd/app/src/main/res/drawable/roundedpopup.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/roundedpopup.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <corners android:radius="20dp" />
+-    <solid android:color="#AD0E2E"/>
+-</shape>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/rounded_buttonpopup.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/rounded_buttonpopup.xml b/AGSFrontEnd/app/src/main/res/drawable/rounded_buttonpopup.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/rounded_buttonpopup.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <corners android:radius="16dp" />
+-    <solid android:color="#FFFFFF"/>
+-</shape>
+\ No newline at end of file
+Index: AGSFrontEnd/gradle.properties
+===================================================================
+diff --git a/AGSFrontEnd/gradle.properties b/AGSFrontEnd/gradle.properties
+deleted file mode 100644
+--- a/AGSFrontEnd/gradle.properties	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,23 +0,0 @@
+-# Project-wide Gradle settings.
+-# IDE (e.g. Android Studio) users:
+-# Gradle settings configured through the IDE *will override*
+-# any settings specified in this file.
+-# For more details on how to configure your build environment visit
+-# http://www.gradle.org/docs/current/userguide/build_environment.html
+-# Specifies the JVM arguments used for the daemon process.
+-# The setting is particularly useful for tweaking memory settings.
+-org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+-# When configured, Gradle will run in incubating parallel mode.
+-# This option should only be used with decoupled projects. More details, visit
+-# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+-# org.gradle.parallel=true
+-# AndroidX package structure to make it clearer which packages are bundled with the
+-# Android operating system, and which are packaged with your app's APK
+-# https://developer.android.com/topic/libraries/support-library/androidx-rn
+-android.useAndroidX=true
+-# Kotlin code style for this project: "official" or "obsolete":
+-kotlin.code.style=official
+-# Enables namespacing of each library's R class so that its R class includes only the
+-# resources declared in the library itself and none from the library's dependencies,
+-# thereby reducing the size of the R class for that library
+-android.nonTransitiveRClass=true
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/agregar.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/agregar.xml b/AGSFrontEnd/app/src/main/res/drawable/agregar.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/agregar.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:height="54dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="54dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M19,13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/layout/activity_consultar_cliente.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_consultar_cliente.xml b/AGSFrontEnd/app/src/main/res/layout/activity_consultar_cliente.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_consultar_cliente.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,105 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context="views.ConsultarClienteActivity">
+-
+-    <Button
+-        android:id="@+id/buttonVolverConsultaCliente"
+-        android:layout_width="34dp"
+-        android:layout_height="37dp"
+-        android:layout_gravity="center"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.023"
+-        android:padding="10dp"
+-        android:drawableLeft="@drawable/volver"
+-        />
+-
+-    <TextView
+-        android:id="@+id/textViewConsultClientes"
+-        android:layout_width="308dp"
+-        android:layout_height="118dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:fontFamily="@font/lexend"
+-        android:gravity="center"
+-        android:text="Consultar clientes"
+-        android:textColor="@color/white"
+-        android:textSize="35dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.512"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.026" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView0"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-    <TextView
+-        android:id="@+id/textViewEmpresaConsultarCli"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Nombre de la empresa"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.21"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-    <EditText
+-        android:id="@+id/editNombreEmpresaCC"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:inputType="text"
+-        android:maxLength="16"
+-        android:textColor="#2d2a2a"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.278"
+-        tools:ignore="MissingConstraints" />
+-
+-    <Button
+-        android:id="@+id/buttonConsultarCliente"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:text="Consultar cliente"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.38" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/.idea/misc.xml
+===================================================================
+diff --git a/AGSFrontEnd/.idea/misc.xml b/AGSFrontEnd/.idea/misc.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/.idea/misc.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,9 +0,0 @@
+-<project version="4">
+-  <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/build/classes" />
+-  </component>
+-  <component name="ProjectType">
+-    <option name="id" value="Android" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/flecha_spinner.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/flecha_spinner.xml b/AGSFrontEnd/app/src/main/res/drawable/flecha_spinner.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/flecha_spinner.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,13 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="24dp"
+-    android:height="24dp"
+-    android:viewportWidth="24"
+-    android:viewportHeight="24"
+-    android:tint="#AD0E2E"> <!-- Cambia el color según tus preferencias -->
+-
+-    <path
+-        android:fillColor="#AD0E2E"
+-        android:pathData="M7.41,8.59L12,13.17l4.59,-4.58L18,10l-6,6 -6,-6 1.41,-1.41z"
+-        />
+-</vector>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/linerecta.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/linerecta.xml b/AGSFrontEnd/app/src/main/res/drawable/linerecta.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/linerecta.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+-    <item android:top="1dp" android:right="-1dp" android:left="-1dp" android:bottom="-1dp">
+-        <shape
+-            android:shape="rectangle">
+-            <stroke
+-                android:width="1dp"
+-                android:color="#FFFFFF" />
+-        </shape>
+-    </item>
+-</layer-list>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/values/colors.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/values/colors.xml b/AGSFrontEnd/app/src/main/res/values/colors.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/values/colors.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<resources>
+-    <color name="purple_200">#FFBB86FC</color>
+-    <color name="purple_500">#FF6200EE</color>
+-    <color name="purple_700">#FF3700B3</color>
+-    <color name="teal_200">#FF03DAC5</color>
+-    <color name="teal_700">#FF018786</color>
+-    <color name="black">#FF000000</color>
+-    <color name="white">#FFFFFFFF</color>
+-    <color name="rojo_agservicio">#AD0E2E</color>
+-</resources>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/sistemas.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/sistemas.xml b/AGSFrontEnd/app/src/main/res/drawable/sistemas.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/sistemas.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:height="24dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M20,18c1.1,0 2,-0.9 2,-2V6c0,-1.1 -0.9,-2 -2,-2H4C2.9,4 2,4.9 2,6v10c0,1.1 0.9,2 2,2H0v2h24v-2H20zM4,6h16v10H4V6z"/>
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/drawable/rectangulo.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/rectangulo.xml b/AGSFrontEnd/app/src/main/res/drawable/rectangulo.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/rectangulo.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,14 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+-    <item android:top="50dp">
+-        <shape
+-            android:shape="rectangle">
+-            <solid android:color="#FF0000" />
+-            <corners android:radius="10dp" />
+-            <solid android:color="#AD0E2E"/>
+-            <size
+-                android:width="310dp"
+-                android:height="90dp" />
+-        </shape>
+-    </item>
+-</selector>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/linea_texto.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/linea_texto.xml b/AGSFrontEnd/app/src/main/res/drawable/linea_texto.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/linea_texto.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,12 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+-
+-    <!-- Línea vertical -->
+-    <item android:left="1dp" android:right="1dp">
+-        <shape android:shape="rectangle">
+-            <solid android:color="#AD0E2E" />
+-            <size android:height="30dp" />
+-        </shape>
+-    </item>
+-
+-</layer-list>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/layout/activity_login.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_login.xml b/AGSFrontEnd/app/src/main/res/layout/activity_login.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_login.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,157 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:id="@+id/frameLayout"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    android:background="#2d2a2a"
+-    tools:context="views.LoginActivity">
+-
+-    <!--Text view del indicador de inicio de sesión-->
+-    <TextView
+-        android:id="@+id/textView"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginTop="88dp"
+-        android:fontFamily="@font/lexend"
+-        android:text="@string/iniciar_sesi_n"
+-        android:textColor="#FFFFFF"
+-        android:textSize="48sp"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.494"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-
+-    <!--Text Field del espacio de nombre de usuario-->
+-    <EditText
+-        android:id="@+id/editTextUser"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:inputType="text"
+-        android:textColor="#2d2a2a"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        android:maxLength="16"
+-        app:layout_constraintVertical_bias="0.613"
+-        tools:ignore="MissingConstraints" />
+-
+-    <!--Texto indicativo del espacio de nombre de usuario-->
+-
+-    <!--Text Field del espacio de contraseña-->
+-
+-    <TextView
+-        android:id="@+id/textView2"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Nombre de usuario"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.17"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.556" />
+-
+-    <EditText
+-        android:id="@+id/editTextPassword"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:textColor="#2d2a2a"
+-        android:inputType="text"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        android:maxLength="16"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.752"
+-        tools:ignore="MissingConstraints" />
+-
+-    <!--Texto indicativo del espacio de contraseña-->
+-
+-    <!--Logo de la empresa AGServicio-->
+-
+-    <TextView
+-        android:id="@+id/textView3"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Contraseña"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.121"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.693" />
+-
+-    <ImageView
+-        android:id="@+id/imageView"
+-        android:layout_width="379dp"
+-        android:layout_height="236dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.347"
+-        app:srcCompat="@drawable/logomini" />
+-
+-    <!--Boton de acceder -->
+-    <Button
+-        android:id="@+id/buttonLogin"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:text="ACCEDER"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="1.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.898" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView2"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.693" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView3"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.556" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/xml/backup_rules.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/xml/backup_rules.xml b/AGSFrontEnd/app/src/main/res/xml/backup_rules.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/xml/backup_rules.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,13 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?><!--
+-   Sample backup rules file; uncomment and customize as necessary.
+-   See https://developer.android.com/guide/topics/data/autobackup
+-   for details.
+-   Note: This file is ignored for devices older that API 31
+-   See https://developer.android.com/about/versions/12/backup-restore
+--->
+-<full-backup-content>
+-    <!--
+-   <include domain="sharedpref" path="."/>
+-   <exclude domain="sharedpref" path="device.xml"/>
+--->
+-</full-backup-content>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/layout/activity_menu_maquinaria.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_menu_maquinaria.xml b/AGSFrontEnd/app/src/main/res/layout/activity_menu_maquinaria.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_menu_maquinaria.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,290 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context="views.MenuMaquinariaActivity"
+-    android:background="#2D2A2A">
+-
+-
+-    <!--    Botón de regresar-->
+-
+-
+-
+-    <ImageView
+-        android:id="@+id/ImageViewBotonGM1"
+-        android:layout_width="310dp"
+-        android:layout_height="103dp"
+-        android:layout_gravity="center_horizontal"
+-        android:src="@drawable/rectangulo"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.495"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.288" />
+-
+-    <ImageView
+-        android:id="@+id/ImageViewBotonGM3"
+-        android:layout_width="310dp"
+-        android:layout_height="103dp"
+-        android:layout_gravity="center_horizontal"
+-        android:src="@drawable/rectangulo"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.495"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.679" />
+-
+-    <ImageView
+-        android:id="@+id/ImageViewBotonGM2"
+-        android:layout_width="310dp"
+-        android:layout_height="103dp"
+-        android:layout_gravity="center_horizontal"
+-        android:src="@drawable/rectangulo"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.495"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.485" />
+-
+-    <!--BOTONES PARA MAQUINAS-->
+-
+-    <ImageButton
+-        android:id="@+id/agregarMaquina"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        android:src="@drawable/agregar"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.433"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+-
+-    <ImageButton
+-        android:id="@+id/consultarMaquina"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        android:src="@drawable/consulta"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.612"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+-
+-    <ImageButton
+-        android:id="@+id/editarMaquina"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        android:src="@drawable/editar"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.79"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+-
+-    <ImageButton
+-        android:id="@+id/borrarMaquina"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        android:src="@drawable/borrar"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.969"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+-
+-    <!--BOTONES PARA MARCAS-->
+-
+-    <ImageButton
+-        android:id="@+id/agregarMarcas"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.433"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.464"
+-        app:srcCompat="@drawable/agregar" />
+-
+-    <ImageButton
+-        android:id="@+id/consultarMarca"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.612"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.464"
+-        app:srcCompat="@drawable/consulta" />
+-
+-    <ImageButton
+-        android:id="@+id/editarMarcas"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.79"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.464"
+-        app:srcCompat="@drawable/editar" />
+-
+-    <ImageButton
+-        android:id="@+id/editarMarcas2"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.969"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.464"
+-        app:srcCompat="@drawable/borrar" />
+-
+-    <!--BOTONES PARA MARCAS-->
+-
+-
+-    <ImageButton
+-        android:id="@+id/agregarMaquinaria"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.433"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:srcCompat="@drawable/agregar" />
+-
+-    <ImageButton
+-        android:id="@+id/consultarMaquinaria"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.612"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:srcCompat="@drawable/consulta" />
+-
+-    <ImageButton
+-        android:id="@+id/editarMaquinaria"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.79"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:srcCompat="@drawable/editar" />
+-
+-    <ImageButton
+-        android:id="@+id/borrarMaquinaria"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.969"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:srcCompat="@drawable/borrar" />
+-
+-    <Button
+-        android:id="@+id/buttonVolverGM"
+-        android:layout_width="34dp"
+-        android:layout_height="37dp"
+-        android:layout_gravity="center"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.023"
+-        android:padding="10dp"
+-        android:drawableLeft="@drawable/volver"
+-        />
+-
+-    <TextView
+-        android:id="@+id/textView4"
+-        android:layout_width="308dp"
+-        android:layout_height="118dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:fontFamily="@font/lexend"
+-        android:gravity="center"
+-        android:text="Gestión de máquinas"
+-        android:textColor="@color/white"
+-        android:textSize="45dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.512"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.026" />
+-
+-    <TextView
+-        android:id="@+id/textView5"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Máquinas"
+-        android:textColor="@color/white"
+-        android:textSize="20sp"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintVertical_bias="0.486" />
+-
+-    <TextView
+-        android:id="@+id/textView7"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Marcas"
+-        android:textColor="@color/white"
+-        android:textSize="20sp"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.067"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.452" />
+-
+-    <TextView
+-        android:id="@+id/textView8"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Maquinaria"
+-        android:textColor="@color/white"
+-        android:textSize="18sp"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.023"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintVertical_bias="0.481" />
+-
+-
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/.idea/gradle.xml
+===================================================================
+diff --git a/AGSFrontEnd/.idea/gradle.xml b/AGSFrontEnd/.idea/gradle.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/.idea/gradle.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,20 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="GradleMigrationSettings" migrationVersion="1" />
+-  <component name="GradleSettings">
+-    <option name="linkedExternalProjectsSettings">
+-      <GradleProjectSettings>
+-        <option name="testRunner" value="GRADLE" />
+-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="gradleJvm" value="jbr-17" />
+-        <option name="modules">
+-          <set>
+-            <option value="$PROJECT_DIR$" />
+-            <option value="$PROJECT_DIR$/app" />
+-          </set>
+-        </option>
+-      </GradleProjectSettings>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/maquina.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/maquina.xml b/AGSFrontEnd/app/src/main/res/drawable/maquina.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/maquina.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:height="24dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M19.93,8.21l-3.6,1.68L14,7.7V6.3l2.33,-2.19l3.6,1.68c0.38,0.18 0.82,0.01 1,-0.36c0.18,-0.38 0.01,-0.82 -0.36,-1L16.65,2.6c-0.38,-0.18 -0.83,-0.1 -1.13,0.2l-1.74,1.6C13.6,4.16 13.32,4 13,4c-0.55,0 -1,0.45 -1,1v1H8.82C8.34,4.65 6.98,3.73 5.4,4.07C4.24,4.32 3.25,5.32 3.04,6.5C2.82,7.82 3.5,8.97 4.52,9.58L7.08,18H4v3h13v-3h-3.62L8.41,8.77C8.58,8.53 8.72,8.28 8.82,8H12v1c0,0.55 0.45,1 1,1c0.32,0 0.6,-0.16 0.78,-0.4l1.74,1.6c0.3,0.3 0.75,0.38 1.13,0.2l3.92,-1.83c0.38,-0.18 0.54,-0.62 0.36,-1C20.75,8.2 20.31,8.03 19.93,8.21zM6,8C5.45,8 5,7.55 5,7s0.45,-1 1,-1s1,0.45 1,1S6.55,8 6,8z"/>
+-</vector>
+Index: AGSFrontEnd/.idea/.gitignore
+===================================================================
+diff --git a/AGSFrontEnd/.idea/.gitignore b/AGSFrontEnd/.idea/.gitignore
+deleted file mode 100644
+--- a/AGSFrontEnd/.idea/.gitignore	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: AGSFrontEnd/app/src/main/res/drawable/tecnico.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/tecnico.xml b/AGSFrontEnd/app/src/main/res/drawable/tecnico.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/tecnico.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,9 +0,0 @@
+-<vector android:height="24dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M9,15c-2.67,0 -8,1.34 -8,4v2h16v-2C17,16.34 11.67,15 9,15z"/>
+-    <path android:fillColor="@android:color/white" android:pathData="M22.1,6.84c0.01,-0.11 0.02,-0.22 0.02,-0.34c0,-0.12 -0.01,-0.23 -0.03,-0.34l0.74,-0.58c0.07,-0.05 0.08,-0.15 0.04,-0.22l-0.7,-1.21c-0.04,-0.08 -0.14,-0.1 -0.21,-0.08L21.1,4.42c-0.18,-0.14 -0.38,-0.25 -0.59,-0.34l-0.13,-0.93C20.36,3.06 20.29,3 20.2,3h-1.4c-0.09,0 -0.16,0.06 -0.17,0.15L18.5,4.08c-0.21,0.09 -0.41,0.21 -0.59,0.34l-0.87,-0.35c-0.08,-0.03 -0.17,0 -0.21,0.08l-0.7,1.21c-0.04,0.08 -0.03,0.17 0.04,0.22l0.74,0.58c-0.02,0.11 -0.03,0.23 -0.03,0.34c0,0.11 0.01,0.23 0.03,0.34l-0.74,0.58c-0.07,0.05 -0.08,0.15 -0.04,0.22l0.7,1.21c0.04,0.08 0.14,0.1 0.21,0.08l0.87,-0.35c0.18,0.14 0.38,0.25 0.59,0.34l0.13,0.93C18.64,9.94 18.71,10 18.8,10h1.4c0.09,0 0.16,-0.06 0.17,-0.15l0.13,-0.93c0.21,-0.09 0.41,-0.21 0.59,-0.34l0.87,0.35c0.08,0.03 0.17,0 0.21,-0.08l0.7,-1.21c0.04,-0.08 0.03,-0.17 -0.04,-0.22L22.1,6.84zM19.5,7.75c-0.69,0 -1.25,-0.56 -1.25,-1.25s0.56,-1.25 1.25,-1.25s1.25,0.56 1.25,1.25S20.19,7.75 19.5,7.75z"/>
+-    <path android:fillColor="@android:color/white" android:pathData="M19.92,11.68l-0.5,-0.87c-0.03,-0.06 -0.1,-0.08 -0.15,-0.06l-0.62,0.25c-0.13,-0.1 -0.27,-0.18 -0.42,-0.24l-0.09,-0.66C18.12,10.04 18.06,10 18,10h-1c-0.06,0 -0.11,0.04 -0.12,0.11l-0.09,0.66c-0.15,0.06 -0.29,0.15 -0.42,0.24l-0.62,-0.25c-0.06,-0.02 -0.12,0 -0.15,0.06l-0.5,0.87c-0.03,0.06 -0.02,0.12 0.03,0.16l0.53,0.41c-0.01,0.08 -0.02,0.16 -0.02,0.24c0,0.08 0.01,0.17 0.02,0.24l-0.53,0.41c-0.05,0.04 -0.06,0.11 -0.03,0.16l0.5,0.87c0.03,0.06 0.1,0.08 0.15,0.06l0.62,-0.25c0.13,0.1 0.27,0.18 0.42,0.24l0.09,0.66C16.89,14.96 16.94,15 17,15h1c0.06,0 0.12,-0.04 0.12,-0.11l0.09,-0.66c0.15,-0.06 0.29,-0.15 0.42,-0.24l0.62,0.25c0.06,0.02 0.12,0 0.15,-0.06l0.5,-0.87c0.03,-0.06 0.02,-0.12 -0.03,-0.16l-0.52,-0.41c0.01,-0.08 0.02,-0.16 0.02,-0.24c0,-0.08 -0.01,-0.17 -0.02,-0.24l0.53,-0.41C19.93,11.81 19.94,11.74 19.92,11.68zM17.5,13.33c-0.46,0 -0.83,-0.38 -0.83,-0.83c0,-0.46 0.38,-0.83 0.83,-0.83s0.83,0.38 0.83,0.83C18.33,12.96 17.96,13.33 17.5,13.33z"/>
+-    <path android:fillColor="@android:color/white" android:pathData="M4.74,9h8.53c0.27,0 0.49,-0.22 0.49,-0.49V8.49c0,-0.27 -0.22,-0.49 -0.49,-0.49H13c0,-1.48 -0.81,-2.75 -2,-3.45V5.5C11,5.78 10.78,6 10.5,6S10,5.78 10,5.5V4.14C9.68,4.06 9.35,4 9,4S8.32,4.06 8,4.14V5.5C8,5.78 7.78,6 7.5,6S7,5.78 7,5.5V4.55C5.81,5.25 5,6.52 5,8H4.74C4.47,8 4.25,8.22 4.25,8.49v0.03C4.25,8.78 4.47,9 4.74,9z"/>
+-    <path android:fillColor="@android:color/white" android:pathData="M9,13c1.86,0 3.41,-1.28 3.86,-3H5.14C5.59,11.72 7.14,13 9,13z"/>
+-</vector>
+Index: AGSFrontEnd/.idea/compiler.xml
+===================================================================
+diff --git a/AGSFrontEnd/.idea/compiler.xml b/AGSFrontEnd/.idea/compiler.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/.idea/compiler.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="17" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/AndroidManifest.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/AndroidManifest.xml b/AGSFrontEnd/app/src/main/AndroidManifest.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/AndroidManifest.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,53 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:tools="http://schemas.android.com/tools">
+-
+-    <uses-permission android:name="android.permission.INTERNET" />
+-
+-    <application
+-        android:allowBackup="true"
+-        android:dataExtractionRules="@xml/data_extraction_rules"
+-        android:fullBackupContent="@xml/backup_rules"
+-        android:icon="@mipmap/ic_launcher"
+-        android:label="@string/app_name"
+-        android:roundIcon="@mipmap/ic_launcher_round"
+-        android:supportsRtl="true"
+-        android:theme="@style/Theme.AppCompat.NoActionBar"
+-        android:usesCleartextTraffic="true"
+-        tools:targetApi="31">
+-        <activity
+-            android:name="views.ConsultarClienteActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name="views.ConsultarMaquinaActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name="views.EliminarMaquinaActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name="views.AgregarMaquinaActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name="views.MenuGestionSistemaActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name="views.MainMenuActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name="views.EditarMaquinaActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name="views.EliminarClienteActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name="views.LoginActivity"
+-            android:exported="true">
+-            <intent-filter>
+-                <action android:name="android.intent.action.MAIN" />
+-
+-                <category android:name="android.intent.category.LAUNCHER" />
+-            </intent-filter>
+-        </activity>
+-    </application>
+-
+-</manifest>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/rounded_button.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/rounded_button.xml b/AGSFrontEnd/app/src/main/res/drawable/rounded_button.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/rounded_button.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <corners android:radius="10dp" />
+-    <solid android:color="#AD0E2E"/>
+-</shape>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/mante.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/mante.xml b/AGSFrontEnd/app/src/main/res/drawable/mante.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/mante.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,6 +0,0 @@
+-<vector android:height="24dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M13.7827,15.1719l2.1213,-2.1213l5.9962,5.9962l-2.1213,2.1213z"/>
+-    <path android:fillColor="@android:color/white" android:pathData="M17.5,10c1.93,0 3.5,-1.57 3.5,-3.5c0,-0.58 -0.16,-1.12 -0.41,-1.6l-2.7,2.7L16.4,6.11l2.7,-2.7C18.62,3.16 18.08,3 17.5,3C15.57,3 14,4.57 14,6.5c0,0.41 0.08,0.8 0.21,1.16l-1.85,1.85l-1.78,-1.78l0.71,-0.71L9.88,5.61L12,3.49c-1.17,-1.17 -3.07,-1.17 -4.24,0L4.22,7.03l1.41,1.41H2.81L2.1,9.15l3.54,3.54l0.71,-0.71V9.15l1.41,1.41l0.71,-0.71l1.78,1.78l-7.41,7.41l2.12,2.12L16.34,9.79C16.7,9.92 17.09,10 17.5,10z"/>
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/layout/popupinformativo.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/popupinformativo.xml b/AGSFrontEnd/app/src/main/res/layout/popupinformativo.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/popupinformativo.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,46 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="330dp"
+-    android:layout_height="130dp"
+-    android:background="@drawable/roundedpopup"
+-    android:padding="5dp"
+-    android:layout_gravity="center"
+-    >
+-
+-
+-    <TextView
+-        android:id="@+id/textViewPUP"
+-        android:layout_width="299dp"
+-        android:layout_height="68dp"
+-        android:fontFamily="@font/lexend"
+-        android:textColor="@color/white"
+-        android:gravity="center_horizontal"
+-        android:text=""
+-        android:textSize="22sp"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.503"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"></TextView>
+-
+-    <Button
+-        android:id="@+id/buttonListoPU"
+-        android:layout_width="121dp"
+-        android:layout_height="32dp"
+-        android:background="@drawable/rounded_buttonpopup"
+-        android:fontFamily="@font/lexend"
+-        android:text="Listo"
+-        android:textAllCaps="false"
+-        android:textColor="#2D2A2A"
+-        android:textSize="20dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.502"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.948" />
+-
+-    
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/informe.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/informe.xml b/AGSFrontEnd/app/src/main/res/drawable/informe.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/informe.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:autoMirrored="true" android:height="24dp"
+-    android:tint="#FFFFFF" android:viewportHeight="24"
+-    android:viewportWidth="24" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M19,3h-4.18C14.4,1.84 13.3,1 12,1c-1.3,0 -2.4,0.84 -2.82,2L5,3c-1.1,0 -2,0.9 -2,2v14c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2L21,5c0,-1.1 -0.9,-2 -2,-2zM12,3c0.55,0 1,0.45 1,1s-0.45,1 -1,1 -1,-0.45 -1,-1 0.45,-1 1,-1zM14,17L7,17v-2h7v2zM17,13L7,13v-2h10v2zM17,9L7,9L7,7h10v2z"/>
+-</vector>
+Index: AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml b/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_launcher_background" />
+-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+-    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+-</adaptive-icon>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/xml/data_extraction_rules.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/xml/data_extraction_rules.xml b/AGSFrontEnd/app/src/main/res/xml/data_extraction_rules.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/xml/data_extraction_rules.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,19 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?><!--
+-   Sample data extraction rules file; uncomment and customize as necessary.
+-   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
+-   for details.
+--->
+-<data-extraction-rules>
+-    <cloud-backup>
+-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
+-        <include .../>
+-        <exclude .../>
+-        -->
+-    </cloud-backup>
+-    <!--
+-    <device-transfer>
+-        <include .../>
+-        <exclude .../>
+-    </device-transfer>
+-    -->
+-</data-extraction-rules>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/layout/activity_editar_maquina.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_editar_maquina.xml b/AGSFrontEnd/app/src/main/res/layout/activity_editar_maquina.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_editar_maquina.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,236 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context="views.EliminarMaquinaActivity"
+-    android:background="#2D2A2A">
+-
+-    <Button
+-        android:id="@+id/buttonVolverEditarMaquina"
+-        android:layout_width="34dp"
+-        android:layout_height="37dp"
+-        android:layout_gravity="center"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.023"
+-        android:padding="10dp"
+-        android:drawableLeft="@drawable/volver"
+-        />
+-
+-    <TextView
+-        android:id="@+id/textViewEditMaquina"
+-        android:layout_width="308dp"
+-        android:layout_height="118dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:fontFamily="@font/lexend"
+-        android:gravity="center"
+-        android:text="Editar máquinas"
+-        android:textColor="@color/white"
+-        android:textSize="35dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.512"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.026" />
+-
+-    <EditText
+-        android:id="@+id/editSeriaEditarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:inputType="text"
+-        android:maxLength="16"
+-        android:textColor="#2d2a2a"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.278"
+-        tools:ignore="MissingConstraints" />
+-
+-    <EditText
+-        android:id="@+id/editModeloEditarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:inputType="text"
+-        android:maxLength="16"
+-        android:textColor="#2d2a2a"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.428"
+-        tools:ignore="MissingConstraints" />
+-
+-    <!--  Botones y textos para modelo  -->
+-    <ImageView
+-        android:id="@+id/miImageView"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.363" />
+-
+-    <TextView
+-        android:id="@+id/textViewModeloEditar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Modelo"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.111"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.363" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView0"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-    <TextView
+-        android:id="@+id/textViewSerialEditar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Serial"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.111"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-
+-    <!--  Botones y textos para marca -->
+-
+-
+-    <!--  Botones y textos para tipo -->
+-    <Spinner
+-        android:id="@+id/spinnerMarcaEditar"
+-        android:layout_width="255dp"
+-        android:layout_height="33dp"
+-        android:background="@drawable/style_spinner"
+-        android:dropDownSelector="@color/rojo_agservicio"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.794"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.537" />
+-
+-    <TextView
+-        android:id="@+id/textViewMarcaEditar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Marca"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.107"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.534" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView2"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.609" />
+-
+-    <TextView
+-        android:id="@+id/textViewTipoEditar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Tipo"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.104"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.609" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView1"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.534" />
+-
+-    <Button
+-        android:id="@+id/buttonEditarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:text="Editar máquina"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.701" />
+-
+-    <Spinner
+-        android:id="@+id/spinnerTipoEditar"
+-        android:layout_width="255dp"
+-        android:layout_height="33dp"
+-        android:background="@drawable/style_spinner"
+-        android:dropDownSelector="@color/rojo_agservicio"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.794"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.607" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/layout/activity_main_menu.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_main_menu.xml b/AGSFrontEnd/app/src/main/res/layout/activity_main_menu.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_main_menu.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,176 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    android:background="#2D2A2A"
+-    tools:context="views.MainMenuActivity">
+-
+-    <!--Vector clientes-->
+-    <!--    Boton para el menú de gestión de clientes-->
+-
+-
+-    <!--Vector maquina-->
+-
+-    <!--    Boton para el menú de gestión de máquinas-->
+-
+-    <!--    Boton para el menú de registro reporte-->
+-
+-    <!--Botón de generar reporte-->
+-
+-    <!--    vector mantenimiento-->
+-    <!--    Boton para el menú de Programacion de mantenimientos-->
+-
+-    <!--    Boton para el menú de gestión de informes-->
+-
+-
+-    <Button
+-        android:id="@+id/buttonRR"
+-        android:layout_width="match_parent"
+-        android:layout_height="90dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:fontFamily="@font/lexend"
+-        android:padding="21dp"
+-        android:text="Registro de \nreporte"
+-        android:textAlignment="viewStart"
+-        android:textSize="20dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.776" />
+-
+-    <ImageView
+-        android:id="@+id/imageView2"
+-        android:layout_width="91dp"
+-        android:layout_height="84dp"
+-        android:elevation="10dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.9"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.259"
+-        app:srcCompat="@drawable/sistemas"></ImageView>
+-
+-    <ImageView
+-        android:id="@+id/imageView4"
+-        android:layout_width="91dp"
+-        android:layout_height="84dp"
+-        android:elevation="10dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.9"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.778"
+-        app:srcCompat="@drawable/reporte"></ImageView>
+-
+-    <ImageView
+-        android:layout_width="91dp"
+-        android:layout_height="84dp"
+-        android:elevation="10dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="@+id/buttonPM"
+-        app:layout_constraintHorizontal_bias="1.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.437"
+-        app:srcCompat="@drawable/mante"></ImageView>
+-
+-    <Button
+-        android:id="@+id/buttonGI"
+-        android:layout_width="match_parent"
+-        android:layout_height="90dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:fontFamily="@font/lexend"
+-        android:padding="21dp"
+-        android:text="Generación de \ninformes"
+-        android:textAlignment="viewStart"
+-        android:textSize="20dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.603" />
+-
+-    <Button
+-        android:id="@+id/buttonPM"
+-        android:layout_width="match_parent"
+-        android:layout_height="90dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:fontFamily="@font/lexend"
+-        android:padding="21dp"
+-        android:text="Programación de\n mantenimientos"
+-        android:textAlignment="viewStart"
+-        android:textSize="20dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.433" />
+-
+-    <ImageView
+-        android:id="@+id/imageView3"
+-        android:layout_width="91dp"
+-        android:layout_height="84dp"
+-        android:elevation="10dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.9"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.605"
+-        app:srcCompat="@drawable/informe"></ImageView>
+-
+-    <Button
+-        android:id="@+id/buttonGS"
+-        android:layout_width="match_parent"
+-        android:layout_height="90dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:fontFamily="@font/lexend"
+-        android:padding="20dp"
+-        android:text="Gestión de\n sistema"
+-        android:textAlignment="viewStart"
+-        android:textSize="21dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.262" />
+-
+-    <!--Vector tecnicos-->
+-    <!--    Boton para el menú de gestión de tecnicos-->
+-
+-    <!--    Botón de regresar-->
+-
+-    <Button
+-        android:id="@+id/buttonVolverMM"
+-        android:layout_width="34dp"
+-        android:layout_height="37dp"
+-        android:layout_gravity="center"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.023"
+-        android:padding="10dp"
+-        android:drawableLeft="@drawable/volver"
+-        />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/layout/popup_eliminarmaquina.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/popup_eliminarmaquina.xml b/AGSFrontEnd/app/src/main/res/layout/popup_eliminarmaquina.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/popup_eliminarmaquina.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,60 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="330dp"
+-    android:layout_height="130dp"
+-    android:background="@drawable/roundedpopup"
+-    android:padding="5dp"
+-    android:layout_gravity="center">
+-
+-    <TextView
+-        android:id="@+id/textViewPUP"
+-        android:layout_width="299dp"
+-        android:layout_height="68dp"
+-        android:fontFamily="@font/lexend"
+-        android:gravity="center_horizontal"
+-        android:text=""
+-        android:textColor="@color/white"
+-        android:textSize="22sp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.516"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.112"></TextView>
+-
+-    <Button
+-        android:id="@+id/buttonNoPU"
+-        android:layout_width="107dp"
+-        android:layout_height="34dp"
+-        android:background="@drawable/rounded_buttonpopup"
+-        android:fontFamily="@font/lexend"
+-        android:text="Si"
+-        android:textAllCaps="false"
+-        android:textColor="#2D2A2A"
+-        android:textSize="20dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.735"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.947" />
+-
+-    <Button
+-        android:id="@+id/buttonSiPU"
+-        android:layout_width="107dp"
+-        android:layout_height="34dp"
+-        android:background="@drawable/rounded_buttonpopup"
+-        android:fontFamily="@font/lexend"
+-        android:text="No"
+-        android:textAllCaps="false"
+-        android:textColor="#2D2A2A"
+-        android:textSize="20dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.192"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.947" />
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/layout/activity_consultar_maquina.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_consultar_maquina.xml b/AGSFrontEnd/app/src/main/res/layout/activity_consultar_maquina.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_consultar_maquina.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,183 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context="views.ConsultarMaquinaActivity">
+-
+-    <Button
+-        android:id="@+id/buttonConsultarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:text="Consultar máquina"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.961" />
+-
+-    <Button
+-        android:id="@+id/buttonVolverConsultarMaquina"
+-        android:layout_width="34dp"
+-        android:layout_height="37dp"
+-        android:layout_gravity="center"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.023"
+-        android:padding="10dp"
+-        android:drawableLeft="@drawable/volver"
+-        />
+-
+-    <TextView
+-        android:id="@+id/textViewConsultMaquina"
+-        android:layout_width="308dp"
+-        android:layout_height="118dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:fontFamily="@font/lexend"
+-        android:gravity="center"
+-        android:text="Consulta de máquinas"
+-        android:textColor="@color/white"
+-        android:textSize="35dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.512"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.026" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView0"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-    <TextView
+-        android:id="@+id/textViewSerialConsultar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Serial"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.111"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-    <EditText
+-        android:id="@+id/editSerialConsultarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:inputType="text"
+-        android:maxLength="16"
+-        android:textColor="#2d2a2a"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.278"
+-        tools:ignore="MissingConstraints" />
+-
+-    <TextView
+-        android:id="@+id/textViewMarcaAgregar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Marca"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.113"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.362" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView4"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.363" />
+-
+-    <TextView
+-        android:id="@+id/textViewTipoAgregar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Tipo"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.106"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.433" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView2"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.433" />
+-
+-    <Spinner
+-        android:id="@+id/spinnerMarcaConsulta"
+-        android:layout_width="255dp"
+-        android:layout_height="33dp"
+-        android:background="@drawable/style_spinner"
+-        android:dropDownSelector="@color/rojo_agservicio"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.794"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.359" />
+-
+-    <Spinner
+-        android:id="@+id/spinnerTipoConsulta"
+-        android:layout_width="255dp"
+-        android:layout_height="33dp"
+-        android:background="@drawable/style_spinner"
+-        android:dropDownSelector="@color/rojo_agservicio"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.794"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.435" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_launcher_background" />
+-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+-    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+-</adaptive-icon>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/layout/spinner_text_color.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/spinner_text_color.xml b/AGSFrontEnd/app/src/main/res/layout/spinner_text_color.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/spinner_text_color.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,7 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:id="@android:id/text1"
+-    android:layout_width="match_parent"
+-    android:layout_height="wrap_content"
+-    android:textColor="#2d2a2a"
+-    android:fontFamily="@font/lexend"/>
+Index: AGSFrontEnd/gradle/wrapper/gradle-wrapper.properties
+===================================================================
+diff --git a/AGSFrontEnd/gradle/wrapper/gradle-wrapper.properties b/AGSFrontEnd/gradle/wrapper/gradle-wrapper.properties
+deleted file mode 100644
+--- a/AGSFrontEnd/gradle/wrapper/gradle-wrapper.properties	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,6 +0,0 @@
+-#Wed Oct 25 17:32:42 CST 2023
+-distributionBase=GRADLE_USER_HOME
+-distributionPath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
+-zipStoreBase=GRADLE_USER_HOME
+-zipStorePath=wrapper/dists
+Index: AGSFrontEnd/app/src/main/res/drawable/consulta.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/consulta.xml b/AGSFrontEnd/app/src/main/res/drawable/consulta.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/consulta.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:height="44dp" android:tint="#FFFFFF"
+-    android:viewportHeight="24" android:viewportWidth="24"
+-    android:width="44dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M15.5,14h-0.79l-0.28,-0.27C15.41,12.59 16,11.11 16,9.5 16,5.91 13.09,3 9.5,3S3,5.91 3,9.5 5.91,16 9.5,16c1.61,0 3.09,-0.59 4.23,-1.57l0.27,0.28v0.79l5,4.99L20.49,19l-4.99,-5zM9.5,14C7.01,14 5,11.99 5,9.5S7.01,5 9.5,5 14,7.01 14,9.5 11.99,14 9.5,14z"/>
+-</vector>
+Index: AGSFrontEnd/app/.gitignore
+===================================================================
+diff --git a/AGSFrontEnd/app/.gitignore b/AGSFrontEnd/app/.gitignore
+deleted file mode 100644
+--- a/AGSFrontEnd/app/.gitignore	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,1 +0,0 @@
+-/build
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/style_spinner.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/style_spinner.xml b/AGSFrontEnd/app/src/main/res/drawable/style_spinner.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/style_spinner.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,15 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+-    <item>
+-        <layer-list>
+-            <item>
+-                <shape android:shape="rectangle">
+-                    <solid android:color="@color/white"/>
+-                    <corners android:radius="10dp"/>
+-                    <padding android:right="10dp"/>
+-                </shape>
+-            </item>
+-                <item android:drawable="@drawable/flecha_spinner" android:gravity="center|end"/>
+-        </layer-list>
+-    </item>
+-</selector>
+\ No newline at end of file
+Index: AGSFrontEnd/.gitignore
+===================================================================
+diff --git a/AGSFrontEnd/.gitignore b/AGSFrontEnd/.gitignore
+deleted file mode 100644
+--- a/AGSFrontEnd/.gitignore	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,15 +0,0 @@
+-*.iml
+-.gradle
+-/local.properties
+-/.idea/caches
+-/.idea/libraries
+-/.idea/modules.xml
+-/.idea/workspace.xml
+-/.idea/navEditor.xml
+-/.idea/assetWizardSettings.xml
+-.DS_Store
+-/build
+-/captures
+-.externalNativeBuild
+-.cxx
+-local.properties
+Index: AGSFrontEnd/app/src/main/res/layout/activity_menu_gestion_sistema.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_menu_gestion_sistema.xml b/AGSFrontEnd/app/src/main/res/layout/activity_menu_gestion_sistema.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_menu_gestion_sistema.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,450 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context="views.MenuGestionSistemaActivity"
+-    android:background="#2D2A2A">
+-
+-
+-    <!--    Botón de regresar-->
+-
+-    <ImageView
+-        android:id="@+id/ImageViewBotonGT"
+-        android:layout_width="310dp"
+-        android:layout_height="103dp"
+-        android:layout_gravity="center_horizontal"
+-        android:src="@drawable/rectangulo"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.514"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.866" />
+-
+-    <ImageView
+-        android:id="@+id/ImageViewBotonGC"
+-        android:layout_width="310dp"
+-        android:layout_height="103dp"
+-        android:layout_gravity="center_horizontal"
+-        android:src="@drawable/rectangulo"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.514"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.702" />
+-
+-    <ImageButton
+-        android:id="@+id/agregarClientes"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintHorizontal_bias="0.433"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintVertical_bias="0.517"
+-        app:srcCompat="@drawable/agregar" />
+-
+-    <ImageButton
+-        android:id="@+id/agregarTecnicos"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintHorizontal_bias="0.433"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintVertical_bias="0.517"
+-        app:srcCompat="@drawable/agregar" />
+-
+-    <TextView
+-        android:id="@+id/textViewclientes"
+-        android:layout_width="92dp"
+-        android:layout_height="33dp"
+-        android:fontFamily="@font/lexend"
+-        android:text="Clientes"
+-        android:textColor="@color/white"
+-        android:textSize="20sp"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintHorizontal_bias="0.041"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintVertical_bias="0.514" />
+-
+-    <TextView
+-        android:id="@+id/textViewTecnicos"
+-        android:layout_width="92dp"
+-        android:layout_height="33dp"
+-        android:fontFamily="@font/lexend"
+-        android:text="Técnicos"
+-        android:textColor="@color/white"
+-        android:textSize="20sp"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintHorizontal_bias="0.041"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintVertical_bias="0.514" />
+-
+-    <ImageView
+-        android:id="@+id/ImageViewBotonGM2"
+-        android:layout_width="310dp"
+-        android:layout_height="103dp"
+-        android:layout_gravity="center_horizontal"
+-        android:src="@drawable/rectangulo"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.514"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.374" />
+-
+-    <ImageView
+-        android:id="@+id/ImageViewBotonGM3"
+-        android:layout_width="310dp"
+-        android:layout_height="103dp"
+-        android:layout_gravity="center_horizontal"
+-        android:src="@drawable/rectangulo"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.514"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.538" />
+-
+-    <ImageButton
+-        android:id="@+id/editarMarcas"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.79"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.464"
+-        app:srcCompat="@drawable/editar" />
+-
+-    <ImageView
+-        android:id="@+id/ImageViewBotonGM1"
+-        android:layout_width="310dp"
+-        android:layout_height="103dp"
+-        android:layout_gravity="center_horizontal"
+-        android:src="@drawable/rectangulo"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.514"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.21" />
+-
+-    <ImageButton
+-        android:id="@+id/borrarMaquina"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        android:src="@drawable/borrar"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.969"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+-
+-    <ImageButton
+-        android:id="@+id/borrarMaquinaria"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.969"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:srcCompat="@drawable/borrar" />
+-
+-    <ImageButton
+-        android:id="@+id/borrarClientes"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintHorizontal_bias="0.969"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintVertical_bias="0.517"
+-        app:srcCompat="@drawable/borrar" />
+-
+-    <ImageButton
+-        android:id="@+id/borrarTecnicos"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintHorizontal_bias="0.969"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintVertical_bias="0.517"
+-        app:srcCompat="@drawable/borrar" />
+-
+-    <TextView
+-        android:id="@+id/textView7"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Marcas"
+-        android:textColor="@color/white"
+-        android:textSize="20sp"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.037"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.46" />
+-
+-    <ImageButton
+-        android:id="@+id/consultarMaquinaria"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.612"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:srcCompat="@drawable/consulta" />
+-
+-    <ImageButton
+-        android:id="@+id/consultarClientes"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintHorizontal_bias="0.612"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintVertical_bias="0.517"
+-        app:srcCompat="@drawable/consulta" />
+-
+-    <ImageButton
+-        android:id="@+id/consultarTecnicos"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintHorizontal_bias="0.612"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintVertical_bias="0.517"
+-        app:srcCompat="@drawable/consulta" />
+-
+-    <ImageButton
+-        android:id="@+id/editarMaquina"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        android:src="@drawable/editar"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.79"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+-
+-    <ImageButton
+-        android:id="@+id/agregarMaquina"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        android:src="@drawable/agregar"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.433"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+-
+-    <ImageButton
+-        android:id="@+id/editarMarcas2"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.969"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.464"
+-        app:srcCompat="@drawable/borrar" />
+-
+-    <ImageButton
+-        android:id="@+id/editarMaquinaria"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.79"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:srcCompat="@drawable/editar" />
+-
+-    <ImageButton
+-        android:id="@+id/editarClientes"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintHorizontal_bias="0.79"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGC"
+-        app:layout_constraintVertical_bias="0.517"
+-        app:srcCompat="@drawable/editar" />
+-
+-    <ImageButton
+-        android:id="@+id/editarTecnicos"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintHorizontal_bias="0.79"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGT"
+-        app:layout_constraintVertical_bias="0.517"
+-        app:srcCompat="@drawable/editar" />
+-
+-    <ImageButton
+-        android:id="@+id/consultarMaquina"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        android:src="@drawable/consulta"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.612"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
+-
+-    <ImageButton
+-        android:id="@+id/agregarMarcas"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.433"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.464"
+-        app:srcCompat="@drawable/agregar" />
+-
+-    <ImageButton
+-        android:id="@+id/agregarMaquinaria"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.433"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:srcCompat="@drawable/agregar" />
+-
+-
+-    <ImageButton
+-        android:id="@+id/consultarMarca"
+-        android:layout_width="47dp"
+-        android:layout_height="47dp"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintHorizontal_bias="0.612"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM2"
+-        app:layout_constraintVertical_bias="0.464"
+-        app:srcCompat="@drawable/consulta" />
+-
+-    <TextView
+-        android:id="@+id/textmaquinas"
+-        android:layout_width="103dp"
+-        android:layout_height="64dp"
+-        android:fontFamily="@font/lexend"
+-        android:text="Tipo de máquina"
+-        android:textColor="@color/white"
+-        android:textSize="20sp"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintHorizontal_bias="0.043"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM3"
+-        app:layout_constraintVertical_bias="0.461" />
+-
+-    <TextView
+-        android:id="@+id/textView5"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Máquinas"
+-        android:textColor="@color/white"
+-        android:textSize="20sp"
+-        app:layout_constraintBottom_toBottomOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintEnd_toEndOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1"
+-        app:layout_constraintVertical_bias="0.486" />
+-
+-    <!--BOTONES PARA MAQUINAS-->
+-
+-    <!--BOTONES PARA MARCAS-->
+-
+-    <!--BOTONES PARA MARCAS-->
+-
+-
+-    <Button
+-        android:id="@+id/buttonVolverGM"
+-        android:layout_width="34dp"
+-        android:layout_height="37dp"
+-        android:layout_gravity="center"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.023"
+-        android:padding="10dp"
+-        android:drawableLeft="@drawable/volver"
+-        />
+-
+-    <TextView
+-        android:id="@+id/textView4"
+-        android:layout_width="306dp"
+-        android:layout_height="107dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:fontFamily="@font/lexend"
+-        android:gravity="center"
+-        android:text="Gestión de sistema"
+-        android:textColor="@color/white"
+-        android:textSize="40dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.487"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.025" />
+-
+-
+-
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/layout/activity_agregar_maquina.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/layout/activity_agregar_maquina.xml b/AGSFrontEnd/app/src/main/res/layout/activity_agregar_maquina.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/layout/activity_agregar_maquina.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,236 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context="views.AgregarMaquinaActivity"
+-    android:background="#2D2A2A">
+-
+-    <Button
+-        android:id="@+id/buttonVolverAgregarMaquina"
+-        android:layout_width="34dp"
+-        android:layout_height="37dp"
+-        android:layout_gravity="center"
+-        android:background="@drawable/rounded_button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.042"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.023"
+-        android:padding="10dp"
+-        android:drawableLeft="@drawable/volver"
+-        />
+-
+-    <TextView
+-        android:id="@+id/textViewAgregMaquina"
+-        android:layout_width="308dp"
+-        android:layout_height="118dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:fontFamily="@font/lexend"
+-        android:gravity="center"
+-        android:text="Registro de máquinas"
+-        android:textColor="@color/white"
+-        android:textSize="35dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.512"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.026" />
+-
+-    <EditText
+-        android:id="@+id/editSerialAgregarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:inputType="text"
+-        android:maxLength="16"
+-        android:textColor="#2d2a2a"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.278"
+-        tools:ignore="MissingConstraints" />
+-
+-    <EditText
+-        android:id="@+id/editModeloAgregarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="45dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_txf"
+-        android:ems="10"
+-        android:fontFamily="@font/lexend"
+-        android:inputType="text"
+-        android:maxLength="16"
+-        android:textColor="#2d2a2a"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.428"
+-        tools:ignore="MissingConstraints" />
+-
+-    <!--  Botones y textos para modelo  -->
+-    <ImageView
+-        android:id="@+id/miImageView"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.363" />
+-
+-    <TextView
+-        android:id="@+id/textViewModeloAgregar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Modelo"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.111"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.363" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView0"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-    <TextView
+-        android:id="@+id/textViewSerialAgregar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Serial"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.111"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.216" />
+-
+-
+-    <!--  Botones y textos para marca -->
+-
+-
+-    <!--  Botones y textos para tipo -->
+-    <Spinner
+-        android:id="@+id/spinnerMarcaAgregar"
+-        android:layout_width="255dp"
+-        android:layout_height="33dp"
+-        android:background="@drawable/style_spinner"
+-        android:dropDownSelector="@color/rojo_agservicio"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.794"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.537" />
+-
+-    <TextView
+-        android:id="@+id/textViewMarcaAgregar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Marca"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.107"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.534" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView2"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.609" />
+-
+-    <TextView
+-        android:id="@+id/textViewTipoAgregar"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:fontFamily="@font/lexend"
+-        android:text="Tipo"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.104"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.609" />
+-
+-    <ImageView
+-        android:id="@+id/miImageView1"
+-        android:layout_width="3dp"
+-        android:layout_height="30dp"
+-        android:src="@drawable/linea_texto"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.078"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.534" />
+-
+-    <Button
+-        android:id="@+id/buttonRegistrarMaquina"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginEnd="32dp"
+-        android:background="@drawable/rounded_button"
+-        android:text="Registrar máquina"
+-        android:textSize="22dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.701" />
+-
+-    <Spinner
+-        android:id="@+id/spinnerTipoAgregar"
+-        android:layout_width="255dp"
+-        android:layout_height="33dp"
+-        android:background="@drawable/style_spinner"
+-        android:dropDownSelector="@color/rojo_agservicio"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.794"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.607" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: AGSFrontEnd/app/src/main/res/drawable/volver.xml
+===================================================================
+diff --git a/AGSFrontEnd/app/src/main/res/drawable/volver.xml b/AGSFrontEnd/app/src/main/res/drawable/volver.xml
+deleted file mode 100644
+--- a/AGSFrontEnd/app/src/main/res/drawable/volver.xml	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
++++ /dev/null	(revision 99470476e1d5c9433c6393d84e2730a62ed3d929)
+@@ -1,5 +0,0 @@
+-<vector android:autoMirrored="true" android:height="24dp"
+-    android:tint="#FFFFFF" android:viewportHeight="24"
+-    android:viewportWidth="24" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-    <path android:fillColor="@android:color/white" android:pathData="M11.67,3.87L9.9,2.1 0,12l9.9,9.9 1.77,-1.77L3.54,12z"/>
+-</vector>

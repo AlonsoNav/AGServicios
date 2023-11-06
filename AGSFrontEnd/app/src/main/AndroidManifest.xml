@@ -16,16 +16,43 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name="views.AgregarClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.EliminarTipoDeMaquinariaActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.EditarTipoDeMaquinariaActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.ConsultarTipoDeMaquinariaActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.AgregarTipoDeMaquinariaActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.ConsultarClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.ConsultarMaquinaActivity"
+            android:exported="false" />
+        <activity
             android:name="views.EliminarMaquinaActivity"
             android:exported="false" />
         <activity
             android:name="views.AgregarMaquinaActivity"
             android:exported="false" />
         <activity
-            android:name="views.MenuMaquinariaActivity"
+            android:name="views.MenuGestionSistemaActivity"
             android:exported="false" />
         <activity
             android:name="views.MainMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.EditarMaquinaActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.EliminarClienteActivity"
             android:exported="false" />
         <activity
             android:name="views.LoginActivity"

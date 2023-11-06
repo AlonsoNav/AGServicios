@@ -1,11 +1,12 @@
 package views
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import androidx.compose.ui.text.InternalTextApi
+import android.widget.TextView
 import com.hytan.agserviciosv1.R
 
 class EliminarMaquinaActivity : AppCompatActivity() {
@@ -17,9 +18,16 @@ class EliminarMaquinaActivity : AppCompatActivity() {
         val eliminar = findViewById<Button>(R.id.buttonEliminarMaquina)
         val editSerial = findViewById<EditText>(R.id.editSerialEliminarMaquina)
 
-        volverEM.setOnClickListener{
-            val volverEm= Intent(this,MenuMaquinariaActivity::class.java)
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.popup_confirmacion)
+        dialog.setCancelable(true)
 
+        val dialogInfo = Dialog(this)
+        dialogInfo.setContentView(R.layout.popupinformativo)
+        dialogInfo.setCancelable(true)
+
+        volverEM.setOnClickListener{
+            val volverEm= Intent(this,MenuGestionSistemaActivity::class.java)
             startActivity(volverEm)
             finish()
         }
@@ -27,6 +35,28 @@ class EliminarMaquinaActivity : AppCompatActivity() {
         eliminar.setOnClickListener{
             val serial = editSerial.text.toString()
 
-        }
+            val yesButton = dialog.findViewById<Button>(R.id.buttonSiPUP)
+            val noButton = dialog.findViewById<Button>(R.id.buttonNoPUP)
+            val textViewPopupConfi = dialog.findViewById<TextView>(R.id.textViewPUPConfirm)
+            val textViewPopup = dialogInfo.findViewById<TextView>(R.id.textViewPUP)
+
+            textViewPopupConfi.text = "¿Realmente desea eliminar esa máquina?"
+            textViewPopup.text="Máquina eliminada con éxito"
+
+            yesButton.setOnClickListener {
+                val listo = dialogInfo.findViewById<Button>(R.id.buttonListoPUP)
+                dialog.dismiss()
+                listo.setOnClickListener {
+                    dialogInfo.dismiss()
+                }
+                dialogInfo.show()
+
+            }
+            noButton.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+
     }
 }
+    }
