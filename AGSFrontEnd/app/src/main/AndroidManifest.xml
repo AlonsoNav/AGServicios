@@ -16,7 +16,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="views.GenerarReporteActivity"
+            android:name="views.AgregarClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.EliminarTipoDeMaquinariaActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.EditarTipoDeMaquinariaActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.ConsultarTipoDeMaquinariaActivity"
+            android:exported="false" />
+        <activity
+            android:name="views.AgregarTipoDeMaquinariaActivity"
             android:exported="false" />
         <activity
             android:name="views.ConsultarClienteActivity"

@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
             val password =  editTextPassword.text.toString()
             val Intent = Intent(this,MainMenuActivity::class.java)
             val login = loginController.loginAttempt(username,password,this)
-            val closeButton = dialog.findViewById<Button>(R.id.buttonListoPU)
+            val closeButton = dialog.findViewById<Button>(R.id.buttonListoPUP)
             val textViewPopup = dialog.findViewById<TextView>(R.id.textViewPUP)
 
             //Para probar sin api, cambiar a -1
