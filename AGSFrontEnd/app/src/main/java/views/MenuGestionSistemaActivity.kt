@@ -21,6 +21,12 @@ class MenuGestionSistemaActivity : AppCompatActivity() {
         val consultarGM = findViewById<ImageButton>(R.id.consultarMaquina)
         val editarGM = findViewById<ImageButton>(R.id.editarMaquina)
 
+        //Gestión de marcas
+        val eliminarGMAR = findViewById<ImageButton>(R.id.borrarMaquina)
+        val registrarGMAR = findViewById<ImageButton>(R.id.agregarMaquina)
+        val consultarGMAR = findViewById<ImageButton>(R.id.consultarMaquina)
+        val editarGMAR = findViewById<ImageButton>(R.id.editarMaquina)
+
         // Gestión de maquinaria
         val agregarGTDM = findViewById<ImageButton>(R.id.agregarMaquinaria)
         val consultarGTDM = findViewById<ImageButton>(R.id.consultarMaquinaria)
@@ -64,6 +70,31 @@ class MenuGestionSistemaActivity : AppCompatActivity() {
         editarGM.setOnClickListener {
             val editarGM = Intent(this, EditarMaquinaActivity::class.java)
             startActivity(editarGM)
+            finish()
+        }
+
+        //Gestión de marcas
+        eliminarGM.setOnClickListener{
+            val eliminarGMAR = Intent(this, EliminarMarcaActivity::class.java)
+            startActivity(eliminarGMAR)
+            finish()
+        }
+
+        registrarGM.setOnClickListener {
+            val registrarGMAR = Intent(this, AgregarMarcaActivity::class.java)
+            startActivity(registrarGMAR)
+            finish()
+        }
+
+        consultarGM.setOnClickListener {
+            val consultarGMAR = Intent(this, ConsultarMarcaActivity::class.java)
+            startActivity(consultarGMAR)
+            finish()
+        }
+
+        editarGM.setOnClickListener {
+            val editarGMAR = Intent(this, EditarMarcaActivity::class.java)
+            startActivity(editarGMAR)
             finish()
         }
 
