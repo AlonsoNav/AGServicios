@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="799ee9dd-345c-4feb-ae7e-882bc3f24b48" name="Changes" comment="Sacar el app afuera">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/add_brand.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/add_brand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/add_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/add_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/add_machine.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/add_machine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/add_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/add_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/add_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/add_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/delete_brand.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/delete_brand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/delete_machine.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/delete_machine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/delete_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/delete_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/get_brand.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/get_brand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/get_machine.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/get_machine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/get_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/get_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/update_brand.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/update_brand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/update_machine.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/update_machine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/update_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/update_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/AGSFrontEnd/gradlew" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Alonso" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,12 +51,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "Alonso"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alons\PycharmProjects\AGServicios\AGSAPIRest" />
       <recent name="C:\Users\alons\PycharmProjects\AGServicios" />
       <recent name="C:\Users\alons\PycharmProjects\AGServicios\ModeloBD" />
     </key>
@@ -99,5 +115,8 @@
     <MESSAGE value="Nuevos y modificados SPs" />
     <MESSAGE value="Nueva versión de BD, endpoints y modificación de SPs." />
     <option name="LAST_COMMIT_MESSAGE" value="Nueva versión de BD, endpoints y modificación de SPs." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/AGServicios$app.coverage" NAME="app Coverage Results" MODIFIED="1699313234898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AGSAPIRest" />
   </component>
 </project>
