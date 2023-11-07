@@ -12,12 +12,9 @@ class LoginController {
             "username": "$username",
             "password": "$password"
         }
-    """
-        val loginSuccessful = userDatabase.postRequestToApi(json,endpoint){ response ->
+    """.trimIndent()
+        val loginSuccessful = userDatabase.postRequestToApi(json,endpoint) { response ->
             callback(response)
         }
-
-
     }
-
 }

@@ -26,27 +26,13 @@ AS
 
                 COMMIT
 
-                INSERT INTO dbo.eventlog
-                            (description,
-                             posttime)
-                VALUES      ('Marca eliminada <' + @name + '>',
-                             Getdate());
-
                 SET @output =
                 '{"result": 1, "description": "Marca eliminada exitosamente."}';
             END
           ELSE
             BEGIN
-                INSERT INTO dbo.eventlog
-                            (description,
-                             posttime)
-                VALUES      (
-                'Fallo en la eliminación de la marca - La marca con nombre '
-                + @name + ' no existe.',
-                Getdate());
-
                 SET @output =
-'{"result": 0, "description": "Fallo en la eliminación de la marca: La marca no existe."}'
+'{"result": 0, "description": "Error: marca no disponible"}'
     ;
 END
 

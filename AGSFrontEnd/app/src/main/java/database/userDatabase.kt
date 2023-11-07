@@ -15,10 +15,7 @@ class userDatabase {
         val apiUrl =
             "https://f4d5-186-177-184-229.ngrok-free.app/$endpoint"  // Reemplaza con la URL real de tu API
 
-        // Crea el cuerpo de la solicitud POST
-        var jsonRequest =json.trimIndent()
-
-        val requestBody = jsonRequest.toRequestBody("application/json".toMediaType())
+        val requestBody = json.toRequestBody("application/json".toMediaType())
 
         // Crea una solicitud POST
         val request = Request.Builder()
@@ -32,13 +29,9 @@ class userDatabase {
                 // Manejo de errores en caso de falla de la solicitud
                 e.printStackTrace()
             }
-
             override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
                 callback(response)
             }
         })
-
     }
-
-
 }

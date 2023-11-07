@@ -26,29 +26,15 @@ AS
 
                 COMMIT
 
-                INSERT INTO dbo.eventlog
-                            (description,
-                             posttime)
-                VALUES      ('Tipo de máquina eliminado <Tipo de máquina: '
-                             + @name + '>',
-                             Getdate());
-
                 SET @output =
       '{"result": 1, "description": "Tipo de máquina eliminado exitosamente."}'
       ;
       END
       ELSE
       BEGIN
-      INSERT INTO dbo.eventlog
-                  (description,
-                   posttime)
-      VALUES      (
-'Fallo en la eliminación del tipo de máquina - El tipo de máquina con nombre '
-+ @name + ' no existe.',
-Getdate());
 
 SET @output =
-'{"result": 0, "description": "Fallo en la eliminación del tipo de máquina: El tipo de máquina no existe."}'
+'{"result": 0, "description": "Error: tipo de máquina no existe"}'
 ;
 END
 

@@ -1,0 +1,447 @@
+Index: AGSAPIRest/Functions/delete_type.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef delete_type(engine):\r\n    data = request.get_json()\r\n    name = data.get('name')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_delete_type @name = :name\"), {'name': name}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/delete_type.py b/AGSAPIRest/Functions/delete_type.py
+--- a/AGSAPIRest/Functions/delete_type.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/delete_type.py	(date 1699313111841)
+@@ -22,4 +22,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/login.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import bcrypt\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\n\r\ndef login(engine):\r\n    username = request.json[\"username\"]\r\n    password = request.json[\"password\"]\r\n    password = password.encode('utf-8')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(text(\"EXEC sp_get_user @username = :username\"), {'username': username}).fetchone()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        if result:\r\n            is_admin = result.isAdmin\r\n            hash_password = result.password\r\n            if bcrypt.checkpw(password, hash_password):\r\n                return jsonify({'is_admin': is_admin}), 200\r\n            else:\r\n                return jsonify({'message': 'La contraseña no coincide.'}), 401\r\n        else:\r\n            return jsonify({'message': 'El usuario no existe.'}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/login.py b/AGSAPIRest/Functions/login.py
+--- a/AGSAPIRest/Functions/login.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/login.py	(date 1699313111847)
+@@ -26,4 +26,5 @@
+             return jsonify({'message': 'El usuario no existe.'}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/delete_machine.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef delete_machine(engine):\r\n    data = request.get_json()\r\n    serial = data.get('serial')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_delete_machine @serial = :serial\"), {'serial': serial}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/delete_machine.py b/AGSAPIRest/Functions/delete_machine.py
+--- a/AGSAPIRest/Functions/delete_machine.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/delete_machine.py	(date 1699313111854)
+@@ -22,4 +22,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/delete_brand.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef delete_brand(engine):\r\n    data = request.get_json()\r\n    name = data.get('name')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_delete_brand @name = :name\"), {'name': name}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/delete_brand.py b/AGSAPIRest/Functions/delete_brand.py
+--- a/AGSAPIRest/Functions/delete_brand.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/delete_brand.py	(date 1699313111860)
+@@ -22,4 +22,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/update_type.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef update_type(engine):\r\n    data = request.get_json()\r\n    name = data.get('name')\r\n    new_name = data.get('newName')\r\n    description = data.get('description')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_update_type @inName = :name, @inNewName = :newName, @inDescription = :description\"),\r\n            {'name': name, 'newName': new_name, 'description': description}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/update_type.py b/AGSAPIRest/Functions/update_type.py
+--- a/AGSAPIRest/Functions/update_type.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/update_type.py	(date 1699313111868)
+@@ -25,4 +25,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/update_machine.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef update_machine(engine):\r\n    data = request.get_json()\r\n    serial = data.get('serial')\r\n    new_serial = data.get('newSerial')\r\n    model = data.get('model')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_update_machine @inSerial = :serial, @inNewModel = :model, @inNewSerial = :newSerial\"),\r\n            {'serial': serial, 'model': model, 'newSerial': new_serial}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/update_machine.py b/AGSAPIRest/Functions/update_machine.py
+--- a/AGSAPIRest/Functions/update_machine.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/update_machine.py	(date 1699313111874)
+@@ -25,4 +25,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/update_brand.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef update_brand(engine):\r\n    data = request.get_json()\r\n    name = data.get('name')\r\n    new_name = data.get('newName')\r\n    description = data.get('description')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_update_brand @name = :name, @newName = :newName, @description = :description\"),\r\n            {'name': name, 'newName': new_name, 'description': description}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/update_brand.py b/AGSAPIRest/Functions/update_brand.py
+--- a/AGSAPIRest/Functions/update_brand.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/update_brand.py	(date 1699313111881)
+@@ -25,4 +25,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/get_type.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef get_type(engine):\r\n    data = request.get_json()\r\n    name = data.get('name')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_get_type @name = :name\"), {'name': name}).fetchone()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        if result:\r\n            return jsonify({'message': \"Nombre: {} - Descripción: {}\".format(result.name, result.description)}), 200\r\n        else:\r\n            return jsonify({'message': 'El usuario no existe.'}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/get_type.py b/AGSAPIRest/Functions/get_type.py
+--- a/AGSAPIRest/Functions/get_type.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/get_type.py	(date 1699313111887)
+@@ -18,4 +18,5 @@
+             return jsonify({'message': 'El usuario no existe.'}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/get_machine.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef get_machine(engine):\r\n    data = request.get_json()\r\n    serial = data.get('serial')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_get_machine @serial = :serial\"), {'serial': serial}).fetchone()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        if result:\r\n            return jsonify({'message': \"Modelo: {} - Serial: {} - Marca: {} - Tipo de maquinaria: {}\".format(\r\n                result.serial, result.model, result.brand, result.type)}), 200\r\n        else:\r\n            return jsonify({'message': 'El usuario no existe.'}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/get_machine.py b/AGSAPIRest/Functions/get_machine.py
+--- a/AGSAPIRest/Functions/get_machine.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/get_machine.py	(date 1699313111895)
+@@ -19,4 +19,5 @@
+             return jsonify({'message': 'El usuario no existe.'}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/get_brand.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef get_brand(engine):\r\n    data = request.get_json()\r\n    name = data.get('name')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_get_brand @name = :name\"), {'name': name}).fetchone()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        if result:\r\n            return jsonify({'message': \"Nombre: {} - Descripción: {}\".format(result.name, result.description)}), 200\r\n        else:\r\n            return jsonify({'message': 'El usuario no existe.'}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/get_brand.py b/AGSAPIRest/Functions/get_brand.py
+--- a/AGSAPIRest/Functions/get_brand.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/get_brand.py	(date 1699313111901)
+@@ -18,4 +18,5 @@
+             return jsonify({'message': 'El usuario no existe.'}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/add_type.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef add_type(engine):\r\n    data = request.get_json()\r\n    name = data.get('name')\r\n    description = data.get('description')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_add_type @name = :name, @description = :description\"),\r\n            {'name': name, 'description': description}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/add_type.py b/AGSAPIRest/Functions/add_type.py
+--- a/AGSAPIRest/Functions/add_type.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/add_type.py	(date 1699313111907)
+@@ -24,4 +24,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/add_machine.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef add_machine(engine):\r\n    data = request.get_json()\r\n    brand = data.get(\"brand\")\r\n    type = data.get(\"type\")\r\n    serial = data.get(\"serial\")\r\n    model = data.get(\"model\")\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_add_machine @brand = :brand, @type = :type, @serial = :serial, @model = :model\"),\r\n            {'brand': brand, 'type': type, 'serial': serial, 'model': model}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/add_machine.py b/AGSAPIRest/Functions/add_machine.py
+--- a/AGSAPIRest/Functions/add_machine.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/add_machine.py	(date 1699313111913)
+@@ -26,4 +26,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/add_client.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef add_client(engine):\r\n    data = request.get_json()\r\n    name = data.get('name')\r\n    number = data.get('number')\r\n    address = data.get('address')\r\n    email = data.get('email')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_add_client @name = :name, @number = :number, @address = :address, @email = :email\"),\r\n            {'name': name, 'number': number, 'address': address, 'email': email}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/add_client.py b/AGSAPIRest/Functions/add_client.py
+--- a/AGSAPIRest/Functions/add_client.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/add_client.py	(date 1699313111919)
+@@ -26,4 +26,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: AGSAPIRest/Functions/add_brand.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\ndef add_brand(engine):\r\n    data = request.get_json()\r\n    name = data.get('name')\r\n    description = data.get('description')\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_add_brand @name = :name, @description = :description\"),\r\n            {'name': name, 'description': description}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/add_brand.py b/AGSAPIRest/Functions/add_brand.py
+--- a/AGSAPIRest/Functions/add_brand.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/add_brand.py	(date 1699313111926)
+@@ -24,4 +24,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"799ee9dd-345c-4feb-ae7e-882bc3f24b48\" name=\"Changes\" comment=\"Sacar el app afuera\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/.gitignore\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/compiler.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/gradle.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/kotlinc.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/.gitignore\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/.idea/.gitignore\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/.idea/.name\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/.idea/compiler.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/.idea/gradle.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/.idea/kotlinc.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/.idea/misc.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/.gitignore\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/build.gradle.kts\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/proguard-rules.pro\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/androidTest/java/com/hytan/agserviciosv1/ExampleInstrumentedTest.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/AndroidManifest.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/MainActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/ui/theme/Color.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/ui/theme/Theme.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/ui/theme/Type.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/controllers/LoginController.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/database/userDatabase.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/AgregarMaquinaActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/ConsultarClienteActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/ConsultarMaquinaActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/EditarMaquinaActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/EliminarClienteActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/EliminarMaquinaActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/LoginActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/MainMenuActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/MenuGestionSistemaActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/MenuMaquinariaActivity.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/agregar.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/baseline_maximize_24.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/borrar.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/consulta.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/editar.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/flecha_spinner.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/ic_launcher_background.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/informe.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/linea_texto.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/linerecta.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/logo.png\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/logomini.png\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/mante.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/maquina.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/people.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/rectangulo.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/reporte.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/rounded_button.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/rounded_buttonpopup.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/rounded_txf.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/roundedpopup.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/sistemas.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/style_spinner.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/tecnico.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/volver.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/font/lexend.ttf\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_agregar_maquina.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_consultar_cliente.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_consultar_maquina.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_editar_maquina.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_cliente.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_maquina.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_login.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_main_menu.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_menu_gestion_sistema.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_menu_maquinaria.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/popup_eliminarmaquina.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/popupinformativo.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/popuplogin.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/spinner_text_color.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-hdpi/ic_launcher.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-mdpi/ic_launcher.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xhdpi/ic_launcher.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/values/colors.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/values/strings.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/values/themes.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/xml/backup_rules.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/xml/data_extraction_rules.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/app/src/test/java/com/hytan/agserviciosv1/ExampleUnitTest.kt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/build.gradle.kts\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/gradle.properties\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/gradle/wrapper/gradle-wrapper.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/gradle/wrapper/gradle-wrapper.properties\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/gradlew\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/gradlew.bat\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/AGSFrontEnd/settings.gradle.kts\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"Alonso\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"RESET_MODE\" value=\"MIXED\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2XKUJY2X8u636kVD7WEiEvfl29c\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"Alonso\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"sqlserver\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\alons\\PycharmProjects\\AGServicios\" />\r\n      <recent name=\"C:\\Users\\alons\\PycharmProjects\\AGServicios\\ModeloBD\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"799ee9dd-345c-4feb-ae7e-882bc3f24b48\" name=\"Changes\" comment=\"\" />\r\n      <created>1698377193802</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1698377193802</updated>\r\n      <workItem from=\"1698377195457\" duration=\"10160000\" />\r\n      <workItem from=\"1698433614748\" duration=\"1480000\" />\r\n      <workItem from=\"1698518146182\" duration=\"7109000\" />\r\n      <workItem from=\"1699164600487\" duration=\"15745000\" />\r\n      <workItem from=\"1699211616826\" duration=\"656000\" />\r\n      <workItem from=\"1699212292333\" duration=\"676000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Nuevos y modificados SPs\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699168913228</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699168913228</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Nueva versión de BD, endpoints y modificación de SPs.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699180504795</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699180504795</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Nuevos y modificados SPs\" />\r\n    <MESSAGE value=\"Nueva versión de BD, endpoints y modificación de SPs.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Nueva versión de BD, endpoints y modificación de SPs.\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/AGServicios$app.coverage\" NAME=\"app Coverage Results\" MODIFIED=\"1699180152460\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/AGSAPIRest\" />\r\n    <SUITE FILE_PATH=\"coverage/AGServicios$add_user.coverage\" NAME=\"add_user Coverage Results\" MODIFIED=\"1699172683478\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/AGSAPIRest/Functions\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/.idea/workspace.xml	(date 1699313141329)
+@@ -4,107 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="799ee9dd-345c-4feb-ae7e-882bc3f24b48" name="Changes" comment="Sacar el app afuera">
+-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/.idea/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/.idea/.name" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/.idea/compiler.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/.idea/gradle.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/.idea/kotlinc.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/.idea/misc.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/build.gradle.kts" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/proguard-rules.pro" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/androidTest/java/com/hytan/agserviciosv1/ExampleInstrumentedTest.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/AndroidManifest.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/MainActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/ui/theme/Color.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/ui/theme/Theme.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/com/hytan/agserviciosv1/ui/theme/Type.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/controllers/LoginController.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/database/userDatabase.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/AgregarMaquinaActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/ConsultarClienteActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/ConsultarMaquinaActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/EditarMaquinaActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/EliminarClienteActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/EliminarMaquinaActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/LoginActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/MainMenuActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/MenuGestionSistemaActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/java/views/MenuMaquinariaActivity.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/agregar.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/baseline_maximize_24.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/borrar.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/consulta.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/editar.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/flecha_spinner.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/informe.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/linea_texto.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/linerecta.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/logo.png" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/logomini.png" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/mante.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/maquina.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/people.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/rectangulo.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/reporte.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/rounded_button.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/rounded_buttonpopup.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/rounded_txf.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/roundedpopup.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/sistemas.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/style_spinner.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/tecnico.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/drawable/volver.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/font/lexend.ttf" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_agregar_maquina.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_consultar_cliente.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_consultar_maquina.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_editar_maquina.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_cliente.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_eliminar_maquina.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_login.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_main_menu.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_menu_gestion_sistema.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/activity_menu_maquinaria.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/popup_eliminarmaquina.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/popupinformativo.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/popuplogin.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/layout/spinner_text_color.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/values/colors.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/values/strings.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/values/themes.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/app/src/test/java/com/hytan/agserviciosv1/ExampleUnitTest.kt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/build.gradle.kts" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/gradle.properties" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/gradlew" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/gradlew.bat" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/AGSFrontEnd/settings.gradle.kts" beforeDir="false" />
+-    </list>
++    <list default="true" id="799ee9dd-345c-4feb-ae7e-882bc3f24b48" name="Changes" comment="Sacar el app afuera" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -129,9 +29,9 @@
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+-  <component name="ProjectColorInfo">{
+-  &quot;associatedIndex&quot;: 4
+-}</component>
++  <component name="ProjectColorInfo"><![CDATA[{
++  "associatedIndex": 5
++}]]></component>
+   <component name="ProjectId" id="2XKUJY2X8u636kVD7WEiEvfl29c" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+@@ -139,24 +39,10 @@
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+     "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "Alonso",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
++    "git-widget-placeholder": "main",
+     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+     "vue.rearranger.settings.migration": "true"
+-  },
+-  "keyToStringList": {
+-    "DatabaseDriversLRU": [
+-      "sqlserver"
+-    ]
+   }
+ }]]></component>
+   <component name="RecentsManager">
+@@ -179,6 +65,7 @@
+       <workItem from="1699164600487" duration="15745000" />
+       <workItem from="1699211616826" duration="656000" />
+       <workItem from="1699212292333" duration="676000" />
++      <workItem from="1699312708734" duration="94000" />
+     </task>
+     <task id="LOCAL-00001" summary="Nuevos y modificados SPs">
+       <option name="closed" value="true" />
+@@ -218,8 +105,4 @@
+     <MESSAGE value="Nueva versión de BD, endpoints y modificación de SPs." />
+     <option name="LAST_COMMIT_MESSAGE" value="Nueva versión de BD, endpoints y modificación de SPs." />
+   </component>
+-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+-    <SUITE FILE_PATH="coverage/AGServicios$app.coverage" NAME="app Coverage Results" MODIFIED="1699180152460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AGSAPIRest" />
+-    <SUITE FILE_PATH="coverage/AGServicios$add_user.coverage" NAME="add_user Coverage Results" MODIFIED="1699172683478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AGSAPIRest/Functions" />
+-  </component>
+ </project>
+\ No newline at end of file
+Index: AGSFrontEnd/gradlew
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#!/usr/bin/env sh\r\n\r\n#\r\n# Copyright 2015 the original author or authors.\r\n#\r\n# Licensed under the Apache License, Version 2.0 (the \"License\");\r\n# you may not use this file except in compliance with the License.\r\n# You may obtain a copy of the License at\r\n#\r\n#      https://www.apache.org/licenses/LICENSE-2.0\r\n#\r\n# Unless required by applicable law or agreed to in writing, software\r\n# distributed under the License is distributed on an \"AS IS\" BASIS,\r\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\r\n# See the License for the specific language governing permissions and\r\n# limitations under the License.\r\n#\r\n\r\n##############################################################################\r\n##\r\n##  Gradle start up script for UN*X\r\n##\r\n##############################################################################\r\n\r\n# Attempt to set APP_HOME\r\n# Resolve links: $0 may be a link\r\nPRG=\"$0\"\r\n# Need this for relative symlinks.\r\nwhile [ -h \"$PRG\" ] ; do\r\n    ls=`ls -ld \"$PRG\"`\r\n    link=`expr \"$ls\" : '.*-> \\(.*\\)$'`\r\n    if expr \"$link\" : '/.*' > /dev/null; then\r\n        PRG=\"$link\"\r\n    else\r\n        PRG=`dirname \"$PRG\"`\"/$link\"\r\n    fi\r\ndone\r\nSAVED=\"`pwd`\"\r\ncd \"`dirname \\\"$PRG\\\"`/\" >/dev/null\r\nAPP_HOME=\"`pwd -P`\"\r\ncd \"$SAVED\" >/dev/null\r\n\r\nAPP_NAME=\"Gradle\"\r\nAPP_BASE_NAME=`basename \"$0\"`\r\n\r\n# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.\r\nDEFAULT_JVM_OPTS='\"-Xmx64m\" \"-Xms64m\"'\r\n\r\n# Use the maximum available, or set MAX_FD != -1 to use that value.\r\nMAX_FD=\"maximum\"\r\n\r\nwarn () {\r\n    echo \"$*\"\r\n}\r\n\r\ndie () {\r\n    echo\r\n    echo \"$*\"\r\n    echo\r\n    exit 1\r\n}\r\n\r\n# OS specific support (must be 'true' or 'false').\r\ncygwin=false\r\nmsys=false\r\ndarwin=false\r\nnonstop=false\r\ncase \"`uname`\" in\r\n  CYGWIN* )\r\n    cygwin=true\r\n    ;;\r\n  Darwin* )\r\n    darwin=true\r\n    ;;\r\n  MINGW* )\r\n    msys=true\r\n    ;;\r\n  NONSTOP* )\r\n    nonstop=true\r\n    ;;\r\nesac\r\n\r\nCLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar\r\n\r\n\r\n# Determine the Java command to use to start the JVM.\r\nif [ -n \"$JAVA_HOME\" ] ; then\r\n    if [ -x \"$JAVA_HOME/jre/sh/java\" ] ; then\r\n        # IBM's JDK on AIX uses strange locations for the executables\r\n        JAVACMD=\"$JAVA_HOME/jre/sh/java\"\r\n    else\r\n        JAVACMD=\"$JAVA_HOME/bin/java\"\r\n    fi\r\n    if [ ! -x \"$JAVACMD\" ] ; then\r\n        die \"ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME\r\n\r\nPlease set the JAVA_HOME variable in your environment to match the\r\nlocation of your Java installation.\"\r\n    fi\r\nelse\r\n    JAVACMD=\"java\"\r\n    which java >/dev/null 2>&1 || die \"ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.\r\n\r\nPlease set the JAVA_HOME variable in your environment to match the\r\nlocation of your Java installation.\"\r\nfi\r\n\r\n# Increase the maximum file descriptors if we can.\r\nif [ \"$cygwin\" = \"false\" -a \"$darwin\" = \"false\" -a \"$nonstop\" = \"false\" ] ; then\r\n    MAX_FD_LIMIT=`ulimit -H -n`\r\n    if [ $? -eq 0 ] ; then\r\n        if [ \"$MAX_FD\" = \"maximum\" -o \"$MAX_FD\" = \"max\" ] ; then\r\n            MAX_FD=\"$MAX_FD_LIMIT\"\r\n        fi\r\n        ulimit -n $MAX_FD\r\n        if [ $? -ne 0 ] ; then\r\n            warn \"Could not set maximum file descriptor limit: $MAX_FD\"\r\n        fi\r\n    else\r\n        warn \"Could not query maximum file descriptor limit: $MAX_FD_LIMIT\"\r\n    fi\r\nfi\r\n\r\n# For Darwin, add options to specify how the application appears in the dock\r\nif $darwin; then\r\n    GRADLE_OPTS=\"$GRADLE_OPTS \\\"-Xdock:name=$APP_NAME\\\" \\\"-Xdock:icon=$APP_HOME/media/gradle.icns\\\"\"\r\nfi\r\n\r\n# For Cygwin or MSYS, switch paths to Windows format before running java\r\nif [ \"$cygwin\" = \"true\" -o \"$msys\" = \"true\" ] ; then\r\n    APP_HOME=`cygpath --path --mixed \"$APP_HOME\"`\r\n    CLASSPATH=`cygpath --path --mixed \"$CLASSPATH\"`\r\n\r\n    JAVACMD=`cygpath --unix \"$JAVACMD\"`\r\n\r\n    # We build the pattern for arguments to be converted via cygpath\r\n    ROOTDIRSRAW=`find -L / -maxdepth 1 -mindepth 1 -type d 2>/dev/null`\r\n    SEP=\"\"\r\n    for dir in $ROOTDIRSRAW ; do\r\n        ROOTDIRS=\"$ROOTDIRS$SEP$dir\"\r\n        SEP=\"|\"\r\n    done\r\n    OURCYGPATTERN=\"(^($ROOTDIRS))\"\r\n    # Add a user-defined pattern to the cygpath arguments\r\n    if [ \"$GRADLE_CYGPATTERN\" != \"\" ] ; then\r\n        OURCYGPATTERN=\"$OURCYGPATTERN|($GRADLE_CYGPATTERN)\"\r\n    fi\r\n    # Now convert the arguments - kludge to limit ourselves to /bin/sh\r\n    i=0\r\n    for arg in \"$@\" ; do\r\n        CHECK=`echo \"$arg\"|egrep -c \"$OURCYGPATTERN\" -`\r\n        CHECK2=`echo \"$arg\"|egrep -c \"^-\"`                                 ### Determine if an option\r\n\r\n        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition\r\n            eval `echo args$i`=`cygpath --path --ignore --mixed \"$arg\"`\r\n        else\r\n            eval `echo args$i`=\"\\\"$arg\\\"\"\r\n        fi\r\n        i=`expr $i + 1`\r\n    done\r\n    case $i in\r\n        0) set -- ;;\r\n        1) set -- \"$args0\" ;;\r\n        2) set -- \"$args0\" \"$args1\" ;;\r\n        3) set -- \"$args0\" \"$args1\" \"$args2\" ;;\r\n        4) set -- \"$args0\" \"$args1\" \"$args2\" \"$args3\" ;;\r\n        5) set -- \"$args0\" \"$args1\" \"$args2\" \"$args3\" \"$args4\" ;;\r\n        6) set -- \"$args0\" \"$args1\" \"$args2\" \"$args3\" \"$args4\" \"$args5\" ;;\r\n        7) set -- \"$args0\" \"$args1\" \"$args2\" \"$args3\" \"$args4\" \"$args5\" \"$args6\" ;;\r\n        8) set -- \"$args0\" \"$args1\" \"$args2\" \"$args3\" \"$args4\" \"$args5\" \"$args6\" \"$args7\" ;;\r\n        9) set -- \"$args0\" \"$args1\" \"$args2\" \"$args3\" \"$args4\" \"$args5\" \"$args6\" \"$args7\" \"$args8\" ;;\r\n    esac\r\nfi\r\n\r\n# Escape application args\r\nsave () {\r\n    for i do printf %s\\\\n \"$i\" | sed \"s/'/'\\\\\\\\''/g;1s/^/'/;\\$s/\\$/' \\\\\\\\/\" ; done\r\n    echo \" \"\r\n}\r\nAPP_ARGS=`save \"$@\"`\r\n\r\n# Collect all arguments for the java command, following the shell quoting and substitution rules\r\neval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS \"\\\"-Dorg.gradle.appname=$APP_BASE_NAME\\\"\" -classpath \"\\\"$CLASSPATH\\\"\" org.gradle.wrapper.GradleWrapperMain \"$APP_ARGS\"\r\n\r\nexec \"$JAVACMD\" \"$@\"\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSFrontEnd/gradlew b/AGSFrontEnd/gradlew
+--- a/AGSFrontEnd/gradlew	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSFrontEnd/gradlew	(date 1699313141379)
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env sh
++#!/usr/bin/.env sh
+ 
+ #
+ # Copyright 2015 the original author or authors.
+Index: AGSAPIRest/Functions/add_user.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import bcrypt\r\nimport json\r\n\r\nfrom flask import request, jsonify\r\nfrom sqlalchemy import text\r\n\r\n\r\ndef add_user(engine):\r\n    data = request.get_json()\r\n    username = data.get('username')\r\n    name = data.get('name')\r\n    number = data.get('number')\r\n    password = data.get('password')\r\n    password = password.encode('utf-8')\r\n    password = bcrypt.hashpw(password, bcrypt.gensalt())\r\n\r\n    try:\r\n        conn = engine.connect()\r\n        result = conn.execute(\r\n            text(\"EXEC sp_add_user @username = :username, @name = :name, @number = :number, @password = :password\"),\r\n            {'username': username, 'name': name, 'number': number, 'password': password}).scalar()\r\n        conn.commit()\r\n        conn.close()\r\n\r\n        data_json = json.loads(result)\r\n\r\n        if data_json.get(\"result\") == 1:\r\n            return jsonify({'message': data_json.get(\"description\")}), 200\r\n        else:\r\n            return jsonify({'message': data_json.get(\"description\")}), 401\r\n\r\n    except Exception as e:\r\n        return jsonify({'message': str(e)}), 401\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AGSAPIRest/Functions/add_user.py b/AGSAPIRest/Functions/add_user.py
+--- a/AGSAPIRest/Functions/add_user.py	(revision ea640291af4593de943d16cc4db811abe95a3e5d)
++++ b/AGSAPIRest/Functions/add_user.py	(date 1699313141396)
+@@ -30,4 +30,5 @@
+             return jsonify({'message': data_json.get("description")}), 401
+ 
+     except Exception as e:
+-        return jsonify({'message': str(e)}), 401
++        print(str(e))
++        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
