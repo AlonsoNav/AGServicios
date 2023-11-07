@@ -6,7 +6,7 @@ def get_type(engine):
     name = data.get('name')
 
     try:
-        name.strip()
+        name = name.strip()
         if name:
             query = text("EXEC sp_get_type @name = :name"), {'name': name}
         else:
