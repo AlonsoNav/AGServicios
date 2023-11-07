@@ -13,14 +13,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rounded_button"
+        android:fontFamily="@font/lexend"
         android:text="Consultar máquina"
+        android:textAllCaps="false"
         android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.961" />
+        app:layout_constraintTop_toBottomOf="@+id/editSerialConsultarMaquina"
+        app:layout_constraintVertical_bias="0.15" />
 
     <Button
         android:id="@+id/buttonVolverConsultarMaquina"
