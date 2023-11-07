@@ -17,7 +17,7 @@
         android:gravity="center"
         android:text="Consulta de marcas"
         android:textColor="@color/white"
-        android:textSize="45dp"
+        android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
@@ -53,7 +53,7 @@
         app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.246" />
+        app:layout_constraintVertical_bias="0.216" />
 
     <EditText
         android:id="@+id/editNombreConsultaMarca"
@@ -65,14 +65,14 @@
         android:ems="10"
         android:fontFamily="@font/lexend"
         android:inputType="text"
-        android:maxLength="16"
+        android:maxLength="50"
         android:textColor="#2d2a2a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309"
+        app:layout_constraintVertical_bias="0.278"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -85,7 +85,7 @@
         app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.246" />
+        app:layout_constraintVertical_bias="0.216" />
 
     <Button
         android:id="@+id/buttonConsultarMarca"
@@ -93,18 +93,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="380dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/lexend"
-        android:text="Consultar marca"
+        android:text="Consultar tipo de maquinaria"
         android:textAllCaps="false"
         android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNombreConsultaMarca" />
+        app:layout_constraintTop_toBottomOf="@+id/editNombreConsultaMarca"
+        app:layout_constraintVertical_bias="0.15" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

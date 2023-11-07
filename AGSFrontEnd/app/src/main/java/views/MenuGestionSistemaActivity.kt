@@ -142,6 +142,11 @@ class MenuGestionSistemaActivity : AppCompatActivity() {
             finish()
         }
 
+        editarGC.setOnClickListener{
+            val editarGC = Intent(this, EditarClienteActivity::class.java)
+            startActivity(editarGC)
+            finish()
+        }
 
     }
 

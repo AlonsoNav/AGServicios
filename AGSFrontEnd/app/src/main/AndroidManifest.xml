@@ -32,6 +32,22 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:name="views.AgregarMarcaActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="views.EditarMarcaActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="views.EliminarMarcaActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="views.ConsultarMarcaActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="views.AgregarTipoDeMaquinariaActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -65,6 +81,10 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name="views.EliminarClienteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="views.EditarClienteActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity

@@ -20,20 +20,20 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val editTextUser = findViewById<EditText>(R.id.editTextUser)
-        val editTextPassword= findViewById<EditText>(R.id.editTextPassword)
+        val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
         val buttonLogin = findViewById<Button>(R.id.buttonLogin)
 
-        buttonLogin.setOnClickListener{
+        buttonLogin.setOnClickListener {
             val username = editTextUser.text.toString()
-            val password =  editTextPassword.text.toString()
-            val login = loginController.loginAttempt(username,password,this) { response ->
+            val password = editTextPassword.text.toString()
+            val login = loginController.loginAttempt(username, password, this) { response ->
                 if (response.isSuccessful) {
-                    val Intent = Intent(this,MainMenuActivity::class.java)
+                    val Intent = Intent(this, MainMenuActivity::class.java)
                     startActivity(Intent)
                     finish()
                 } else {
                     val jsonString = response.body?.string()
-                    runOnUiThread{
+                    runOnUiThread {
                         val dialog = Dialog(this)
                         dialog.getWindow()
                             ?.setBackgroundDrawableResource(android.R.color.transparent);
@@ -54,4 +54,5 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+}
 
