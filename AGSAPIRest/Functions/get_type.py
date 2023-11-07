@@ -6,14 +6,19 @@ def get_type(engine):
     name = data.get('name')
 
     try:
+        name.strip()
+        if name:
+            query = text("EXEC sp_get_type @name = :name"), {'name': name}
+        else:
+            query = text("EXEC sp_get_all_types"), {}
         conn = engine.connect()
-        result = conn.execute(
-            text("EXEC sp_get_type @name = :name"), {'name': name}).fetchone()
+        result = conn.execute(query[0], query[1]).fetchall()
         conn.commit()
         conn.close()
 
         if result:
-            return jsonify({'message': "Nombre: {} - Descripción: {}".format(result.name, result.description)}), 200
+            type_list = [{'name': row.name, 'description': row.description} for row in result]
+            return jsonify({'types': type_list}), 200
         else:
             return jsonify({'message': 'El usuario no existe.'}), 401
 
