@@ -2,78 +2,84 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_update_brand
 GO
-CREATE PROCEDURE sp_update_brand
-	@name VARCHAR(50),
-    @newName VARCHAR(50) = NULL,
-    @description VARCHAR(100) = NULL
+CREATE PROCEDURE [dbo].[sp_update_brand]
+    @inName VARCHAR(50),
+    @inNewName VARCHAR(50) = NULL,
+    @inDescription VARCHAR(100) = NULL
 AS
 BEGIN
-    SET NOCOUNT ON;
-    BEGIN TRY
-		DECLARE @idBrand INT;
-        DECLARE @output NVARCHAR(200);
+    SET nocount ON;
+    SET TRANSACTION isolation level READ uncommitted;
+    DECLARE @idBrand INT;
+    SET @inNewName = Ltrim(Rtrim(@inNewName));
+    SET @inDescription = Ltrim(Rtrim(@inDescription));
+    DECLARE @output VARCHAR(200);
 
-        BEGIN TRANSACTION;
-		SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
-
-        SET @idBrand = ISNULL((SELECT TOP 1 idBrand FROM brands WHERE LOWER([name]) = LOWER(@name) and available = 1), 0);
+    BEGIN try
+        SET @idBrand = Isnull(
+                      (
+                          SELECT TOP 1
+                              idBrand
+                          FROM [dbo].[brands]
+                          WHERE Lower([name]) = Lower(@inName)
+                                AND available = 1
+                      ),
+                      0
+                            )
 
         IF @idBrand <> 0
         BEGIN
-            DECLARE @sql NVARCHAR(MAX);
-            SET @sql = N'UPDATE brands SET ';
-
-            IF LEN(LTRIM(RTRIM(@newName))) > 0
-                SET @sql = @sql + N'[name] = @newName ';
-
-            IF LEN(LTRIM(RTRIM(@description))) > 0
+            IF EXISTS
+            (
+                SELECT 1
+                FROM [dbo].[brands]
+                WHERE Lower([name]) = Lower(@inName)
+                    AND [available] = 1
+            )
             BEGIN
-                IF LEN(LTRIM(RTRIM(@newName))) > 0
-                    SET @sql = @sql + N', ';
+                
+                    IF NOT Len(@inDescription) = 0
+                    BEGIN
+                        BEGIN TRANSACTION;
 
-                SET @sql = @sql + N'[description] = @description ';
-            END
+                        UPDATE [dbo].[brands]
+                        SET [description] = @inDescription
+                        WHERE idBrand = Lower(@idBrand);
 
-            SET @sql = @sql + N'WHERE idBrand = @idBrand';
+                        COMMIT TRANSACTION
+                    END
+                
+                    IF NOT Len(@inNewName) = 0
+                    BEGIN
+                        BEGIN TRANSACTION;
 
-            EXEC sp_executesql @sql,
-                N'@newName VARCHAR(50), @description VARCHAR(100), @idBrand INT',
-                @newName, @description, @idBrand;
+                        UPDATE [dbo].[brands]
+                        SET [name] = @inNewName
+                        WHERE idBrand = Lower(@idBrand);
 
-            IF @@ROWCOUNT > 0
-            BEGIN
-                COMMIT;
-                INSERT INTO dbo.EventLog (description, postTime)
-                VALUES ('Brand updated <' + ISNULL(@newName, @name) + '>'
-                    , GETDATE());
+                        COMMIT TRANSACTION;
+                    END
+                
 
-                SET @output = '{"result": 1, "description": "Brand updated successfully."}';
-            END
-            ELSE
-            BEGIN
-                ROLLBACK;
-                INSERT INTO dbo.EventLog (description, postTime)
-                VALUES ('Brand update failed - No changes were made for brand <' + @name + '>.'
-                    , GETDATE());
-
-                SET @output = '{"result": 0, "description": "Brand update failed: No changes were made."}';
+                SET @output = '{"result": 1, "description": "Marca editada exitosamente."}';
             END
         END
         ELSE
         BEGIN
-            INSERT INTO dbo.EventLog (description, postTime)
-            VALUES ('Brand update failed - Brand with name <' + @name + '> does not exist.'
-                , GETDATE());
-
-            SET @output = '{"result": 0, "description": "Brand update failed: Brand does not exist."}';
+            SET @output
+                = '{"result": 0, "description": "Error: marca no disponible"}';
         END
+    END try
+    BEGIN catch
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
 
-        SELECT @output;
-    END TRY
-    BEGIN CATCH
-        IF XACT_STATE() = 1
-            ROLLBACK;
+        SET @output = '{"result": 0, "description": "Error inesperado"}';
+    END catch
 
-        SELECT '{"result": 0, "description": "An error occurred during the update."}';
-    END CATCH;
+    SELECT @output;
+
+    SET nocount OFF;
 END
+
+go

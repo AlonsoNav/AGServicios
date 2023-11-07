@@ -2,70 +2,99 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_update_type
 GO
-CREATE PROCEDURE sp_update_type
-@inName VARCHAR(50),
-    @inNewName VARCHAR(50) = NULL,
-    @inDescription VARCHAR(100) = NULL
+CREATE PROCEDURE [dbo].[sp_update_type]
+    @inName VARCHAR(50),
+    @inNewName VARCHAR(50),
+    @inDescription VARCHAR(100)
 AS
 BEGIN
-    SET NOCOUNT ON
-    DECLARE @output AS VARCHAR(MAX);
-    DECLARE @idType INT;
+    SET nocount ON;
+    SET TRANSACTION isolation level READ uncommitted;
+    DECLARE @idTypeMachine INT;
+    SET @inDescription = Ltrim(Rtrim(@inDescription));
+    SET @inNewName = Ltrim(Rtrim(@inNewName));
+    DECLARE @output VARCHAR(200);
 
-    BEGIN TRY
-        BEGIN TRANSACTION;
+    BEGIN try
 
-        SET @idType = ISNULL((SELECT TOP 1 idTypeMachine FROM [dbo].[typesMachine] WHERE LOWER([name]) = LOWER(@inName) and available = 1), 0)
-        IF @idType <> 0
+        SET @idTypeMachine = Isnull(
+            (
+                SELECT TOP 1
+                    idTypeMachine
+                FROM [dbo].[typesMachine]
+                WHERE Lower([name]) = Lower(@inName)
+                    AND available = 1
+            ),
+            0
+                )
+        IF @idTypeMachine <> 0
         BEGIN
-            DECLARE @sql NVARCHAR(MAX) = 'UPDATE [dbo].[typesMachine] SET';
-            DECLARE @Success INT = 0;
-
-            IF @inNewName IS NOT NULL
+            IF NOT EXISTS
+            (
+                SELECT 1
+                FROM [dbo].[typesmachine]
+                WHERE Lower([name]) = Lower(@inNewName)
+            )
             BEGIN
-                SET @sql = @sql + ' [name] = @inNewName';
-                SET @Success = 1;
-            END
+                IF EXISTS
+                (
+                    SELECT 1
+                    FROM [dbo].[typesmachine]
+                    WHERE Lower([name]) = Lower(@inName)
+                          AND available = 1
+                )
+                
+                    BEGIN
+                        IF NOT Len(@inDescription) = 0
+                        BEGIN
+                            BEGIN TRANSACTION;
 
-            IF @inDescription IS NOT NULL
-            BEGIN
-                IF @Success = 1
-                BEGIN
-                    SET @sql = @sql + ',';
+                            UPDATE [dbo].[typesmachine]
+                            SET [description] = @inDescription
+                            WHERE idTypeMachine = @idTypeMachine;
+
+                            COMMIT TRANSACTION;
+                        END
+                    
+                        IF NOT Len(@inNewName) = 0
+                            BEGIN
+                            BEGIN TRANSACTION;
+                            UPDATE [dbo].[typesmachine]
+                            SET [name] = @inNewName
+                            WHERE idTypeMachine = @idTypeMachine;
+                            COMMIT TRANSACTION;
+                        END
+                    
+
+                    SET @output = '{"result": 1, "description": "Maquinaria editada exitosamente."}';
                 END
-                SET @sql = @sql + ' [description] = @inDescription';
-                SET @Success = 1;
+                ELSE
+                BEGIN
+                    SET @output
+                        = '{"result": 0, "description": "Error: tipo de máquina no disponible"}';
+                END
             END
-
-            SET @sql = @sql + ' WHERE idTypeMachine = @idType';
-
-            EXEC sp_executesql @sql, N'@inNewName VARCHAR(50), @inDescription VARCHAR(100), @inName VARCHAR(50)', @inNewName, @inDescription, @inName;
-
-            INSERT INTO dbo.EventLog (description, postTime)
-            VALUES ('Machine type updated <TypeMachine: ' + COALESCE(@inNewName, 'Unchanged') + ' - Description: ' + COALESCE(@inDescription, 'Unchanged') + '>', GETDATE());
-
-            COMMIT;
-
-            SET @output = '{"success": 1, "description": "Machine type updated successfully."}';
+            ELSE
+            BEGIN
+                SET @output
+                    = '{"result": 0, "description": "Error: tipo de máquina ya existe"}';
+            END
         END
         ELSE
         BEGIN
-            INSERT INTO dbo.EventLog (description, postTime)
-            VALUES ('Machine type update failed - TypeMachine with name ' + @inName + ' does not exist.', GETDATE());
-
-            ROLLBACK;
-            SET @output = '{"success": 0, "description": "Machine type update failed - TypeMachine with name ' + @inName + ' does not exist."}';
+            SET @output
+                        = '{"result": 0, "description": "Error: tipo de máquina no disponible"}';
         END
-    END TRY
-    BEGIN CATCH
+
+    END try
+    BEGIN catch
         IF @@TRANCOUNT > 0
-            ROLLBACK;
-
-        INSERT INTO dbo.EventLog (description, postTime)
-        VALUES ('An error occurred while updating the machine type.', GETDATE());
-
-        SET @output = '{"success": 0, "description": "An error occurred while updating the machine type."}';
-    END CATCH
-
+            ROLLBACK TRANSACTION;
+        SET @output
+            = '{"result": 0, "description": "Error inesperado en el servidor"}';
+    END catch
     SELECT @output;
+    SET nocount OFF;
 END
+
+go

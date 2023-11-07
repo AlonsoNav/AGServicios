@@ -2,39 +2,84 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_add_brand
 GO
-CREATE PROCEDURE sp_add_brand
+CREATE PROCEDURE [dbo].[sp_add_brand]
     @name VARCHAR(50),
-	@description VARCHAR(100)
+    @description VARCHAR(80)
 AS
 BEGIN
-    SET NOCOUNT ON
+    SET nocount ON
+    SET TRANSACTION isolation level READ uncommitted;
+
+    DECLARE @idType INT;
     DECLARE @output VARCHAR(200);
+    SET @name = Ltrim(Rtrim(@name));
+    SET @description = Ltrim(Rtrim(@description));
 
-    BEGIN TRY
-        BEGIN TRANSACTION;
-        SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
-
-        IF NOT EXISTS (SELECT 1 FROM brands WHERE LOWER([name]) = LOWER(@name))
+    BEGIN try
+        IF Len(@name) = 0
         BEGIN
-            INSERT INTO brands (name, description)
-            VALUES (@name, @description);
+            SET @output = '{"result": 0, "description": "Error: Nombre vacío"}';
+            SELECT @output;
+            RETURN;
+        END
 
-            INSERT INTO dbo.EventLog (description, postTime)
-            VALUES ('New brand added <' + @name + '>', GETDATE());
+        IF Len(@description) = 0
+        BEGIN
+            SET @output = '{"result": 0, "description": "Error: Descripción vacía"}';
 
-            SET @output = '{"result": 1, "description": "Marca añadida exitosamente"}';
+            SELECT @output;
+
+            RETURN;
+        END
+
+        SELECT @idType = Isnull(
+                (
+                    SELECT TOP 1
+                        idBrand
+                    FROM brands
+                    WHERE Lower([name]) = Lower(@name)
+                    AND available = 1
+                ),
+                0
+                    );
+
+        IF @idType = 0
+        BEGIN
+
+            BEGIN TRANSACTION;
+
+            INSERT INTO brands
+            (
+                [name],
+                [description]
+            )
+            VALUES
+            (@name, @description);
+
+            SET @output = '{"result": 1, "description": "Marca agregada con éxito"}';
 
             COMMIT TRANSACTION;
+        
         END
         ELSE
         BEGIN
-            SET @output = '{"result": 0, "description": "Inserción de marca fallida: la marca ya existe"}';
+
+            SET @output
+                = '{"result": 0, "description": "Error: El nombre ya existe"}';
         END
-    END TRY
-    BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        SET @output = '{"result": 0, "description": "Error al añadir la marca: ' + ERROR_MESSAGE() + '"}';
-    END CATCH
+    END try
+    BEGIN catch
+        IF @@TRANCOUNT > 0 -- error sucedio dentro de la transaccion
+        BEGIN
+            ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
+        END;
+
+        SET @output = '{"result": 0, "description": "Error inesperado en el servidor"}';
+    END catch
 
     SELECT @output;
+
+    SET nocount OFF;
 END
+
+go

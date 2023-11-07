@@ -32,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(Intent)
                     finish()
                 } else {
+                    val jsonString = response.body?.string()
                     runOnUiThread{
                         val dialog = Dialog(this)
                         dialog.getWindow()
@@ -42,7 +43,6 @@ class LoginActivity : AppCompatActivity() {
                         dialog.setCancelable(true)
                         val closeButton = dialog.findViewById<Button>(R.id.buttonListoPUP)
                         val textViewPopup = dialog.findViewById<TextView>(R.id.textViewPUP)
-                        val jsonString = response.body?.string()
                         val jsonObject = JsonParser().parse(jsonString).asJsonObject
                         textViewPopup.text = jsonObject.get("message").asString
                         closeButton.setOnClickListener {
@@ -52,11 +52,6 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
-            }
-
-
-
         }
     }
-}
 

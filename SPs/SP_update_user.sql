@@ -2,82 +2,94 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_update_user
 GO
-CREATE PROCEDURE sp_update_user
+CREATE PROCEDURE [dbo].[sp_update_user]
     @inUsername VARCHAR(16),
-    @inNewName VARCHAR(80) = NULL,
-    @inNewNumber INT = NULL,
-    @inNewPassword VARBINARY(MAX) = NULL
+    @inNewUsername VARCHAR(16),
+    @inNewName VARCHAR(80),
+    @inNewNumber INT,
+    @inNewPassword VARBINARY(max)
 AS
 BEGIN
-    SET NOCOUNT ON
-    DECLARE @output AS NVARCHAR(MAX);
+    SET nocount ON
+    SET TRANSACTION isolation level READ uncommitted;
+
+    DECLARE @output AS NVARCHAR(200);
     DECLARE @idUser INT;
+    SET @inNewUsername = Ltrim(Rtrim(@inNewUsername));
+    SET @inNewName = Ltrim(Rtrim(@inNewName));
 
-    BEGIN TRY
-        BEGIN TRANSACTION; 
+    BEGIN try
+        SET @idUser = Isnull(
+                      (
+                          SELECT TOP 1
+                              iduser
+                          FROM [dbo].[users]
+                          WHERE Lower([username]) = Lower(@inUsername)
+                                AND available = 1
+                                AND [isadmin] = 0
+                      ),
+                      0
+                            )
 
-        SET @idUser = ISNULL((SELECT TOP 1 idUser FROM [dbo].[users] WHERE LOWER([username]) = LOWER(@inUsername) and available = 1), 0)
         IF @idUser <> 0
         BEGIN
-            DECLARE @sql NVARCHAR(MAX) = 'UPDATE [dbo].[users] SET';
-            DECLARE @Success INT = 0;
-
-            IF @inNewName IS NOT NULL
-            BEGIN
-                IF @Success = 1
+            
+                IF NOT Len(@inNewUsername) = 0
                 BEGIN
-                    SET @sql = @sql + ',';
-                END
-                SET @sql = @sql + ' [name] = @inNewName';
-                SET @Success = 1;
-            END
+                    BEGIN TRANSACTION;
 
-            IF @inNewNumber IS NOT NULL
-            BEGIN
-                IF @Success = 1
+                    UPDATE [dbo].[users]
+                    SET [username] = @inNewUsername
+                    WHERE iduser = @idUser;
+
+                    COMMIT TRANSACTION
+                END
+                
+
+                IF NOT Len(@inNewName) = 0
+
                 BEGIN
-                    SET @sql = @sql + ',';
-                END
-                SET @sql = @sql + ' [number] = @inNewNumber';
-                SET @Success = 1;
-            END
+                    BEGIN TRANSACTION;
 
-            IF @inNewPassword IS NOT NULL
-            BEGIN
-                IF @Success = 1
+                    UPDATE [dbo].[users]
+                    SET NAME = @inNewName
+                    WHERE iduser = @idUser;
+
+                    COMMIT TRANSACTION    
+                END
+            
+                IF NOT @inNewNumber = 0 --ni idea de cómo se maneje en la app los números
                 BEGIN
-                    SET @sql = @sql + ',';
+                    BEGIN TRANSACTION;
+                    UPDATE [dbo].[users]
+                    SET number = @inNewNumber
+                    WHERE iduser = @idUser;
+                    COMMIT TRANSACTION
                 END
-                SET @sql = @sql + ' [password] = @inNewPassword';
-                SET @Success = 1;
-            END
+                
 
+            
+                BEGIN TRANSACTION;
+                    UPDATE [dbo].[users]
+                    SET password = @inNewPassword
+                    WHERE iduser = @idUser;
+                COMMIT TRANSACTION
 
-            SET @sql = @sql + ' WHERE idUser = @idUser';
-
-            EXEC sp_executesql @sql, N'@inNewName VARCHAR(80), @inNewNumber INT, @inNewPassword VARBINARY(MAX), @inUsername VARCHAR(16)', @inNewName, @inNewNumber, @inNewPassword, @inUsername;
-
-            INSERT INTO dbo.EventLog (description, postTime)
-            VALUES ('User updated <name ' + COALESCE(@inNewName, 'Unchanged') + '- number ' + COALESCE(CAST(@inNewNumber AS VARCHAR), 'Unchanged') + '>',
-                GETDATE());
-
-            COMMIT;
-            SET @output = '{"success": 1, "description": "User updated successfully."}';
+            SET @output = '{"success": 1, "description": "Usuario editado exitosamente"}';
         END
         ELSE
         BEGIN
-            SET @output = '{"success": 0, "description": "User update failed - User with username ' + @inUsername + ' does not exist."}';
+            SET @output
+                = '{"success": 0, "description": "Error: usuario no existe o no es admin"}';
         END
-    END TRY
-    BEGIN CATCH
+    END try
+    BEGIN catch
         IF @@TRANCOUNT > 0
             ROLLBACK;
-
-        INSERT INTO dbo.EventLog (description, postTime)
-        VALUES ('An error occurred while updating the user.', GETDATE());
-
-        SET @output = '{"success": 0, "description": "An error occurred while updating the user."}';
-    END CATCH
+        SET @output = '{"success": 0, "description": "Error inesperado en el servidor"}';
+    END catch
 
     SELECT @output;
 END
+
+go

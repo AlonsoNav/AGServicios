@@ -2,34 +2,53 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_delete_user
 GO
-CREATE PROCEDURE sp_delete_user
-	@username VARCHAR(16)
+CREATE PROCEDURE [dbo].[Sp_delete_user] @username VARCHAR(16)
 AS
-BEGIN
-    SET NOCOUNT ON
-	DECLARE @idUser INT;
-    DECLARE @output VARCHAR(200);
+  BEGIN
+      SET nocount ON
 
-    SELECT @idUser = ISNULL((SELECT TOP 1 idUser FROM users WHERE LOWER([username]) = LOWER(@username) and available = 1), 0)
+      BEGIN try
+          DECLARE @idUser INT;
+          DECLARE @output NVARCHAR(200);
 
-    IF @idUser <> 0
-    BEGIN
-        UPDATE users SET available = 0 WHERE idUser = @idUser;
+          SELECT @idUser = Isnull((SELECT TOP 1 iduser
+                                   FROM   users
+                                   WHERE  Lower([username]) = Lower(@username)
+                                          AND available = 1
+                                          AND [isadmin] = 0), 0)
 
-        INSERT INTO dbo.EventLog (description, postTime)
-        VALUES ('Usuario eliminado <Nombre de usuario: ' + @username + '>'
-            , GETDATE());
+          IF @idUser <> 0
+            BEGIN
+                BEGIN TRANSACTION
 
-        SET @output = '{"result": 1, "description": "Usuario eliminado exitosamente."}';
-    END
-    ELSE
-    BEGIN
-        INSERT INTO dbo.EventLog (description, postTime)
-        VALUES ('Fallo en la eliminación del usuario - El usuario con nombre ' + @username + ' no existe.'
-            , GETDATE());
+                UPDATE users
+                SET    available = 0
+                WHERE  iduser = @idUser;
 
-        SET @output = '{"result": 0, "description": "Fallo en la eliminación del usuario: El usuario no existe."}';
-    END
+                COMMIT
+
+                SET @output =
+      '{"result": 1, "description": "Usuario eliminado exitosamente."}';
+            END
+          ELSE
+            BEGIN
+
+                SET @output =
+'{"result": 0, "description": "Error: usuario no existe o es administrador"}'
+    ;
+END
 
     SELECT @output;
+END try
+
+    BEGIN catch
+        IF @@TRANCOUNT > 0 -- error sucedio dentro de la transaccion
+          BEGIN
+              ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
+          END;
+    END catch
+
+    SET nocount OFF;
 END
+
+go 

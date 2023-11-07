@@ -272,7 +272,7 @@
         app:layout_constraintTop_toTopOf="@+id/ImageViewBotonGM1" />
 
     <ImageButton
-        android:id="@+id/editarMarcas2"
+        android:id="@+id/borrarMarcas"
         android:layout_width="47dp"
         android:layout_height="47dp"
         android:background="@drawable/rounded_button"
@@ -361,7 +361,7 @@
 
 
     <ImageButton
-        android:id="@+id/consultarMarca"
+        android:id="@+id/consultarMarcas"
         android:layout_width="47dp"
         android:layout_height="47dp"
         android:background="@drawable/rounded_button"

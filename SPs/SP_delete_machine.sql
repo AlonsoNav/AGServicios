@@ -2,34 +2,53 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_delete_machine
 GO
-CREATE PROCEDURE sp_delete_machine
-	@serial varchar(30)
-
+CREATE PROCEDURE [dbo].[Sp_delete_machine] @serial VARCHAR(30)
 AS
-BEGIN
-    SET NOCOUNT ON
-	DECLARE @idMachine INT;
-    DECLARE @output VARCHAR(200);
+  BEGIN
+      SET nocount ON;
 
-    SET @idMachine = ISNULL((SELECT TOP 1 idMachine FROM machines WHERE serial = @serial and available = 1), 0);
+      BEGIN try
+          DECLARE @idMachine INT;
+          DECLARE @output VARCHAR(200);
 
-    IF @idMachine <> 0
-    BEGIN
-        UPDATE machines SET available = 0 WHERE idMachine = @idMachine;
+          SET @idMachine = Isnull((SELECT TOP 1 idmachine
+                                   FROM   machines
+                                   WHERE  serial = @serial
+                                          AND available = 1), 0);
 
-        INSERT INTO dbo.EventLog(description, postTime)
-        VALUES ('Máquina eliminada <Serial ' + @serial + '>', GETDATE());
+          IF @idMachine <> 0
+            BEGIN
+                BEGIN TRANSACTION
 
-        SET @output = '{"result": 1, "description": "Máquina eliminada exitosamente."}';
-    END
-    ELSE
-    BEGIN
-        INSERT INTO dbo.EventLog(description, postTime)
-        VALUES ('Fallo en la eliminación de la máquina - La máquina con serial ' + @serial + ' no existe.'
-            , GETDATE());
+                UPDATE machines
+                SET    available = 0
+                WHERE  idmachine = @idMachine;
 
-        SET @output = '{"result": 0, "description": "Fallo en la eliminación de la máquina: La máquina no existe."}';
-    END
+                COMMIT
+
+                SET @output =
+      '{"result": 1, "description": "Máquina eliminada exitosamente."}'
+      ;
+            END
+          ELSE
+            BEGIN
+
+      SET @output =
+'{"result": 0, "description": "Error: máquina no existe"}'
+    ;
+END
 
     SELECT @output;
+END try
+
+    BEGIN catch
+        IF @@TRANCOUNT > 0 -- error sucedio dentro de la transaccion
+          BEGIN
+              ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
+          END;
+    END catch
+
+    SET nocount OFF;
 END
+
+go 
