@@ -26,4 +26,5 @@ def add_machine(engine):
             return jsonify({'message': data_json.get("description")}), 401
 
     except Exception as e:
-        return jsonify({'message': str(e)}), 401
+        print(str(e))
+        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401

@@ -26,27 +26,14 @@ AS
 
                 COMMIT
 
-                INSERT INTO dbo.eventlog
-                            (description,
-                             posttime)
-                VALUES      ('Cliente eliminado <' + @name + '>',
-                             Getdate());
-
                 SET @output =
       '{"result": 1, "description": "Cliente eliminado exitosamente."}';
             END
           ELSE
             BEGIN
-                INSERT INTO dbo.eventlog
-                            (description,
-                             posttime)
-                VALUES      (
-                'Fallo en la eliminación del cliente - El cliente con nombre '
-                + @name + ' no existe.',
-                Getdate());
 
                 SET @output =
-'{"result": 0, "description": "Fallo en la eliminación del cliente: El cliente no existe."}'
+'{"result": 0, "description": "Error: cliente no existe"}'
     ;
 END
 

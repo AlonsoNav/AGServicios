@@ -27,29 +27,14 @@ AS
 
                 COMMIT
 
-                INSERT INTO dbo.eventlog
-                            (description,
-                             posttime)
-                VALUES      ('Usuario eliminado <Nombre de usuario: '
-                             + @username + '>',
-                             Getdate());
-
                 SET @output =
       '{"result": 1, "description": "Usuario eliminado exitosamente."}';
             END
           ELSE
             BEGIN
-                INSERT INTO dbo.eventlog
-                            (description,
-                             posttime)
-                VALUES      (
-                'Fallo en la eliminación del usuario - El usuario con nombre '
-                + @username
-                + ' no existe o es un administrador.',
-                Getdate());
 
                 SET @output =
-'{"result": 0, "description": "Fallo en la eliminación del usuario: El usuario no existe o es un administrador."}'
+'{"result": 0, "description": "Error: usuario no existe o es administrador"}'
     ;
 END
 
