@@ -7,20 +7,13 @@ import java.io.IOException
 
 class userDatabase {
 
-    fun postRequestToApi(username: String, password: String,callback: (okhttp3.Response) -> Unit){
+    fun postRequestToApi(json: String, endpoint: String,callback: (okhttp3.Response) -> Unit){
         // Crea un cliente OkHttp
         val client = OkHttpClient()
 
         // Especifica la URL de tu API
-        val apiUrl = "https://7d33-186-177-184-229.ngrok-free.app/login"  // Reemplaza con la URL real de tu API
-
-        // Crea el cuerpo de la solicitud POST
-        val json = """
-        {
-            "username": "$username",
-            "password": "$password"
-        }
-    """.trimIndent()
+        val apiUrl =
+            "https://f4d5-186-177-184-229.ngrok-free.app/$endpoint"  // Reemplaza con la URL real de tu API
 
         val requestBody = json.toRequestBody("application/json".toMediaType())
 
@@ -36,13 +29,9 @@ class userDatabase {
                 // Manejo de errores en caso de falla de la solicitud
                 e.printStackTrace()
             }
-
             override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
                 callback(response)
             }
         })
-
     }
-
-
 }
