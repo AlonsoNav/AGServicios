@@ -80,12 +80,18 @@ BEGIN
                     = '{"result": 0, "description": "Error: tipo de máquina ya existe"}';
             END
         END
+        ELSE
+        BEGIN
+            SET @output
+                        = '{"result": 0, "description": "Error: tipo de máquina no disponible"}';
+        END
+
     END try
     BEGIN catch
         IF @@TRANCOUNT > 0
             ROLLBACK TRANSACTION;
         SET @output
-            = '{"result": 0, "description": "Error inesperado"}';
+            = '{"result": 0, "description": "Error inesperado en el servidor"}';
     END catch
     SELECT @output;
     SET nocount OFF;

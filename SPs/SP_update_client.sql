@@ -65,7 +65,7 @@ BEGIN
                     COMMIT TRANSACTION
                 END
                        
-                IF NOT Len(@inNewEmail) = 0
+                IF NOT (LEN(@inNewEmail) = 0) AND (PATINDEX('%[^a-zA-Z0-9_\-\.@]%', @inNewEmail) = 0) AND (CHARINDEX('@', @inNewEmail) > 1) AND (CHARINDEX('.', @inNewEmail, CHARINDEX('@', @inNewEmail)) > CHARINDEX('@', @inNewEmail) + 1)
                 BEGIN
                      BEGIN TRANSACTION;
                     UPDATE [dbo].[clients]
@@ -87,7 +87,7 @@ BEGIN
         IF @@TRANCOUNT > 0
             ROLLBACK TRANSACTION;
 
-        SET @output = '{"result": 0, "description": "Error inesperado"}';
+        SET @output = '{"result": 0, "description": "Error inesperado en el servidor"}';
     END catch
 
     SELECT @output;

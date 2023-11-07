@@ -41,6 +41,7 @@ BEGIN
             SELECT 1
             FROM users
             WHERE Lower(username) = Lower(@username)
+            and available = 1
         )
         BEGIN
             BEGIN TRANSACTION;

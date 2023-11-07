@@ -86,7 +86,7 @@ BEGIN
     BEGIN catch
         IF @@TRANCOUNT > 0
             ROLLBACK;
-        SET @output = '{"success": 0, "description": "Error inesperado"}';
+        SET @output = '{"success": 0, "description": "Error inesperado en el servidor"}';
     END catch
 
     SELECT @output;

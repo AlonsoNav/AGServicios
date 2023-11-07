@@ -12,10 +12,17 @@ BEGIN
     SET nocount ON
     SET TRANSACTION isolation level READ uncommitted;
     DECLARE @output VARCHAR(200);
+    SET @name = Ltrim(Rtrim(@name));
     SET @number = Ltrim(Rtrim(@number));
     SET @address = Ltrim(Rtrim(@address));
     SET @email = Ltrim(Rtrim(@email));
     BEGIN try
+        IF Len(@name) = 0 --no sé cómo se vaya a tomar en la app el manejo de números
+        BEGIN
+            SET @output = '{"result": 0, "description": "Error: nombre vacío"}';
+            SELECT @output;
+            RETURN;
+        END
         IF Len(@number) = 0 --no sé cómo se vaya a tomar en la app el manejo de números
         BEGIN
             SET @output = '{"result": 0, "description": "Error: número vacío"}';
@@ -28,9 +35,9 @@ BEGIN
             SELECT @output;
             RETURN;
         END
-        IF Len(@email) = 0
+        IF (LEN(@email) = 0) OR (PATINDEX('%[^a-zA-Z0-9_\-\.@]%', @email) <> 0) OR (CHARINDEX('@', @email) <= 1) OR (CHARINDEX('.', @email, CHARINDEX('@', @email)) <= CHARINDEX('@', @email) + 1)
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: email vacío"}';
+            SET @output = '{"result": 0, "description": "Error: email inválido"}';
             SELECT @output;
             RETURN;
         END
@@ -50,7 +57,7 @@ BEGIN
             (@name, @number, @address, @email, 1);
             COMMIT TRANSACTION;
 
-            SET @output = '{"result": 1, "description": "Cliente añadido exitosamente."}';
+            SET @output = '{"result": 1, "description": "Cliente añadido exitosamente"}';
         END
         ELSE
         BEGIN
@@ -63,7 +70,7 @@ BEGIN
             ROLLBACK TRANSACTION;
         -- se deshacen los cambios realizados
         END;
-        SET @output = '{"result": 0, "description": "Error inesperado"}';
+        SET @output = '{"result": 0, "description": "Error inesperado en el servidor"}';
     END catch
     SELECT @output;
     SET nocount OFF;

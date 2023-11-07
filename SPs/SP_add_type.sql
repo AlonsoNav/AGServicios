@@ -35,14 +35,15 @@ BEGIN
         END
 
         SELECT @idType = Isnull(
-                         (
-                             SELECT TOP 1
-                                 idtypemachine
-                             FROM typesmachine
-                             WHERE Lower([name]) = Lower(@name)
-                         ),
-                         0
-                               );
+                (
+                    SELECT TOP 1
+                        idtypemachine
+                    FROM typesmachine
+                    WHERE Lower([name]) = Lower(@name)
+                    AND available = 1
+                ),
+                0
+                    );
 
         IF @idType = 0
         BEGIN
@@ -57,16 +58,6 @@ BEGIN
             VALUES
             (@name, @description);
 
-            INSERT INTO dbo.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('Nuevo tipo de máquina agregado <' + 'Nombre: ' + @name + ' - Descripción: ' + @description + '>',
-             Getdate()
-            );
-
             SET @output = '{"result": 1, "description": "Maquinaria agregada con éxito"}';
 
             COMMIT TRANSACTION;
@@ -74,16 +65,6 @@ BEGIN
         END
         ELSE
         BEGIN
-            INSERT INTO dbo.eventlog
-            (
-                description,
-                posttime
-            )
-            VALUES
-            ('Fallo en la inserción del tipo de máquina - NOMBRE DUPLICADO <' + 'Nombre: ' + @name + ' - Descripción: '
-             +  @description + '>',
-             Getdate()
-            );
 
             SET @output
                 = '{"result": 0, "description": "Error: El nombre ya existe"}';
@@ -95,7 +76,7 @@ BEGIN
             ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
         END;
 
-        SET @output = '{"result": 0, "description": "Error inesperado"}';
+        SET @output = '{"result": 0, "description": "Error inesperado en el servidor"}';
     END catch
 
     SELECT @output;

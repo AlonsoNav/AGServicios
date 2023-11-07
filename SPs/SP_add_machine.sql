@@ -89,7 +89,7 @@ BEGIN
     BEGIN CATCH
         ROLLBACK TRANSACTION;
         SET @output
-            = '{"result": 0, "description": "Error inesperado"}';
+            = '{"result": 0, "description": "Error inesperado en el servidor"}';
     END CATCH
     SELECT @output;
     SET NOCOUNT OFF;
