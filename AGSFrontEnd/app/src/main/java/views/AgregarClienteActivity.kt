@@ -5,10 +5,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import com.google.gson.JsonParser
 import com.hytan.agserviciosv1.R
+import controllers.AddClientController
+import controllers.AddTypeController
 
 class AgregarClienteActivity : AppCompatActivity() {
+    private val addClientController = AddClientController()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agregar_cliente)
@@ -30,15 +35,35 @@ class AgregarClienteActivity : AppCompatActivity() {
 
         //Agregar cliente
         val agregar = findViewById<Button>(R.id.buttonAgregarCliente)
-        agregar.setOnClickListener{
-            val buttonClose = dialog.findViewById<Button>(R.id.buttonListoPUP)
-            val textViewPopup = dialog.findViewById<TextView>(R.id.textViewPUP)
+        val nameText = findViewById<EditText>(R.id.editNombreAgregarCliente)
+        val numberText = findViewById<EditText>(R.id.editNumeroAgregarCliente)
+        val addressText = findViewById<EditText>(R.id.editDireccionAgregarCliente)
+        val emailText = findViewById<EditText>(R.id.editCorreoAgregarCliente)
 
-            textViewPopup.text = "Cliente registrado con éxito"
-            buttonClose.setOnClickListener {
+        agregar.setOnClickListener{
+            val name = nameText.text.toString()
+            val numberS =  numberText.text.toString()
+            val address = addressText.text.toString()
+            val email = emailText.text.toString()
+            val closeButton = dialog.findViewById<Button>(R.id.buttonListoPUP)
+            val textViewPopup = dialog.findViewById<TextView>(R.id.textViewPUP)
+            closeButton.setOnClickListener {
                 dialog.dismiss()
             }
-            dialog.show()
+            if(numberS.isEmpty()){
+                textViewPopup.text = "Error: El número no puede ser vacío"
+                dialog.show()
+            }else{
+                val number = numberS.toInt()
+                val agregar = addClientController.addClientAttempt(name,number,address,email,this) { response ->
+                    val jsonString = response.body?.string()
+                    runOnUiThread{
+                        val jsonObject = JsonParser().parse(jsonString).asJsonObject
+                        textViewPopup.text = jsonObject.get("message").asString
+                        dialog.show()
+                    }
+                }
+            }
         }
     }
 }
