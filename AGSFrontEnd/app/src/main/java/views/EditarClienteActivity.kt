@@ -9,16 +9,18 @@ import android.widget.EditText
 import android.widget.TextView
 import com.google.gson.JsonParser
 import com.hytan.agserviciosv1.R
+import controllers.UpdateClientController
 
 class EditarClienteActivity : AppCompatActivity() {
+    private val updateClientController = UpdateClientController()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_cliente)
 
         //Volver
         val volver = findViewById<Button>(R.id.buttonVolverEditarCliente)
-        volver.setOnClickListener{
-            val volver = Intent(this,MenuGestionSistemaActivity::class.java)
+        volver.setOnClickListener {
+            val volver = Intent(this, MenuGestionSistemaActivity::class.java)
             startActivity(volver)
             finish()
         }
@@ -30,18 +32,18 @@ class EditarClienteActivity : AppCompatActivity() {
         dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.getWindow()?.getAttributes()?.windowAnimations = R.style.CustomDialogAnimation
 
-        //Agregar cliente
-        val agregar = findViewById<Button>(R.id.buttonEditarCliente)
+        //Editar cliente
+        val editar = findViewById<Button>(R.id.buttonEditarCliente)
         val oldNameText = findViewById<EditText>(R.id.editNombreEditarCliente)
         val nameText = findViewById<EditText>(R.id.editNuevoNombreEditarCliente)
         val numberText = findViewById<EditText>(R.id.editNuevoNumeroEditarCliente)
         val addressText = findViewById<EditText>(R.id.editNuevaDireccionEditarCliente)
         val emailText = findViewById<EditText>(R.id.editNuevoCorreoEditarCliente)
 
-        agregar.setOnClickListener{
-            val oldName = oldNameText.text.toString()
-            val name = nameText.text.toString()
-            val numberS =  numberText.text.toString()
+        editar.setOnClickListener {
+            val name = oldNameText.text.toString()
+            val newName = nameText.text.toString()
+            val numberS = numberText.text.toString()
             val address = addressText.text.toString()
             val email = emailText.text.toString()
             val closeButton = dialog.findViewById<Button>(R.id.buttonListoPUP)
@@ -49,19 +51,31 @@ class EditarClienteActivity : AppCompatActivity() {
             closeButton.setOnClickListener {
                 dialog.dismiss()
             }
-            if(numberS.isEmpty()){
+            if (numberS.isEmpty()) {
                 textViewPopup.text = "Error: El número no puede ser vacío"
                 dialog.show()
-            }else{
+            } else {
                 val number = numberS.toInt()
-                /*val agregar = addClientController.addClientAttempt(name,number,address,email,this) { response ->
+                val editar = updateClientController.updateBrandAttempt(name, newName ,number,address,email, this) { response ->
                     val jsonString = response.body?.string()
-                    runOnUiThread{
+                    runOnUiThread {
+                        val dialog = Dialog(this)
+                        dialog.getWindow()
+                            ?.setBackgroundDrawableResource(android.R.color.transparent);
+                        dialog.getWindow()?.getAttributes()?.windowAnimations =
+                            R.style.CustomDialogAnimation
+                        dialog.setContentView(R.layout.popupinformativo)
+                        dialog.setCancelable(true)
+                        val closeButton = dialog.findViewById<Button>(R.id.buttonListoPUP)
+                        val textViewPopup = dialog.findViewById<TextView>(R.id.textViewPUP)
                         val jsonObject = JsonParser().parse(jsonString).asJsonObject
                         textViewPopup.text = jsonObject.get("message").asString
+                        closeButton.setOnClickListener {
+                            dialog.dismiss()
+                        }
                         dialog.show()
                     }
-                }*/
+                }
             }
         }
     }
