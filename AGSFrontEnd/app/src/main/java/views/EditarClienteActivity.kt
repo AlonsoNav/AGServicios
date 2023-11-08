@@ -43,7 +43,7 @@ class EditarClienteActivity : AppCompatActivity() {
         editar.setOnClickListener {
             val name = oldNameText.text.toString()
             val newName = nameText.text.toString()
-            val numberS = numberText.text.toString()
+            var numberS = numberText.text.toString()
             val address = addressText.text.toString()
             val email = emailText.text.toString()
             val closeButton = dialog.findViewById<Button>(R.id.buttonListoPUP)
@@ -51,27 +51,30 @@ class EditarClienteActivity : AppCompatActivity() {
             closeButton.setOnClickListener {
                 dialog.dismiss()
             }
-                val number = numberS.toInt()
-                val editar = updateClientController.updateBrandAttempt(name, newName ,number,address,email, this) { response ->
-                    val jsonString = response.body?.string()
-                    runOnUiThread {
-                        val dialog = Dialog(this)
-                        dialog.getWindow()
-                            ?.setBackgroundDrawableResource(android.R.color.transparent);
-                        dialog.getWindow()?.getAttributes()?.windowAnimations =
-                            R.style.CustomDialogAnimation
-                        dialog.setContentView(R.layout.popupinformativo)
-                        dialog.setCancelable(true)
-                        val closeButton = dialog.findViewById<Button>(R.id.buttonListoPUP)
-                        val textViewPopup = dialog.findViewById<TextView>(R.id.textViewPUP)
-                        val jsonObject = JsonParser().parse(jsonString).asJsonObject
-                        textViewPopup.text = jsonObject.get("message").asString
-                        closeButton.setOnClickListener {
-                            dialog.dismiss()
-                        }
-                        dialog.show()
+            if(numberS.isEmpty()){
+                numberS="0"
+            }
+            val number = numberS.toInt()
+            val editar = updateClientController.updateBrandAttempt(name, newName ,number,address,email, this) { response ->
+                val jsonString = response.body?.string()
+                runOnUiThread {
+                    val dialog = Dialog(this)
+                    dialog.getWindow()
+                        ?.setBackgroundDrawableResource(android.R.color.transparent);
+                    dialog.getWindow()?.getAttributes()?.windowAnimations =
+                        R.style.CustomDialogAnimation
+                    dialog.setContentView(R.layout.popupinformativo)
+                    dialog.setCancelable(true)
+                    val closeButton = dialog.findViewById<Button>(R.id.buttonListoPUP)
+                    val textViewPopup = dialog.findViewById<TextView>(R.id.textViewPUP)
+                    val jsonObject = JsonParser().parse(jsonString).asJsonObject
+                    textViewPopup.text = jsonObject.get("message").asString
+                    closeButton.setOnClickListener {
+                        dialog.dismiss()
                     }
+                    dialog.show()
                 }
+            }
 
         }
     }
