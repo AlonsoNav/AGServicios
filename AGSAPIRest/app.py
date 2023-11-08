@@ -4,7 +4,7 @@ from flask import Flask
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 from Functions import (login, add_user, add_brand, add_client, add_machine, add_type, delete_brand, delete_machine,
-                       delete_type, get_brand, get_machine, get_type, update_brand, update_machine, update_type)
+                       delete_type, get_brand, get_machine, get_type, update_brand, update_machine, update_type, update_client)
 
 load_dotenv()
 
@@ -92,6 +92,11 @@ def execute_update_machine():
 @app.route('/update_type', methods=['POST'])
 def execute_update_type():
     return update_type.update_type(engine)
+
+
+@app.route('/update_client', methods=['POST'])
+def execute_update_client():
+    return update_client.update_client(engine)
 
 
 if __name__ == '__main__':

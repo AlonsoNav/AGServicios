@@ -21,9 +21,9 @@ def login(engine):
             if bcrypt.checkpw(password, hash_password):
                 return jsonify({'is_admin': is_admin}), 200
             else:
-                return jsonify({'message': 'La contraseña no coincide.'}), 401
+                return jsonify({'message': 'La contraseña no coincide'}), 401
         else:
-            return jsonify({'message': 'El usuario no existe.'}), 401
+            return jsonify({'message': 'El usuario no existe'}), 401
 
     except Exception as e:
         print(str(e))
