@@ -3,16 +3,16 @@ package controllers
 import android.content.Context
 import database.userDatabase
 
-class GetBrandController {
+class GetClientController {
     private val userDatabase= userDatabase()
-    fun getBrandAttempt(name: String, context: Context, callback: (okhttp3.Response) -> Unit){
-        val endpoint ="get_brand"
+    fun getClientAttempt(name: String, context: Context, callback: (okhttp3.Response) -> Unit){
+        val endpoint ="get_client"
         val json =  """
         {
             "name": "$name"
         }
     """.trimIndent()
-        val getBrandSuccessful = userDatabase.postRequestToApi(json,endpoint) { response ->
+        val getClientSuccessful = userDatabase.postRequestToApi(json,endpoint) { response ->
             callback(response)
         }
     }
