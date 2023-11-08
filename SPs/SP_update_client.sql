@@ -54,7 +54,7 @@ BEGIN
                 END
             
                 SET @inNewAddress = Ltrim(Rtrim(@inNewAddress));
-                IF Len(@inNewAddress) = 0
+                IF NOT Len(@inNewAddress) = 0
                 BEGIN
                     BEGIN TRANSACTION;
 
