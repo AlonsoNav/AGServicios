@@ -51,10 +51,6 @@ class EditarClienteActivity : AppCompatActivity() {
             closeButton.setOnClickListener {
                 dialog.dismiss()
             }
-            if (numberS.isEmpty()) {
-                textViewPopup.text = "Error: El número no puede ser vacío"
-                dialog.show()
-            } else {
                 val number = numberS.toInt()
                 val editar = updateClientController.updateBrandAttempt(name, newName ,number,address,email, this) { response ->
                     val jsonString = response.body?.string()
@@ -76,7 +72,7 @@ class EditarClienteActivity : AppCompatActivity() {
                         dialog.show()
                     }
                 }
-            }
+
         }
     }
 }
