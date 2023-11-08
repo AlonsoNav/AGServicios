@@ -13,7 +13,7 @@ class userDatabase {
 
         // Especifica la URL de tu API
         val apiUrl =
-            "https://f4d5-186-177-184-229.ngrok-free.app/$endpoint"  // Reemplaza con la URL real de tu API
+            "https://0598-186-176-100-64.ngrok.io/$endpoint"  // Reemplaza con la URL real de tu API
 
         val requestBody = json.toRequestBody("application/json".toMediaType())
 
