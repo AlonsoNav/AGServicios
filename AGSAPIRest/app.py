@@ -4,7 +4,8 @@ from flask import Flask
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 from Functions import (login, add_user, add_brand, add_client, add_machine, add_type, delete_brand, delete_machine,
-                       delete_type, get_brand, get_machine, get_type, update_brand, update_machine, update_type, update_client)
+                       delete_type, get_brand, get_machine, get_type, update_brand, update_machine, update_type,
+                       update_client, delete_client)
 
 load_dotenv()
 
@@ -62,6 +63,11 @@ def execute_delete_machine():
 @app.route('/delete_type', methods=['POST'])
 def execute_delete_type():
     return delete_type.delete_type(engine)
+
+
+@app.route('/delete_client', methods=['POST'])
+def execute_delete_client():
+    return delete_client.delete_client(engine)
 
 
 @app.route('/get_brand', methods=['POST'])
