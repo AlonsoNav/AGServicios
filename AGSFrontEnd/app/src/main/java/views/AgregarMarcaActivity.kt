@@ -17,6 +17,7 @@ class AgregarMarcaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agregar_marca)
 
+        //:D
         //Volver
         val volver = findViewById<Button>(R.id.buttonVolverAgregarMarca)
         volver.setOnClickListener{
