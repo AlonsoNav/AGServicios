@@ -19,8 +19,6 @@ BEGIN
     SET @inNewEmail = Ltrim(Rtrim(@inNewEmail));
 
     BEGIN try
-        -- Begin a transaction
-		
 			SET @idClient = Isnull(
 			(
 				SELECT TOP 1
@@ -34,7 +32,18 @@ BEGIN
 
 			IF @idClient <> 0
 			BEGIN
-            
+					IF EXISTS
+					(
+						SELECT 1
+						FROM [SGR].[dbo].[cliens]
+						WHERE Lower([name]) = Lower(@inNewName)
+							AND available = 1
+					)
+					BEGIN
+						SET @output = '{"result": 0, "description": "Error: cliente ya existe"}';
+						SELECT @output;
+						RETURN;
+					END
 					IF NOT Len(@inNewName) = 0
 					BEGIN
 						BEGIN TRANSACTION;
@@ -54,7 +63,7 @@ BEGIN
 
 						COMMIT TRANSACTION
 					END
-					IF NOT Len(@inNewAddress) = 0
+					IF NOT Len(@inNewEmail) = 0
 					BEGIN
 						IF (PATINDEX('%[^a-zA-Z0-9_\-\.@]%', @inNewEmail) <> 0) OR (CHARINDEX('@', @inNewEmail) <= 1) OR (CHARINDEX('.', @inNewEmail, CHARINDEX('@', @inNewEmail)) <= CHARINDEX('@', @inNewEmail) + 1)
 						BEGIN
@@ -65,17 +74,17 @@ BEGIN
 						BEGIN TRANSACTION;
 
 						UPDATE [dbo].[clients]
-						SET [address] = @inNewAddress
+						SET [email] = @inNewEmail
 						WHERE Lower([idclient]) = Lower(@idClient);
 
 						COMMIT TRANSACTION
 					END
                        
-					IF NOT LEN(@inNewEmail) = 0
+					IF NOT LEN(@inNewAddress) = 0
 					BEGIN
 						 BEGIN TRANSACTION;
 						UPDATE [dbo].[clients]
-						SET [email] = @inNewEmail
+						SET [address] = @inNewAddress
 						WHERE Lower([idclient]) = Lower(@idClient);
 						COMMIT TRANSACTION
 					END
@@ -93,7 +102,7 @@ BEGIN
         IF @@TRANCOUNT > 0
             ROLLBACK TRANSACTION;
 
-        SET @output = '{"result": 0, "description": "Error inesperado en el servidor"}';
+        SET @output = '{"result": 0, "description": "Error: fallo inesperado en el servidor"}';
     END catch
 
     SELECT @output;
@@ -102,5 +111,4 @@ BEGIN
 END
 
 
-
-go
+GO

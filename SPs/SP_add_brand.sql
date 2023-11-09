@@ -16,13 +16,13 @@ BEGIN
     BEGIN try
         IF Len(@name) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: Nombre vacío"}';
+            SET @output = '{"result": 0, "description": "Error: nombre vacío"}';
             SELECT @output;
             RETURN;
         END
         IF Len(@description) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: Descripción vacía"}';
+            SET @output = '{"result": 0, "description": "Error: descripción vacía"}';
             SELECT @output;
             RETURN;
         END
@@ -52,7 +52,7 @@ BEGIN
         ELSE
         BEGIN
             SET @output
-                = '{"result": 0, "description": "Error: El nombre ya existe"}';
+                = '{"result": 0, "description": "Error: el nombre ya existe"}';
         END
     END try
     BEGIN catch
@@ -60,10 +60,10 @@ BEGIN
         BEGIN
             ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
         END;
-        SET @output = '{"result": 0, "description": "Error inesperado en el servidor"}';
+        SET @output = '{"result": 0, "description": "Error: fallo inesperado en el servidor"}';
     END catch
     SELECT @output;
     SET nocount OFF;
 END
 
-go
+GO

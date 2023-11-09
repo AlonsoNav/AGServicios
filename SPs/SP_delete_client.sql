@@ -2,7 +2,7 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_delete_client
 GO
-CREATE PROCEDURE [dbo].[Sp_delete_client] @name VARCHAR(50)
+CREATE PROCEDURE [dbo].[sp_delete_client] @name VARCHAR(50)
 AS
   BEGIN
       BEGIN try
@@ -27,7 +27,7 @@ AS
                 COMMIT
 
                 SET @output =
-      '{"result": 1, "description": "Cliente eliminado exitosamente."}';
+      '{"result": 1, "description": "Cliente eliminado exitosamente"}';
             END
           ELSE
             BEGIN
@@ -37,7 +37,6 @@ AS
     ;
 END
 
-    SELECT @output;
 END try
 
     BEGIN catch
@@ -45,7 +44,10 @@ END try
           BEGIN
               ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
           END;
+				SET @output = '{"result": 0, "description": "Error: fallo inesperado en el servidor"}';
+
     END catch
+	SELECT @output;
 END
 
-go 
+GO

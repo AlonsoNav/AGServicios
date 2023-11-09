@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="views.ConsultarClienteActivity">
+    tools:context="views.ConsultarClienteActivity"
+    android:background="#2d2a2a">
 
     <Button
         android:id="@+id/buttonVolverConsultaCliente"
@@ -70,6 +71,7 @@
         android:id="@+id/editNombreEmpresaCC"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:contentDescription="Introduzca nombre de la empresa"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rounded_txf"
@@ -92,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:contentDescription="Pulse para consultar cliente"
         android:background="@drawable/rounded_button"
         android:text="Consultar cliente"
         android:textSize="22dp"
