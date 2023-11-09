@@ -18,9 +18,7 @@ def get_client(engine):
         conn.commit()
         conn.close()
 
-        data_json = json.loads(result)
-
-        if data_json.get("result") == 1:
+        if result:
             client_list = [{'name': row.name, 'number': row.contactnumber, 'address': row.address, 'email': row.email}
                            for row in result]
             return jsonify({'clients': client_list}), 200
