@@ -20,7 +20,7 @@ BEGIN
                       (
                           SELECT TOP 1
                               idMachine
-                          FROM [dbo].[machines]
+                          FROM [SGR].[dbo].[machines]
                           WHERE Lower([serial]) = Lower(@inSerial)
                                 AND available = 1
                       ),
@@ -29,11 +29,23 @@ BEGIN
 
         IF @idMachine <> 0
         BEGIN
-            
+          
+			IF EXISTS
+            (
+                SELECT 1
+                FROM [SGR].[dbo].[machines]
+                WHERE Lower([serial]) = Lower(@inNewSerial)
+            )
+			BEGIN
+				SET @output = '{"result": 0, "description": "Error: serial ya existe"}';
+				SELECT @output;
+				RETURN;
+			END
+
             IF NOT Len(@inNewModel) = 0
             BEGIN
                 BEGIN TRANSACTION
-				UPDATE [dbo].[machine]
+				UPDATE [SGR].[dbo].[machines]
 				SET [model] = @inNewModel
 				WHERE [serial] = @inSerial;
 				COMMIT TRANSACTION
@@ -42,7 +54,7 @@ BEGIN
             IF NOT Len(@inNewSerial) = 0
             BEGIN
                 BEGIN TRANSACTION
-				UPDATE [dbo].[machine]
+				UPDATE [SGR].[dbo].[machines]
 				SET [serial] = @inNewSerial
 				WHERE [serial] = @inSerial;
 				COMMIT TRANSACTION
@@ -50,12 +62,12 @@ BEGIN
             
             
 
-            SET @output = '{"result": 1, "description": "Cliente editado exitosamente"}';
+            SET @output = '{"result": 1, "description": "Máquina editada exitosamente"}';
 
         END
         ELSE
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: cliente no disponible"}';
+            SET @output = '{"result": 0, "description": "Error: máquina no disponible"}';
 
         END
     END try
@@ -65,7 +77,7 @@ BEGIN
             ROLLBACK TRANSACTION; -- se deshacen los cambios realizados
         END;
 
-        SET @output = '{"result": 0, "description": "Error inesperado"}';
+        SET @output = '{"result": 0, "description": "Error: fallo inesperado en el servidor"}';
     END catch
 
     SELECT @output;

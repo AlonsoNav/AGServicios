@@ -2,7 +2,7 @@ USE SGR
 GO
 DROP PROCEDURE IF EXISTS sp_delete_brand
 GO
-CREATE PROCEDURE [dbo].[Sp_delete_brand] @name VARCHAR(50)
+CREATE PROCEDURE [dbo].[sp_delete_brand] @name VARCHAR(50)
 AS
   BEGIN
       BEGIN try
@@ -47,4 +47,4 @@ END try
     END catch
 END
 
-go 
+GO

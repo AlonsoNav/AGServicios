@@ -21,7 +21,7 @@ BEGIN
             (
                 SELECT TOP 1
                     idTypeMachine
-                FROM [dbo].[typesMachine]
+                FROM [SGR].[dbo].[typesMachine]
                 WHERE Lower([name]) = Lower(@inName)
                     AND available = 1
             ),
@@ -32,14 +32,14 @@ BEGIN
             IF NOT EXISTS
             (
                 SELECT 1
-                FROM [dbo].[typesmachine]
+                FROM [SGR].[dbo].[typesMachine]
                 WHERE Lower([name]) = Lower(@inNewName)
             )
             BEGIN
                 IF EXISTS
                 (
                     SELECT 1
-                    FROM [dbo].[typesmachine]
+                    FROM [SGR].[dbo].[typesMachine]
                     WHERE Lower([name]) = Lower(@inName)
                           AND available = 1
                 )
@@ -59,14 +59,14 @@ BEGIN
                         IF NOT Len(@inNewName) = 0
                             BEGIN
                             BEGIN TRANSACTION;
-                            UPDATE [dbo].[typesmachine]
+                            UPDATE [SGR].[dbo].[typesMachine]
                             SET [name] = @inNewName
                             WHERE idTypeMachine = @idTypeMachine;
                             COMMIT TRANSACTION;
                         END
                     
 
-                    SET @output = '{"result": 1, "description": "Maquinaria editada exitosamente."}';
+                    SET @output = '{"result": 1, "description": "Tipo de máquina editado exitosamente."}';
                 END
                 ELSE
                 BEGIN
@@ -90,11 +90,10 @@ BEGIN
     BEGIN catch
         IF @@TRANCOUNT > 0
             ROLLBACK TRANSACTION;
-        SET @output
-            = '{"result": 0, "description": "Error inesperado en el servidor"}';
+        SET @output = '{"result": 0, "description": "Error: fallo inesperado en el servidor"}';
     END catch
     SELECT @output;
     SET nocount OFF;
 END
 
-go
+GO

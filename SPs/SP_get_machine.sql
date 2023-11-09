@@ -9,12 +9,12 @@ AS
              M.[model],
              B.[name]  brand,
              TM.[name] type
-      FROM   [dbo].[machine] M
+      FROM   [dbo].[machines] M
              INNER JOIN brands B
                      ON M.[idbrand] = B.[idbrand]
-             INNER JOIN typesmacine TM
+             INNER JOIN typesmachine TM
                      ON M.[idtype] = TM.[idtypemachine]
       WHERE  M.[serial] = @serial
-             AND available = 1;
+             AND M.available = 1;
   END 
 GO

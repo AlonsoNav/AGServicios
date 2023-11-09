@@ -70,7 +70,7 @@ BEGIN
             ROLLBACK TRANSACTION;
         -- se deshacen los cambios realizados
         END;
-        SET @output = '{"result": 0, "description": "Error inesperado en el servidor"}';
+        SET @output = '{"result": 0, "description": "Error: fallo inesperado en el servidor"}';
     END catch
     SELECT @output;
     SET nocount OFF;

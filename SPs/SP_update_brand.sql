@@ -56,7 +56,7 @@ BEGIN
                             COMMIT TRANSACTION;
                         END
                     
-                        IF NOT Len(@inNewName) = 0
+                        IF NOT Len(@newName) = 0
                             BEGIN
                             BEGIN TRANSACTION;
                             UPDATE [dbo].[brands]
@@ -66,7 +66,7 @@ BEGIN
                         END
                     
 
-                    SET @output = '{"result": 1, "description": "Marca editada exitosamente."}';
+                    SET @output = '{"result": 1, "description": "Marca editada exitosamente"}';
                 END
                 ELSE
                 BEGIN
@@ -90,11 +90,10 @@ BEGIN
     BEGIN catch
         IF @@TRANCOUNT > 0
             ROLLBACK TRANSACTION;
-        SET @output
-            = '{"result": 0, "description": "Error inesperado en el servidor"}';
+        SET @output = '{"result": 0, "description": "Error: fallo inesperado en el servidor"}';
     END catch
     SELECT @output;
     SET nocount OFF;
 END
 
-go
+GO
