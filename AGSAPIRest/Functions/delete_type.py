@@ -23,4 +23,4 @@ def delete_type(engine):
 
     except Exception as e:
         print(str(e))
-        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+        return jsonify({'message': 'Error: Fallo inesperado en la conexión'}), 401

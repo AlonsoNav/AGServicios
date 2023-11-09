@@ -6,18 +6,23 @@ def get_machine(engine):
     serial = data.get('serial')
 
     try:
+        serial = serial.strip()
+        if serial:
+            query = text("EXEC sp_get_machine @serial = :serial"), {'serial': serial}
+        else:
+            query = text("EXEC sp_get_all_machines"), {}
         conn = engine.connect()
-        result = conn.execute(
-            text("EXEC sp_get_machine @serial = :serial"), {'serial': serial}).fetchone()
+        result = conn.execute(query[0], query[1]).fetchall()
         conn.commit()
         conn.close()
 
         if result:
-            return jsonify({'message': "Modelo: {} - Serial: {} - Marca: {} - Tipo de maquinaria: {}".format(
-                result.serial, result.model, result.brand, result.type)}), 200
+            machine_list = [{'serial': row.serial, 'model': row.model, 'brand': row.brand, 'type': row.type}
+                            for row in result]
+            return jsonify({'machines': machine_list}), 200
         else:
-            return jsonify({'message': 'El usuario no existe.'}), 401
+            return jsonify({'message': 'Error: la máquina no existe'}), 401
 
     except Exception as e:
         print(str(e))
-        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+        return jsonify({'message': 'Error: Fallo inesperado en la conexión'}), 401
