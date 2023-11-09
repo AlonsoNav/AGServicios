@@ -22,13 +22,13 @@ BEGIN
     BEGIN TRY
         IF Len(@brand) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: nombre vacío"}';
+            SET @output = '{"result": 0, "description": "Error: marca vacía"}';
             SELECT @output;
             RETURN;
         END
         IF Len(@type) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: tipo vacío"}';
+            SET @output = '{"result": 0, "description": "Error: tipo de maquinaria vacía"}';
             SELECT @output;
             RETURN;
         END
@@ -46,7 +46,7 @@ BEGIN
         END
         SELECT @idBrand = ISNULL(
                           (
-                              SELECT TOP 1 idbrand FROM brands WHERE Lower([name]) = Lower(@brand)
+                              SELECT TOP 1 idBrand FROM dbo.brands WHERE Lower([name]) = Lower(@brand) AND available =1
                           ),
                           0
                                 );
@@ -54,29 +54,28 @@ BEGIN
                          (
                              SELECT TOP 1
                                  idtypemachine
-                             FROM typesmachine
-                             WHERE Lower([name]) = Lower(@type)
+                             FROM dbo.typesMachine
+                             WHERE Lower([name]) = Lower(@type) AND available = 1
                          ),
                          0
                                );
-        IF EXISTS (SELECT 1 FROM machines WHERE [serial] = @serial)
+        IF EXISTS (SELECT 1 FROM SGR.dbo.machines WHERE [serial] = @serial)
         BEGIN
-            SET @output
-                = '{"result": 0, "description": "Error: máquina ya existe"}';
+            SET @output= '{"result": 0, "description": "Error: máquina ya existe"}';
         END
-        ELSE IF @idBrand = 0
-                OR @idType = 0
+        ELSE IF @idBrand = 0 OR @idType = 0
         BEGIN
-            SET @output
-                = '{"result": 0, "description": "Error: Marca o maquinaria no disponible"}';
+            SET @output = '{"result": 0, "description": "Error: Marca o maquinaria no disponible"}';
+			SELECT @output
+			RETURN;
         END
         ELSE
         BEGIN
             BEGIN TRANSACTION;
-            INSERT INTO [dbo].[machine]
+            INSERT INTO [SGR].[dbo].[machines]
             (
-                [idbrand],
-                [idtype],
+                [idBrand],
+                [idType],
                 [serial],
                 [model]
             )
@@ -89,8 +88,9 @@ BEGIN
     BEGIN CATCH
         ROLLBACK TRANSACTION;
         SET @output
-            = '{"result": 0, "description": "Error inesperado en el servidor"}';
+            = '{"result": 0, "description": "Error: fallo inesperado en el servidor"}';
     END CATCH
     SELECT @output;
     SET NOCOUNT OFF;
 END
+GO

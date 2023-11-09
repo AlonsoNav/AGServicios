@@ -51,4 +51,4 @@ END try
     SET nocount OFF;
 END
 
-go 
+GO
