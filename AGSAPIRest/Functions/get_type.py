@@ -20,7 +20,7 @@ def get_type(engine):
             type_list = [{'name': row.name, 'description': row.description} for row in result]
             return jsonify({'types': type_list}), 200
         else:
-            return jsonify({'message': 'Error: El tipo de maquinaria no existe'}), 401
+            return jsonify({'message': 'Error: el tipo de maquinaria no existe'}), 401
 
     except Exception as e:
         print(str(e))
