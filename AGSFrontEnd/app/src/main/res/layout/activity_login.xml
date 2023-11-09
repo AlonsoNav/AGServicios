@@ -40,6 +40,7 @@
         android:fontFamily="@font/lexend"
         android:inputType="text"
         android:textColor="#2d2a2a"
+        android:contentDescription="Introduzca su nombre de usuario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -78,6 +79,7 @@
         android:fontFamily="@font/lexend"
         android:textColor="#2d2a2a"
         android:inputType="textPassword"
+        android:contentDescription="Introduzca su contraseña"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -110,6 +112,7 @@
         android:id="@+id/imageView"
         android:layout_width="379dp"
         android:layout_height="236dp"
+        android:contentDescription="Logo de A G Servicios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,6 +131,7 @@
         android:fontFamily="@font/lexend"
         android:textAllCaps="false"
         android:textSize="22dp"
+        android:contentDescription="Presione para acceder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -158,5 +162,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.556" />
+
+    <TextView
+        android:id="@+id/Copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lexend"
+        android:text="© 2023 AG Servicios."
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

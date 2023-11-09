@@ -51,7 +51,7 @@ class AgregarClienteActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
             if(numberS.isEmpty()){
-                textViewPopup.text = "Error: El número no puede ser vacío"
+                textViewPopup.text = "Error: el número no puede ser vacío"
                 dialog.show()
             }else{
                 val number = numberS.toInt()
