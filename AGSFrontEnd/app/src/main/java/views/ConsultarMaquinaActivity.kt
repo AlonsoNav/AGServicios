@@ -58,17 +58,17 @@ class ConsultarMaquinaActivity : AppCompatActivity() {
                     val textDisplay = dialogD.findViewById<TextView>(R.id.textViewPUPDisplay)
                     val lista = dialogD.findViewById<ListView>(R.id.listViewDisplay)
                     val items = ArrayList<String>()
-                    textDisplay.text="Lista de máquina"
+                    textDisplay.text="Lista de máquinas"
                     listo.setOnClickListener {
                         dialogD.dismiss()
                     }
                     val machinesArray = jsonObject.getAsJsonArray("machines")
                     for (i in 0 until machinesArray.size()) {
                         val typeObject = machinesArray.get(i)
-                        val serial = typeObject.asJsonObject.get("serial")
-                        val model = typeObject.asJsonObject.get("model")
-                        val brand = typeObject.asJsonObject.get("brand")
-                        val type = typeObject.asJsonObject.get("type")
+                        val serial = typeObject.asJsonObject.get("serial").asString
+                        val model = typeObject.asJsonObject.get("model").asString
+                        val brand = typeObject.asJsonObject.get("brand").asString
+                        val type = typeObject.asJsonObject.get("type").asString
                         val item = "Serial: $serial\nModelo: $model\nMarca: $brand\nTipo: $type"
                         items.add(item)
                     }
