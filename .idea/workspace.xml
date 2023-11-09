@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="799ee9dd-345c-4feb-ae7e-882bc3f24b48" name="Changes" comment="Delete client">
+    <list default="true" id="799ee9dd-345c-4feb-ae7e-882bc3f24b48" name="Changes" comment="cambio en los mensajes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/get_brand.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/get_brand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/get_machine.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/get_machine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/Functions/get_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/Functions/get_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGSAPIRest/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/AGSAPIRest/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +79,7 @@
       <workItem from="1699372740556" duration="895000" />
       <workItem from="1699377836118" duration="2041000" />
       <workItem from="1699397225764" duration="4712000" />
-      <workItem from="1699473326602" duration="3235000" />
+      <workItem from="1699473326602" duration="6633000" />
     </task>
     <task id="LOCAL-00001" summary="Nuevos y modificados SPs">
       <option name="closed" value="true" />
@@ -149,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699473681515</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="cambio en los mensajes">
+      <option name="closed" value="true" />
+      <created>1699485603929</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699485603929</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,10 +188,11 @@
     <MESSAGE value="Con el endpoint" />
     <MESSAGE value="Cambio de get machine" />
     <MESSAGE value="Delete client" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete client" />
+    <MESSAGE value="cambio en los mensajes" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambio en los mensajes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/AGServicios$get_type.coverage" NAME="get_type Coverage Results" MODIFIED="1699324249072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AGSAPIRest/Functions" />
-    <SUITE FILE_PATH="coverage/AGServicios$app.coverage" NAME="app Coverage Results" MODIFIED="1699482982047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AGSAPIRest" />
+    <SUITE FILE_PATH="coverage/AGServicios$app.coverage" NAME="app Coverage Results" MODIFIED="1699490728004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AGSAPIRest" />
   </component>
 </project>

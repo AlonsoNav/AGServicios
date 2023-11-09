@@ -20,7 +20,7 @@ def get_brand(engine):
             brand_list = [{'name': row.name, 'description': row.description} for row in result]
             return jsonify({'brands': brand_list}), 200
         else:
-            return jsonify({'message': 'Error: La marca no existe'}), 401
+            return jsonify({'message': 'Error: la marca no existe'}), 401
 
     except Exception as e:
         print(str(e))
