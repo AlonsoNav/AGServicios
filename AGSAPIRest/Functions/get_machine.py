@@ -21,8 +21,8 @@ def get_machine(engine):
                             for row in result]
             return jsonify({'machines': machine_list}), 200
         else:
-            return jsonify({'message': 'La máquina no existe'}), 401
+            return jsonify({'message': 'Error: la máquina no existe'}), 401
 
     except Exception as e:
         print(str(e))
-        return jsonify({'message': 'Ha ocurrido un error inesperado en la conexión'}), 401
+        return jsonify({'message': 'Error: Fallo inesperado en la conexión'}), 401
