@@ -27,7 +27,7 @@ AS
                 COMMIT
 
                 SET @output =
-      '{"result": 1, "description": "Tipo de máquina eliminado exitosamente."}'
+      '{"result": 1, "description": "Tipo de máquina eliminado exitosamente"}'
       ;
       END
       ELSE

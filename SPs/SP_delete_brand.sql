@@ -27,7 +27,7 @@ AS
                 COMMIT
 
                 SET @output =
-                '{"result": 1, "description": "Marca eliminada exitosamente."}';
+                '{"result": 1, "description": "Marca eliminada exitosamente"}';
             END
           ELSE
             BEGIN

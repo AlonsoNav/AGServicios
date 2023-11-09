@@ -18,7 +18,7 @@ BEGIN
     BEGIN try
         IF Len(@name) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: Nombre vacío"}';
+            SET @output = '{"result": 0, "description": "Error: nombre vacío"}';
 
             SELECT @output;
 
@@ -27,7 +27,7 @@ BEGIN
 
         IF Len(@description) = 0
         BEGIN
-            SET @output = '{"result": 0, "description": "Error: Descripción vacía"}';
+            SET @output = '{"result": 0, "description": "Error: descripción vacía"}';
 
             SELECT @output;
 
@@ -67,7 +67,7 @@ BEGIN
         BEGIN
 
             SET @output
-                = '{"result": 0, "description": "Error: El nombre ya existe"}';
+                = '{"result": 0, "description": "Error: el nombre ya existe"}';
         END
     END try
     BEGIN catch

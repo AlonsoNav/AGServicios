@@ -66,7 +66,7 @@ BEGIN
                         END
                     
 
-                    SET @output = '{"result": 1, "description": "Tipo de máquina editado exitosamente."}';
+                    SET @output = '{"result": 1, "description": "Tipo de máquina editado exitosamente"}';
                 END
                 ELSE
                 BEGIN
