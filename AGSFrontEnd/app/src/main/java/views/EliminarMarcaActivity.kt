@@ -41,7 +41,7 @@ class EliminarMarcaActivity : AppCompatActivity() {
             val yesButton = dialogConf.findViewById<Button>(R.id.buttonSiPUP)
             val noButton = dialogConf.findViewById<Button>(R.id.buttonNoPUP)
             val textViewPopupConfi = dialogConf.findViewById<TextView>(R.id.textViewPUPConfirm)
-            textViewPopupConfi.text = "¿Realmente desea eliminar este tipo de maquinaria?"
+            textViewPopupConfi.text = "¿Realmente desea eliminar esta marca?"
 
             yesButton.setOnClickListener {
                 dialogConf.dismiss()
