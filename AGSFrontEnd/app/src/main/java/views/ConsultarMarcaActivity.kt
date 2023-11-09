@@ -66,8 +66,8 @@ class ConsultarMarcaActivity : AppCompatActivity() {
                     val typesArray = jsonObject.getAsJsonArray("brands")
                     for (i in 0 until typesArray.size()) {
                         val typeObject = typesArray.get(i)
-                        val name = typeObject.asJsonObject.get("name")
-                        val description = typeObject.asJsonObject.get("description")
+                        val name = typeObject.asJsonObject.get("name").asString
+                        val description = typeObject.asJsonObject.get("description").asString
                         val item = "Nombre: $name\nDescripción: $description"
                         items.add(item)
                     }
