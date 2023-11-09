@@ -59,7 +59,7 @@ BEGIN
                          ),
                          0
                                );
-        IF EXISTS (SELECT 1 FROM SGR.dbo.machines WHERE [serial] = @serial)
+        IF EXISTS (SELECT 1 FROM SGR.dbo.machines WHERE [serial] = @serial AND available = 1)
         BEGIN
             SET @output= '{"result": 0, "description": "Error: máquina ya existe"}';
         END
