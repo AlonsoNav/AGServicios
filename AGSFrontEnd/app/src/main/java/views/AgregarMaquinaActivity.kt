@@ -40,7 +40,7 @@ class AgregarMaquinaActivity : AppCompatActivity() {
                 val typesArray = jsonObject.getAsJsonArray("types")
                 for (i in 0 until typesArray.size()) {
                     val typeObject = typesArray.get(i)
-                    val name = typeObject.asJsonObject.get("name")
+                    val name = typeObject.asJsonObject.get("name").asString
                     val item = name.toString()
                     itemsType.add(item)
                 }
@@ -61,9 +61,9 @@ class AgregarMaquinaActivity : AppCompatActivity() {
                 val brandArray = jsonObject.getAsJsonArray("brands")
                 for (i in 0 until brandArray.size()) {
                     val typeObject = brandArray.get(i)
-                    val name = typeObject.asJsonObject.get("name")
+                    val name = typeObject.asJsonObject.get("name").asString
                     val item = name.toString()
-                    val itemsBrand = ArrayList<String>().add(item)
+                    itemsBrand.add(item)
                 }
                 runOnUiThread{
                     val adapter = ArrayAdapter(this, R.layout.spinner_text_color, itemsBrand)
@@ -95,30 +95,35 @@ class AgregarMaquinaActivity : AppCompatActivity() {
             val editModelo = findViewById<EditText>(R.id.editModeloAgregarMaquina)
             val serial = editSerial.text.toString()
             val model = editModelo.text.toString()
-            val brand = spinnerBrand.selectedItem.toString()
-            val type = spinnerType.selectedItem.toString()
+            val brandItem = spinnerBrand.selectedItem
+            val typeItem = spinnerType.selectedItem
+            var brand:String
+            var type:String
+
+            if(brandItem == null){
+                brand = ""
+            }else{
+                brand = brandItem.toString()
+            }
+
+            if(typeItem == null){
+                type = ""
+            }else{
+                type = typeItem.toString()
+            }
 
             closeButton.setOnClickListener {
                 dialog.dismiss()
             }
-            if(serial.isEmpty()){
-                textViewPopup.text = "Error: El serial no puede ser vacío"
-                dialog.show()
-            }else if(model.isEmpty()){
-                textViewPopup.text = "Error: El modelo no puede ser vacío"
-                dialog.show()
-            }else{
-
-                val agregar = addMachineController.addMachineAttempt(brand,type,serial,model,this) { response ->
-                    val jsonString = response.body?.string()
-                    runOnUiThread{
-                        val jsonObject = JsonParser().parse(jsonString).asJsonObject
-                        textViewPopup.text = jsonObject.get("message").asString
-                        dialog.show()
-                    }
+            val agregar = addMachineController.addMachineAttempt(brand,type,serial,model,this) { response ->
+                val jsonString = response.body?.string()
+                runOnUiThread{
+                    val jsonObject = JsonParser().parse(jsonString).asJsonObject
+                    textViewPopup.text = jsonObject.get("message").asString
+                    dialog.show()
                 }
             }
-        }
+    }
 
         }
     }
